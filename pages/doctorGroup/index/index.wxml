@@ -1,0 +1,141 @@
+<!-- <loading hidden="{{show}}">正在加载</loading> -->
+<view wx:if="{{show}}">
+  <!-- groupCreate -->
+  <navigator hover-class="none" wx:if="{{isdoctor==1&&mycreategroup.length<1}}" url="/pages/doctorGroup/createGroup/createGroup?did={{did}}">
+    <view class='groupCreate white clearfix'>
+      <image class='groupPlusImg fl' src='../../../static/groupImages/groups.png' />
+      <view class='groupPlusInfo fl'>创建集团</view>
+      <image class='moreImg fr' src='../../../static/groupImages/moreImg.png' />
+    </view>
+  </navigator>
+  <!-- 我的集团 -->
+  <view class='myGroup white top40 '>
+    <!-- title -->
+    <view class='title pad40 clearfix'>
+      <image class='tit_ico fl' src='../../../static/groupImages/tit_ico.png' />
+      <view wx:if='{{isdoctor==1}}' class='fl' style='margin-left:10rpx'>我的集团</view>
+      <view wx:if='{{isdoctor==0}}' class='fl' style='margin-left:10rpx'>该医生的集团</view>
+    </view>
+    <!-- content -->
+    <!-- 已创建 -->
+    <view wx:if='{{mycreategroup.length==1}}'>
+      <view wx:if='{{mycreategroup[0].groupinfo[0].issolve == 1 || mycreategroup[0].groupinfo[0].issolve == 3}}' bindtap='bindGroup' data-id="{{mycreategroup[0].groupinfo[0].id}}" class='myGroup_cont clearfix'>
+        <image class='fl' style='width:128rpx; height:128rpx; border-radius: 50%;' src='{{mycreategroup[0].groupinfo[0].icon}}' />
+        <view class='myGroup_contMsg fl '>
+          <view class='contMsg_name'>{{mycreategroup[0].groupinfo[0].name}}
+           <text wx:if='{{mycreategroup[0].groupinfo[0].issolve == 3}}'>(申请解散中)</text>
+          </view>
+          <view class='contMsg_data'>建于{{mycreategroup[0].create_time}}</view>
+          <view wx:if='{{isdoctor==1}}' class='contMsg_msg'>已有成员 {{mycreategroup[0].countnum}} | 更新动态 {{mycreategroup[0].newnotenum}}
+          </view>
+          <view wx:if='{{isdoctor!=1}}' class='contMsg_msg'>已有成员 {{mycreategroup[0].countnum}}
+          </view>
+        </view>
+        <image class='myGroup_more' src='../../../static/groupImages/myGroup_more.png' />
+      </view>
+      <view wx:if='{{mycreategroup[0].groupinfo[0].issolve != 1 && mycreategroup[0].groupinfo[0].issolve != 3}}' class='myGroup_cont clearfix'>
+        <image class='fl' style='width:128rpx; height:128rpx; border-radius: 50%;' src='{{mycreategroup[0].groupinfo[0].icon}}' />
+        <view class='myGroup_contMsg fl '>
+          <view class='contMsg_name'>{{mycreategroup[0].groupinfo[0].name}}
+            <text wx:if='{{mycreategroup[0].groupinfo[0].issolve == 0}}'>(审核中)</text>
+            <text wx:if='{{mycreategroup[0].groupinfo[0].issolve == 2}}'>(未通过审核)</text>
+          </view>
+          <view class='contMsg_data'>建于{{mycreategroup[0].create_time}}</view>
+          <view wx:if='{{isdoctor==1}}' class='contMsg_msg'>已有成员 {{mycreategroup[0].countnum}} | 更新动态 {{mycreategroup[0].newnotenum}}
+          </view>
+          <view wx:if='{{isdoctor!=1}}' class='contMsg_msg'>已有成员 {{mycreategroup[0].countnum}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 如果没有创建 --> 
+  <view wx:if='{{mycreategroup.length<1}}' class='myGroup_cont font28 clearfix' style='color:#79829c'>
+    暂未创建
+  </view>
+  <!-- 我加入的 -->
+  <view wx:if='{{isdoctor==1}}' class='jioned font28'>我加入的</view>
+  <view wx:if='{{isdoctor==0}}' class='jioned font28'>该医生加入的</view>
+  <!-- 加入列表 -->
+  <view class='listBox ' wx:for="{{mygroup}}" wx:key="" wx:if='{{mygroup.length>0}}'>
+    <view class='list clearfix' bindtap='bindGroup' data-id="{{item.groupinfo[0].id}}">
+      <view class='listL fl'>
+        <image style='width:91rpx;height:91rpx;border-radius:50%' src='{{item.groupinfo[0].icon}}' />
+      </view>
+      <view class='listR fl'>
+        <view class='font28' style='padding-top:5rpx;color:#172e60'>{{item.groupinfo[0].name}}<text wx:if='{{item.groupinfo[0].issolve == 3}}'>(申请解散中)</text></view>
+        <view wx:if='{{isdoctor==1}}' class='font22' style='padding-top:10rpx;color:#8896b1'>成员：{{item.countnum}}人| {{mycreategroup[0].newnotenum}}条动态更新
+        </view>
+         <view wx:else class='font22' style='padding-top:10rpx;color:#8896b1'>成员：{{item.countnum}}人
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 如果没加入集团 -->
+  <view class='listBox ' wx:if='{{mygroup.length<1}}'>
+    <view class='list clearfix'>
+      <view class='listL font28 fl' style='color:#79829c'>
+        暂无加入集团
+      </view>
+    </view>
+  </view>
+
+  <!-- 我申请的 -->
+  <view wx:if='{{isdoctor==1}}' class='jioned font28'>我申请的</view>
+  <!-- 申请列表 -->
+  <view class='listBox ' wx:for="{{myApplyGroup}}" wx:key="" wx:if='{{myApplyGroup.length>0 && isdoctor==1}}'>
+    <view class='list clearfix'  data-id="{{item.docinfo[0].id}}">
+      <view class='listL fl'>
+        <image style='width:91rpx;height:91rpx;border-radius:50%' src='{{item.docinfo[0].icon}}' />
+      </view>
+      <view class='listR fl'>
+        <view class='font28' style='padding-top:30rpx;color:#172e60'>{{item.docinfo[0].name}}<text wx:if='{{item.docinfo[0].issolve == 3}}'>(申请解散中)</text></view>
+      </view>
+    </view>
+  </view>
+  <!-- 如果没申请中的集团 -->
+  <view class='listBox ' wx:if='{{myApplyGroup.length<1 && isdoctor == 1}}'>
+    <view class='list clearfix'>
+      <view class='listL font28 fl' style='color:#79829c'>
+        暂无申请中的集团
+      </view>
+    </view>
+  </view>
+
+  <!-- 推荐集团 -->
+  <view wx:if='{{isdoctor==1}}'>
+    <view class='title pad40 white clearfix' style='margin-top:28rpx'>
+      <image class='tit_ico fl' src='../../../static/groupImages/tit_ico.png' />
+      <view class='fl' style='margin-left:10rpx'>搜索集团</view>
+    </view>
+    <!-- 搜索 -->
+    <view class="search-top">
+      <view class="flex search">
+        <view class="search-l">
+          <view class="search-input flex">
+            <input class="input font26" placeholder="请输入集团名称" value="{{value}}" bindconfirm="search" bindinput="bindinput"></input>
+            <icon bindtap="search" type="search" size="20" color="#8896B1"></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style='padding: 20rpx 40rpx;text-align: center; background-color: #fff' wx:if='{{groupList.length == 0}}'>
+      <text class='font28' wx:if='{{issearched}}' style='color:#79829c'>未搜索到相关内容</text>
+    </view>
+    <view class='listBox'>
+      <view class='list clearfix' wx:if='{{groupList.length != 0}}' wx:for='{{groupList}}' wx:key=''>
+        <view class='listL fl'>
+          <image style='width:91rpx;height:91rpx;border-radius:50%' src='{{item.icon}}' />
+        </view>
+        <view class='listR fl'>
+          <view class='font28' style='padding-top:5rpx;color:#172e60'>{{item.name}}</view>
+          <view class='font22' style='padding-top:10rpx;color:#8896b1'>集团主：{{item.creater}}|成员：{{item.membernum}}人</view>
+          <view class='font22' style='word-wrap:break-word;padding-top:10rpx;color:#8896b1'>简介: {{item.summary}}</view>
+        </view>
+        <image wx:if='{{item.isin == 0 && !isin}}' data-gid='{{item.id}}' bindtap='addGroup' class='more fr' src='../../../static/groupImages/jion.png' />
+        <image wx:if='{{item.isin == 1 || isin}}' class='more fr' src='../../../static/groupImages/joined.png' />
+      </view>
+    </view>
+    <view></view>
+  </view>
+</view>

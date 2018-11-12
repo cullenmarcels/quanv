@@ -1,0 +1,402 @@
+.doctor{
+    padding: 40rpx 30rpx;
+    /* margin-bottom: 20rpx; */
+    background: #02c6dc;
+    
+}
+
+.doctor-l{
+    flex: 1;
+    
+}
+.accredit-btn{
+    background:#02c6dc;
+    color:#fff;
+    font-size: 32rpx;
+    width: 40%;
+    margin-top: 500rpx;
+}
+
+.doctor-introduce{
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #122d64;
+    padding: 40rpx 40rpx 20rpx 40rpx;
+    background: #fff;
+}
+
+.doctor-img{
+    width: 120rpx;
+    height: 120rpx;
+    /* background: #41C7D6; */
+    border-radius: 50%;
+    margin: 0 20rpx;
+    position: relative;
+}
+
+.vv{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    /* background: #122d64; */
+    position: absolute;
+    right: -10rpx;
+    bottom: -10rpx;
+}
+
+.doctor-r{
+    flex: 3;
+}
+
+.name{
+    font-size: 40rpx;
+    font-weight: 600;
+    color: #fff;
+}
+
+.post{
+    font-size: 32rpx;
+    color: #fff;
+    margin-left: 20rpx;
+}
+
+.hospital{
+    font-size: 32rpx;
+    color: #fff;
+}
+
+.office{
+    font-size: 32rpx;
+    color: #fff;
+    margin-left: 20rpx;
+}
+
+.return{
+    color: #fff;
+    background: #02c6dc;
+    font-size: 32rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    padding: 0 20rpx;
+    border-radius: 30rpx;
+    border: 2rpx solid #fff;
+    
+}
+
+.doctor-r-b{
+    margin-top: 20rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    font-size: 32rpx;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.img{
+    background: #fff; 
+    /* height: 400rpx; */
+}
+
+.state{
+    text-align: center;
+    color: #FF7877;
+    font-size: 36rpx;
+    font-weight: 600;
+    line-height: 100rpx;
+    background: #fff;
+}
+
+.infuse{
+    font-size: 28rpx;
+    color: #FF7877;
+    padding: 40rpx 30rpx;
+    line-height: 40rpx;
+}
+
+button{
+    background: #41C7D6;
+    color: #fff;
+    width: 80%;
+    margin-bottom: 50rpx;
+}
+
+.concent{
+    background: #fff;
+    margin-top: 20rpx; 
+    padding: 40rpx;
+}
+
+.concent-title{
+    font-size: 40rpx;
+    font-weight: 600;
+    margin-bottom: 40rpx;
+    color: #122d64;
+}
+
+.item{
+    font-size: 36rpx;
+    font-weight: 600;
+}
+
+.itemShow{
+    font-size: 32rpx;
+    line-height: 45rpx;
+    margin: 20rpx 0;
+    color: #8896B1;
+}
+
+.time{
+    font-size: 28rpx;
+    color: #8896B1;
+    padding: 20rpx 0;
+}
+
+.details{
+    font-size: 32rpx;
+    color: #8896B1;
+    /* padding: 0 20rpx; */
+}
+
+.show{
+    margin-top: 40rpx;
+}
+
+.show2{
+    height: 500rpx;
+    overflow: hidden;
+}
+
+.redact-title{
+    justify-content: space-between;
+    padding-bottom: 20rpx;
+}
+
+.redact-title-l{
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #41C7D6; 
+}
+
+.redact-title-l text{
+    font-size: 28rpx;
+    font-weight: 500;
+    color: #8896B1; 
+}
+
+.redact-img{
+    width: 40rpx;
+    height: 40rpx;
+    padding: 0 20rpx;
+}
+
+.redact{
+    border-top: 2rpx solid #ddd;
+    padding: 30rpx 0;
+}
+
+.redact-l{
+    flex: 1;
+}
+
+.redact-l-img{
+    width: 100rpx;
+    height: 100rpx;
+    /* background: #41C7D6; */
+    border-radius: 50%;
+}
+
+.redact-r{
+    flex: 4;
+    word-break:break-all;
+}
+
+.redact-name{
+    font-size: 32rpx;
+    line-height: 50rpx;
+    color: #02c6dc;
+}
+
+.redact-time{
+    font-size: 32rpx;
+    line-height: 50rpx;
+    color: #8896b1;
+}
+
+.redact-c{
+    font-size: 32rpx;
+    line-height: 45rpx;
+    margin-top: 20rpx;
+    color: #596c92;
+}
+
+.praise{
+    justify-content: flex-end;
+    margin-top: 20rpx;
+}
+
+.praise text{
+    font-size: 36rpx;
+    color:#8896b1;
+    margin-right: 20rpx;
+}
+
+.praise-img{
+    width: 40rpx;
+    height:40rpx;
+    vertical-align: sub;
+    margin: 0 20rpx;
+}
+
+.essey-img{
+    width: 100%;
+    margin: 10rpx 0;
+}
+
+.essey-text{
+    margin: 10rpx 0;
+    line-height: 50rpx;
+    font-size: 32rpx;
+    word-break:break-all; 
+    text-align: justify;
+    color: #596c92;
+}
+
+.comment{
+    width: 100%;
+    height: 120rpx;
+    background: #fff;
+    z-index: 999;
+    position: fixed;
+    bottom: 0;
+    border-top: 2rpx solid #d8d8d8;
+}
+
+.comment-l{
+    flex: 4;
+    padding: 20rpx 30rpx;
+}
+
+.comment-input{
+    width: 100%;
+    height: 100%;
+    background: #f4f4f4;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    font-size: 34rpx;
+    color: #122d64;
+}
+
+.comment-r{
+    flex: 1;
+    padding: 20rpx 30rpx 20rpx 0;
+}
+
+.comment-publish{
+    width: 100%;
+    height: 100%;
+    background: #02c6dc;
+    color: #fff;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 36rpx;
+}
+
+.buy{
+    justify-content: space-between;
+    font-size: 30rpx;
+    color: #8896b1;
+    padding: 20rpx 0;
+}
+
+.but{
+    width: 90%;
+    background: #02c6dc;
+    color: #fff;
+    font-size: 36rpx;
+    margin-top: 100rpx;
+    margin-bottom: 100rpx;
+}
+
+.but text{
+    font-size: 28rpx;
+    margin-left: 20rpx; 
+}
+
+.give-a-reward{
+    text-align: center;
+    padding: 40rpx;
+}
+
+.quan{
+    width: 150rpx;
+    height: 150rpx;
+    margin: 20rpx auto;
+    border: 2rpx solid #FF7877;
+    border-radius: 50%;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+.give-a-reward-t{
+    font-size: 36rpx;
+    color: #596c92;
+    line-height: 60rpx;
+}
+
+.give-a-reward-n{
+    font-size: 32rpx;
+    color: #8896b1;
+  
+}
+.nav{
+    justify-content: space-between;
+    font-size: 32rpx;
+}
+
+.nav view{
+    font-size: 34rpx;
+    color: #8896b1;
+    text-align: center;
+    /* padding: 0 10rpx; */
+    position: relative;
+   
+}
+
+.nav view image{
+    width: 50rpx;
+    height: 50rpx;
+    vertical-align: sub;
+    margin-right: 5rpx;
+}
+
+.nav-li{
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+
+.nav-li view{
+    border: 2rpx solid #02c6dc;
+    color: #02c6dc;
+    border-radius: 30rpx;
+    padding: 10rpx 20rpx;
+    font-size: 30rpx;
+}
+
+.lookImg{
+    font-size: 32rpx;
+}
+
+.redact-c-s{
+    line-height: 50rpx;
+    font-size: 30rpx;
+    word-break:break-all; 
+}
+
+.all{
+    color: #02c6dc;
+    font-size: 32rpx;
+    margin-top: 10rpx; 
+
+}

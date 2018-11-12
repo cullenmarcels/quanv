@@ -1,0 +1,33 @@
+page{
+    color: #596c92;
+    font-size: 32rpx;
+    background: #fff;
+}
+.title{
+    text-align: center;
+    margin-top: 100rpx;
+    font-size: 36rpx;
+    color: #122d64;
+}
+
+.money1{
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.state{
+    text-align: center;
+    margin-top: 20rpx;
+    font-size: 28rpx;
+    color: #8896b1;
+}
+
+.concent{
+    margin-top: 100rpx;
+    padding: 0 30rpx;
+}
+
+.concent-li{
+    /* justify-content: space-between; */
+    padding: 10rpx 0;
+}

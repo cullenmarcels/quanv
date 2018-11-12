@@ -1,0 +1,55 @@
+.moveWarning {
+  padding: 50rpx 40rpx;
+}
+
+.moveWarning .cont {
+  padding: 35rpx 18rpx;
+  border: 3rpx solid #02c6dc;
+  border-radius: 30rpx;
+}
+
+.listTit {
+  padding: 5rpx 40rpx;
+  color: #8896b1;
+}
+
+/* 列表样式 */
+
+.listLi {
+  position: relative;
+  padding: 40rpx;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+
+.listLi-l {
+  position: relative;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.listLi-l> image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%
+}
+
+.listLi-l .listLi-level {
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  bottom: 0;
+  right: 0;
+}
+
+.listLi-r {
+  position: relative;
+  margin-left: 40rpx;
+}
+
+.listLi-moveTo {
+  position: absolute;
+  width: 70rpx;
+  height: 33rpx;
+  top: 110rpx;
+  right: 40rpx;
+}

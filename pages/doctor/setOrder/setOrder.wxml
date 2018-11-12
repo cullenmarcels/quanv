@@ -1,0 +1,58 @@
+<!-- 有   医生端的当面咨询设置 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <view class="top-title">
+        <view class="top">
+            <image class="form" src="../../../static/images/demo/form.png"></image>
+            <text>预约安排表</text>
+        </view>
+        <view class="flex title" style="color:#122d64;">
+            <view class="title-data">日期</view>
+            <view class="title-time">时间</view>
+            <view class="title-num">人数</view>
+            <view class="title-money">费用</view>
+        </view>
+    </view>
+
+    <scroll-view scroll-y style="height:100%;padding-top:226rpx;color:#596c92;padding-bottom:110rpx;" >
+        <view class="none" wx:if="{{list.length == 0 && display}}">暂无安排</view>
+        <block wx:for="{{list}}" wx:key="uniquer">
+            <view class="li">
+                <view class="flex title">
+                    <view class="title-data">
+                        <view>{{item.date}}</view>
+                        <view>{{item.week}}</view>
+                    </view>
+                    <view class="title-time">{{item.start_time}}~{{item.end_time}}</view>
+                    <view class="title-num">
+                        <text style="color:#41C7D6;">{{item.consult_nums}}</text>/{{item.people_nums}}
+                    </view>
+                    <view class="title-money ">{{item.price}}</view>
+                </view>
+                <view class="flex title">
+                    <view class="flex title-add">
+                        <view style="flex:1;line-height:40rpx;">地址:</view>
+                        <view style="flex:5;line-height:45rpx;text-align:left;">{{item.address}}</view>
+                    </view>
+                    <!-- <view class="title-num" style="color:#FF7877;" bindtap="delete" data-id="{{item.id}}">删除</view>
+                    <view class="title-money" style="color:#41C7D6;" bindtap="alterOrder" data-id="{{item}}">修改</view> -->
+                </view>
+                <view class="flex title">
+                    <view class="flex title-add">
+                        <view style="flex:1;line-height:40rpx;">备注:</view>
+                        <view style="flex:3;line-height:45rpx;text-align:left;">{{item.remark}}</view>
+                    </view>
+                    <view  wx:if="{{item.consult_nums==0}}"  class="title-num" style="color:#FF7877;" bindtap="delete" data-id="{{item.id}}" data-consult_nums="{{item.consult_nums}}">{{item.consult_nums==0?'删除':''}}</view>
+                    <view class="title-money" style="color:#41C7D6;" bindtap="alterOrder" data-id="{{item}}" wx:if="{{item.consult_nums==0}}">修改</view>
+                </view>
+            </view> 
+        </block>
+        
+    </scroll-view>
+    
+    <view class="append" bindtap="alterOrder" data-id="add">添加</view>
+</view>
+

@@ -1,0 +1,3 @@
+<!-- 有  医生端的咨询室 -->
+
+<web-view src="{{url}}"></web-view>

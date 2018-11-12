@@ -1,0 +1,20 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <view class="flex view">
+
+        <block wx:for="{{goods}}" wx:key="uniquer">
+            
+                <view class="li">
+                    <navigator url="../myattentionshow/myattentionshow?id={{item.id}}">
+                        <view class="img">
+                            <image style="width:100%;height:100%;" src="{{item.thumb}}"></image>
+                        </view>
+                        <view class="name">{{item.title}}</view>
+                        <view class="price">￥{{item.marketprice}}</view>
+                     </navigator>
+                </view>
+           
+        </block>
+    </view>
+</view>

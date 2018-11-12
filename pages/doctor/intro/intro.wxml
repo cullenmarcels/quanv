@@ -1,0 +1,69 @@
+
+<!-- 有 医生简介-->
+<loading hidden="{{show}}">正在加载</loading>
+
+
+<view wx:if="{{show}}">
+    <view class="top" >
+        <view class="name-img">
+            <image style="width:100%;height:100%;border-radius:50%;" src="{{concent.avatar}}"></image>
+        </view>
+        <view class="name">
+            <view style="margin-top:20rpx;">
+                <text style="font-size: 46rpx;font-weight:600;">{{concent.realname?concent.realname:concent.nickname}}</text>
+                <text style="font-weight:600;font-size:36rpx;margin-left:40rpx;">{{concent.job}}</text>
+            </view>
+            <view style="margin-top:20rpx;"> 
+                <text class="message" style="margin-right: 40rpx;">{{concent.hospital[0].hospital}}</text>
+                <text class="message">{{concent.department}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="flex nav">
+        <view style="flex:1;line-height:100rpx;" bindtap="nav" data-nav='0'>
+            <view class="{{nav==0?'active':''}}">个人介绍</view>
+        </view>
+        <view style="line-height:100rpx;color:#d8d8d8;">|</view>
+         <view style="flex:1;line-height:100rpx;" bindtap="nav" data-nav='1'>
+            <view class="{{nav==1?'active':''}}">任职医院</view>
+        </view>
+    </view>
+
+    <view class="con" wx:if="{{nav==0}}">
+        <view class="con-c">
+            <text style="color:#122d64;font-weight:600;">{{concent.realname?concent.realname:concent.nickname}}，</text>
+            <text> {{concent.sex==0?'女':'男'}}，</text>
+            <text wx:if="{{concent.age}}"> {{concent.age}}岁，</text>
+            <text> {{concent.resume}}</text> 
+        </view>
+       
+        <view wx:for="{{concent.introduce}}" wx:key="uniquer">
+            <view class="adept">{{item.text}}</view>
+            <view class="con-img-view">
+                <view class="con-img">
+                    <image style="width:100%;" mode="widthFix" src="{{item.img}}"></image>
+                </view>
+            </view>
+            <view class="con-name">{{item.title}}</view>
+        </view>
+    </view>
+
+    <view wx:if="{{nav==1}}">
+
+        <block wx:for="{{concent.hospital}}" wx:key="uniquer">
+            <view class="flex experience">
+                <view class="flex-l">
+                    <image style="width:30rpx;height:30rpx;margin-top:15rpx;" src="../../../static/images/demo/dian2.png"></image>
+                </view>
+                <view class="flex-r">
+                    <view class="flex-r-t">{{item.hospital}}</view>
+                    <view class="flex-r-b">
+                        <text style="margin-right: 40rpx;">{{item.name}}</text>
+                        <text>{{item.job}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+

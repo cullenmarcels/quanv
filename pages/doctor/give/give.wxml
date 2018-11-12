@@ -1,0 +1,60 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+<view class="top">
+    <view class="head">
+        <image style="width:100%;height:100%;border-radius:50%;" src="{{res_doc.avatar}}"></image>
+        <view class="v"  wx:if="{{res_doc.level!='V0'}}">
+            <image wx:if="{{res_doc.level=='V1'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V1.png"></image>
+            <image wx:if="{{res_doc.level=='V2'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V2.png"></image>
+            <image wx:if="{{res_doc.level=='V3'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V3.png"></image>
+        </view>
+    </view>
+    <view class="name">{{res_doc.realname?res_doc.realname:res_doc.nickname}}</view>
+    <view class="job">{{res_doc.job}}</view>
+</view>
+
+<view class="ul">
+    <view class="thank">感谢医生的辛勤付出</view>
+    <view class="select">—请选着你要送的心意—</view>
+
+    <form bindsubmit="formSubmit">
+        <radio-group name="radio" class="radio-group" bindchange="radioChange" >
+            <label class="radio" wx:for="{{list}}" wx:key="uniquer">
+                <view class="ul-li" style="{{radioIndex==index?'border: 2rpx solid #02c6dc;':''}}">
+                        <radio value="{{index}}" hidden="{{radioIndex!=index}}" color="#02c6dc" checked="{{item.checked}}"/>
+                        <view class="li">
+                            <view class="ico">
+                                <image style="width: 100%;height:100%;" src="{{item.icon}}"></image>
+                            </view>
+                            <view class="title">{{item.title}}</view>
+                            <view class="li-price">￥{{item.price}}</view>
+                        </view> 
+                </view>
+            </label>
+        </radio-group>
+        <view style="padding: 0 40rpx;">
+            <textarea name="remark" value="{{remark}}" placeholder="说几句感谢医生的话..." placeholder-style="color: #8896b1;"></textarea>
+        </view>
+        <button formType="submit">完成</button>
+        <view class="hint">答谢金会全部转入该医生账户，并且医生会看到您的留言</view>
+    </form>
+</view>
+
+<view  class="ul">
+    <view class="wall">{{res_doc.realname?res_doc.realname:res_doc.nickname}}医生的心意墙</view>
+
+    <block wx:for="{{wallList}}" wx:key="uniquer">
+        <view class="wall-li">
+            <view>
+                <text style="margin-right: 20rpx;">{{item.nickname}}</text> 
+                <image style="width: 40rpx;height:40rpx; vertical-align: middle;" src="{{item.icon}}"></image>
+                <text>￥ {{item.price}}</text>
+                
+            </view>
+            <view class="wall-li-con">{{item.remark}}</view>
+        </view>
+    </block>
+    <view wx:if="{{wallList.length == 0}}" style="color: #8896b1;font-size: 32rpx;text-align:center;">暂未收到心意</view>
+</view>
+</view>

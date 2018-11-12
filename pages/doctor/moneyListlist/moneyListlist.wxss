@@ -1,0 +1,49 @@
+.ul{
+    padding: 20rpx 40rpx 0 40rpx;
+}
+
+.li{
+    padding: 20rpx 20rpx 0 20rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.status{
+    color: #122d64;
+    font-size: 34rpx;
+    font-weight: 600;
+}
+
+.date{
+    color: #8896b1;
+    font-size: 28rpx;
+    line-height: 50rpx;
+}
+
+.money2{
+    font-size: 60rpx;
+    color: #02c6dc;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.con-c{
+    padding: 20rpx 0;
+    border-top: 2rpx solid #f4f4f4;
+    border-bottom: 2rpx solid #f4f4f4;
+}
+
+.con{
+    justify-content: space-between;
+    font-size: 30rpx;
+    color: #596c92;
+    line-height: 50rpx;
+}
+
+.show{
+    text-align: center;
+    font-size: 34rpx;
+    color: #596c92;
+    line-height: 100rpx;
+}

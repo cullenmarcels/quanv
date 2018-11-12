@@ -1,0 +1,56 @@
+<!-- 顶部菜单--字体颜色和下划线 -->
+<template name="nav">
+    <view class="flex nav" >
+        <view class="record {{index == 0?'active':''}}" bindtap="nav"  data-id="0">
+            {{nav[0]}}
+            <view class="title-nav" style="left:260rpx;padding:0 20rpx;font-weight:500;" wx:if="{{title[0]!=0}}">{{title[0]}}</view>
+        </view>
+        <view class="shu">|</view>
+        <view class="record {{index == 1?'active':''}}" bindtap="nav" data-id="1">
+             {{nav[1]}}
+        </view>
+    </view>
+</template>
+
+<!-- 顶部菜单--字体颜色 -->
+<template name="navColor">
+    <view class="flex nav" >
+        <view class="record" bindtap="nav"  data-id="0">
+             <view class="record-view {{index == 0?'active-color':''}}">{{nav[0]}}</view>
+        </view>
+        <view class="shu">|</view>
+        <view class="record" bindtap="nav" data-id="1">
+            <view class="record-view {{index == 1?'active-color':''}}">{{nav[1]}}</view>
+        </view>
+    </view>
+</template>
+
+<!-- 三个nav-->
+<template name="nav3">
+    <view class="flex nav" >
+        <view class="record3" bindtap="nav"  data-id="0">
+            <view class="record-view {{index == 0?'active':''}}">{{nav[0]}}</view>
+            <view class="title-nav" wx:if="{{title[0]!=0}}">{{title[0]}}</view>
+        </view>
+        <view class="shu" wx:if="{{shu}}">|</view>
+        <view class="record3" bindtap="nav" data-id="1">
+            <view class="record-view  {{index == 1?'active':''}}">{{nav[1]}}</view>
+            <view class="title-nav"  wx:if="{{title[1]!=0}}">{{title[1]}}</view>
+        </view>
+        <view class="shu"  wx:if="{{shu}}">|</view>
+        <view class="record3" bindtap="nav"  data-id="2">
+            <view class="record-view  {{index == 2?'active':''}}">{{nav[2]}}</view>
+        </view>
+    </view>
+</template>
+
+<!-- 顶部菜单四个nav--字体颜色 -->
+<template name="navColor4">
+    <view class="flex nav" >
+        <view class="record4 {{index == 0?'active-color':''}}" bindtap="nav"  data-id="0">{{nav[0]}}</view>
+        <view class="record4 {{index == 1?'active-color':''}}" bindtap="nav" data-id="1">{{nav[1]}}</view>
+        <view class="record4 {{index == 2?'active-color':''}}" bindtap="nav" data-id="2">{{nav[2]}}</view>
+        <view class="record4 {{index == 3?'active-color':''}}" bindtap="nav" data-id="3">{{nav[3]}}</view>
+    </view>
+</template>
+

@@ -1,0 +1,83 @@
+<loading hidden="{{show}}">
+  正在加载</loading>
+
+
+<view wx:if="{{show}}">
+  <view>
+    <view>
+      <view class="flex personalDetails">
+        <view class="personalDetails-l">
+          <view class="personalDetails-l-img">
+            <image style="width:100%;height:100%;border-radius:50%;" src="{{list.avatar}}"></image>
+          </view>
+        </view>
+        <view class="personalDetails-r">
+          <view class="personalDetails-r-c">
+            <text>{{list.name}}</text>
+            <text class="sex">{{list.sex==0?'女':'男'}}</text>
+            <text>{{list.age}}</text>
+          </view>
+          <view class="number">预约编号 | {{list.ordernumber}}</view>
+        </view>
+      </view>
+      <view class="ul">
+        <view class="ul-li">{{list.title}}</view>
+        <view class="ul-li-c">
+          <view class="ul-li-c-t">病情描述：</view>
+          <view class="ul-li-c-c">{{list.remarks?list.remarks:'无'}}</view>
+        </view>
+
+        <view class="ul-li-c">
+          <view class="ul-li-c-t">备注：</view>
+          <view class="ul-li-c-c">{{list.remark?list.remark:'无'}}</view>
+        </view>
+      </view>
+      <view class="ul">
+        <view class="ul-li-time">
+          <text style="color: #122d64;margin:0;">时间：</text> {{list.date}}
+          <text>{{list.week}}</text> {{list.start_time}}-{{list.end_time}}
+        </view>
+        <view class="flex ul-li-c">
+          <view class="ul-li-c-t"> 地址：</view>
+          <view class="ul-li-c-c row">{{list.address}}</view>
+        </view>
+      </view>
+      <view class="ul">
+        <view class="phone">
+          联系电话：
+          <text style="color: #41C7D6;">{{list.mobile}}</text>
+        </view>
+      </view>
+      <view class="ul">
+        <view class="ul-li" style="color:#122d64;">状态</view>
+        <view class="flex ul-li-c">
+          <view class="ul-li-dian">
+            <image class="dian" src="../../../static/images/demo/dian1.png"></image>
+          </view>
+          <view class="ul-li-c-c">
+            <view class="font-color">已支付： {{list.price}}￥</view>
+            <view class="font-color">交易时间： {{list.paytime}} </view>
+          </view>
+        </view>
+        <!-- <view class="flex ul-li-c" style="padding: 0;">
+                    <view class="ul-li-dian">
+                        <image class="dian" src="../../../static/images/demo/dian1.png"></image>
+                    </view>
+                    <view class="ul-li-c-c">
+                        <view class="font-color">客服电话：{{phone.phone}}</view>
+                    </view>
+                </view> -->
+        <view class="flex ul-li-c" style="padding-top:0;">
+          <view class="ul-li-dian">
+            <image class="dian" src="../../../static/images/demo/dian1.png"></image>
+          </view>
+          <view class="ul-li-c-c">
+            <view class="font-color">已确认完成当面咨询</view>
+            <view class="font-color">确认时间： {{list.confirmtime==0?'患者未确认':list.confirmtime}} </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

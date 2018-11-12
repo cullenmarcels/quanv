@@ -1,0 +1,91 @@
+<!-- 有，  医生端的我的讲座 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <import src="/template/nav/nav.wxml"/>
+    <template is="nav3" data="{{...item}}"/> 
+    <button bindtap="applyForChair" data-id="a" wx:if="{{item.index == 1}}">申请开讲</button> 
+    <scroll-view scroll-y style="height:100%;padding-top:140rpx;">
+        <view wx:if="{{item.index == 0}}">
+            <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无待开讲讲座</view>
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="stay" bindtap="chariShow" data-id="{{item.id}}">
+                    <view class="top-top">
+                        <view>
+                            <image style="width: 120rpx;height:120rpx;border-radius:50%;background:#ccc;  vertical-align: middle;" src="{{item.avatar}}"></image>
+                            <text style="color:#02c6dc;font-size:34rpx;margin-left:20rpx;">{{item.realname?item.realname:item.nickname}}</text>
+                        </view>
+                        <view style="font-size:30rpx;color:#8896b1;">{{item.start_time}}</view>
+                    </view>
+                    <view class="stay-top">
+                        <image style="width:100%;height:300rpx;" mode="aspectFill" src="{{item.cover_url}}"></image>
+                    </view>
+                    <view class="number">
+                        <view>预报人数 {{item.lecture_nums}}</view>
+                        <view>已报人数 <text style="color:#ff7777;">{{item.peoplenum}}</text> </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+
+
+        <view wx:if="{{item.index == 1}}"  style="padding-bottom:90rpx;">
+            <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无申请</view>
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="state-li">
+                    <!-- <view class="state" wx:if="{{item.status == 2}}">待发布</view> -->
+                    <view class="state" wx:if="{{item.status == 0}}">待审核</view>
+                    <view class="state" wx:if="{{item.status == 1}}">驳回</view>
+                    <view class="state-c" bindtap="applyForChair" data-id="{{item.id}}" data-status="{{item.status}}">
+                        <view class="stay-top-title">{{item.lecture_title}}</view>
+                        <view class="stay-top">
+                            <image style="width: 100%;height:300rpx;" mode="aspectFill"  src="{{item.cover_url}}"></image>
+                        </view>
+
+                        <view style="text-align: center;font-size: 34rpx;" wx:if="{{item.status == 2}}">
+                            <view  style="color:#FF7877;margin: 20rpx;">恭喜，您的讲座申请已通过审核！</view>
+                            <view style="font-size: 28rpx;color:#8896b1;">
+                                <text>确认后即可发布</text>
+                                <image class="gl" style="width:20rpx;height:20rpx;" src="../../../static/images/demo/gl.png"></image>
+                            </view>
+                        </view>
+                        <view class="flex numberShow" >
+                            <view> 
+                                <!-- <text wx:if="{{item.status == 2}}" style="color:#FF7877;">恭喜，您的申请已通过审核！</text>    -->
+                                <text wx:if="{{item.status == 0}}" style="color:#FF7877;">您的申请正在审核当中</text>   
+                                <text wx:if="{{item.status == 1}}" style="color:#FF7877;">抱歉、您的申请暂未通过审核-</text>   
+                            </view>
+                            <view>
+                                <!-- <text wx:if="{{item.status == 2}}" class="show">去发布</text> -->
+                                <text wx:if="{{item.status == 0 ||item.status == 1}}" class="show">查看详情</text>
+                                <image wx:if="{{item.status == 0 ||item.status == 1}}" class="gl" src="../../../static/images/demo/gl.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        
+
+        <view wx:if="{{item.index == 2}}">
+            <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无历史记录</view>
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="stay" bindtap="chariShow" data-id="{{item.id}}">
+                    <view style="color:#8896b1;font-size: 34rpx;padding:0 40rpx 20rpx 40rpx;background:#f4f4f4;">{{item.start_time}}</view>
+                    <view class="stay-top">
+                        <image style="width:100%;height:300rpx;" mode="aspectFill" src="{{item.cover_url}}"></image>
+                    </view>
+                    <!-- <view class="flex numberShow">
+                        <view style="color:#122d64;">报名人数： 
+                            <text style="color:#FF7877;"> {{item.peoplenum}}</text>   </view>
+                        <view>
+                            <text class="show">查看详情</text>
+                            <image class="gl" src="../../../static/images/demo/gl.png"></image>
+                        </view>
+                    </view> -->
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</view>

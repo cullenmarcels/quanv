@@ -1,0 +1,131 @@
+.img{
+    width: 100%;
+    background: #fff;
+}
+
+.concent{
+    background: #fff;
+    padding: 40rpx;
+    
+}
+
+.title{
+    font-size: 36rpx;
+    font-weight: 600;
+    line-height: 60rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+    color: #122d64;
+}
+
+.intro{
+    font-size: 32rpx;
+    line-height: 50rpx;
+    color: #596c92;
+    padding: 40rpx 0;
+}
+
+.doctor{
+    border: 2rpx solid #ddd;
+    border-radius: 20rpx;
+    padding: 30rpx 0;
+    margin: 30rpx 0;
+}
+
+.doctor-l{
+    flex: 1;
+}
+
+.doctor-r{
+    flex: 3;
+}
+
+.doctor-l-img{
+    width: 120rpx;
+    height: 120rpx;
+    /* background: #41C7D6; */
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.doctor-name{
+    font-size: 36rpx;
+    color: #000;
+    margin-right: 20rpx;
+    line-height: 60rpx; 
+}
+
+.doctor-post{
+    font-size: 32rpx;
+    color: #596c92;
+}
+
+.doctor-hospital{
+    font-size: 32rpx;
+    color: #596c92;
+    margin-right: 20rpx;
+}
+
+.doctor-office{
+    font-size: 32rpx;
+    color: #596c92;
+}
+.time{
+    padding: 30rpx 0;
+    font-size: 32rpx;
+    color: #596c92;
+}
+
+.add{
+    font-size: 32rpx;
+    color: #596c92;
+    line-height: 50rpx;
+    padding-top: 30rpx;
+}
+
+.parameter1{
+    flex: 1;
+    font-size: 32rpx;
+    padding-top: 30rpx;
+}
+.parameter2{
+    flex: 1.3;
+    font-size: 32rpx;
+    padding-top: 30rpx;
+}
+
+.parameter-l{
+    color:#122d64;
+    font-weight: 600;
+}
+
+.parameter-r{
+    color: #122d64;
+    margin-left: 20rpx;
+}
+
+.infuse{
+    font-size: 28rpx;
+    color: #FF7877;
+    padding: 40rpx;
+    line-height: 40rpx;
+}
+
+button{
+    background: #41C7D6;
+    color: #fff;
+    width: 80%;
+    margin-bottom: 50rpx;
+}
+
+.apply{
+    background: #02c6dc;
+    color: #fff;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 36rpx;
+}

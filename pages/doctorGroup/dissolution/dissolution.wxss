@@ -1,0 +1,28 @@
+.dissolutionWarning {
+  padding: 50rpx 40rpx;
+  border-bottom: 2rpx solid #d8d8d8;
+}
+
+.dissolutionWarning .cont {
+  padding: 35rpx 18rpx;
+  border: 3rpx solid #02c6dc;
+  border-radius: 30rpx;
+}
+.content {
+  padding: 20rpx 40rpx;
+  color: #596c92;
+}
+.back{
+  border-radius: 15rpx;
+  background-color: #f4f4f4;
+}
+.groupInfo {
+  width: 93%;
+  margin-top: 25rpx;
+  padding: 25rpx;
+}
+.noteNotice {
+  position: absolute;
+  top: 405rpx;
+  right: 60rpx;
+}

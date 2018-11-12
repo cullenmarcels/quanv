@@ -1,0 +1,230 @@
+
+<!-- 有  患者端文章详情 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<button open-type="getUserInfo" withCredentials='true' lang='zh_CN' bindgetuserinfo='bindgetuserinfo' class="accredit-btn" wx:if="{{accredit}}">请先授权</button>
+<view wx:if="{{show && !accredit}}">
+    <view class="flex doctor" wx:if="{{essay.money != 0 && essay.paystatus == 0 && Openid != essay.openid}}">
+        <view class="doctor-l">
+            <view class="doctor-img">
+                <image style="width:100%;height:100%;border-radius:50%;" src="{{essay.doctor.avatar}}"></image>
+                <view class="vv" wx:if="{{essay.doctor.level !='V0'}}">
+                    <image wx:if="{{essay.doctor.level=='V1'}}" style="width:100%;height:100%;" src="../../static/images/demo/V1.png"></image>
+                    <image wx:if="{{essay.doctor.level=='V2'}}" style="width:100%;height:100%;" src="../../static/images/demo/V2.png"></image>
+                    <image wx:if="{{essay.doctor.level=='V3'}}" style="width:100%;height:100%;" src="../../static/images/demo/V3.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="doctor-r">
+            <view class="flex" style="justify-content: space-between;align-items: flex-end;">
+                <view>
+                     <text class="name">{{essay.doctor.realname?essay.doctor.realname:essay.doctor.nickname}}</text> 
+                     <text class="post">{{essay.doctor.job}}</text> 
+                </view>
+
+                <view wx:if="{{Openid!=essay.openid}}">
+                    <view class="return" wx:if="{{essay.isfollow == 0}}" bindtap="attention">关注</view>
+                    <view class="return" style="border:0;" wx:if="{{essay.isfollow == 1}}">
+                        <image style="width:50rpx;height:50rpx;float: right;" src="../../static/images/demo/attention-true.png"  bindtap="attention"></image> 
+                    </view>
+                
+                </view>
+                
+            </view>
+            <view class="doctor-r-b">
+                <text class="hospital">{{essay.doctor.hospital}}</text>
+                <text class="office">{{essay.doctor.depar_name?essay.doctor.depar_name:essay.doctor.par_name}}</text>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view style="background: #fff;" wx:if="{{essay.money== 0 ||essay.paystatus == 1 || Openid == essay.openid}}">
+            <image mode="widthFix" style="width:100%;"  src="{{essay.cover_url}}"></image>
+        </view>
+        <view class="concent" style="margin-top:0;">
+            <view class="concent-title">{{essay.article_title}}</view>
+            <view class="details" wx:if="{{essay.money!= 0 && essay.paystatus == 0 && Openid != essay.openid}}">——</view>
+            <view class="details" wx:if="{{essay.money== 0 ||essay.paystatus == 1 || Openid == essay.openid}}">
+                <text style="color:#8896b1;">作者: {{essay.doctor.realname?essay.doctor.realname:essay.doctor.nickname}}</text>
+                <text style="margin: 0 20rpx;">{{essay.createtime}}</text>
+                <!-- <text style="color:#8896b1;">{{essay.doctor.hospital}}</text> -->
+            </view>
+            <view class="show">
+                <view wx:if="{{essay.money != 0 && essay.paystatus == 0 && Openid != essay.openid}}" >
+                    <view class="essey-text">{{essay.article_introduction}}</view>
+                </view>
+
+                <!-- <block wx:if="{{essay.money== 0 ||essay.paystatus == 1 || Openid == essay.openid}}" wx:for="{{article_content}}" wx:key="uniquer">
+                    <view class="essey-text" wx:if="{{item.state=='text'}}">{{item.text}}</view>
+                    <view class="lookImg" wx:if="{{item.state == 'img'}}">
+                        <view wx:if="{{item.click}}" bindtap="imgShow" data-imgShowIndex="{{index}}">
+                            <image style="width:30rpx;height:30rpx;vertical-align: middle;margin-right: 10rpx;" src="../../static/images/demo/lookImg.png"></image>
+                        <text> {{click}}</text>
+                            <text style="font-size:26rpx;color:#FF7777;">（此图片可能引起不适）</text>
+                        </view>
+                        <image class="essey-img" hidden='{{item.tactful}}' mode="widthFix"  src="{{item.img}}"></image>
+                    </view>
+                </block> -->
+
+                
+            </view>
+            <view wx:if="{{essay.money== 0 || essay.paystatus == 1 || Openid == essay.openid}}" style="color:#000;text-align: justify;">
+                    <rich-text nodes="{{article_content}}" catchtap="btn"></rich-text> 
+            </view>
+            <view class="essey-text" wx:if="{{essay.money!= 0 && essay.paystatus == 0 && Openid != essay.openid}}">......</view>
+
+            <view class="flex buy" wx:if="{{essay.money!= 0 && essay.paystatus == 0 && Openid != essay.openid}}">
+                <view>发布 {{essay.createtime}}</view>
+                <view>已购买人数 {{essay.pay_total}}</view>
+            </view>
+
+            <view class="give-a-reward" wx:if="{{essay.money== 0 ||essay.paystatus == 1 || Openid == essay.openid}}" bindtap="give">
+                <view class="quan">
+                    <image style="width:100%;height:100%;" src="../../static/images/demo/give-a-reward.png"></image>
+                </view>
+                <view class="give-a-reward-t">打赏</view>
+                <!-- <view class="give-a-reward-n">10人打赏了这篇文章</view> -->
+            </view>
+            
+            <view id="ico" class="flex nav" wx:if="{{essay.money== 0 ||essay.paystatus == 1 || Openid == essay.openid}}">
+                <view bindtap="click">
+                    <image src="{{essay.islike==0?'../../static/images/demo/like2.png':'../../static/images/demo/like2-l.png'}}"></image>
+                    <text style="{{essay.islike!=0?'color:#02c6dc;':''}}">{{essay.like_total>9999?'9999+':essay.like_total}}</text>
+                </view>
+                <view bindtap="collect">
+                    <image src="{{essay.iscollection==0?'../../static/images/demo/collect.png':'../../static/images/demo/collect-l.png'}}"></image>
+                    <text style="{{essay.iscollection!=0?'color:#02c6dc;':''}}">{{essay.collection_total>9999?'9999+':essay.collection_total}}</text>
+                </view>
+                <view bindtap="inputShow"  data-ico="ico" data-commenttype="1">
+                    <image src="{{essay.iscomments ==0?'../../static/images/demo/comment2.png':'../../static/images/demo/comment2-l.png'}}"></image>
+                    <text style="{{essay.iscomments !=0?'color:#02c6dc;':''}}">{{essay.comments_total>9999?'9999+':essay.comments_total}}</text>
+                </view>
+                <view>
+                    <button open-type="share" style="width:100%;height:100%;position: absolute;top:0;left:0; opacity: 0; z-index: 1;"></button>
+                        <image  src="{{essay.turn_nums>0?'../../static/images/demo/transmit-l.png':'../../static/images/demo/transmit.png'}}"></image> 
+                        <text style="{{essay.turn_nums>0?'color:#02c6dc;':''}}">{{essay.turn_nums>9999?'9999+':essay.turn_nums}}</text>
+                </view>
+            </view>
+
+
+        </view>
+        <button class="but" wx:if="{{essay.money!= 0 && essay.paystatus == 0 && Openid != essay.openid}}" bindtap="pay" data-goodsid="{{essay.id}}"   data-price="{{essay.money}}">￥ {{essay.money}} 
+            <text>购买阅读全文</text>
+        </button>
+
+
+        <view wx:if="{{essay.money == 0 || essay.paystatus == 1 || Openid == essay.openid}}" style="margin-top:20rpx;">
+            <view class="doctor-introduce">医生介绍</view>
+            <view class="flex doctor" style="background: #fff;">
+            <view class="doctor-l">
+                <view class="doctor-img" bindtap="doctor" data-openid="{{essay.doctor.openid}}">
+                    <image style="width:100%;height:100%;border-radius:50%;" src="{{essay.doctor.avatar}}"></image>
+                    <view class="vv" wx:if="{{essay.doctor.level !='V0'}}">
+                        <image wx:if="{{essay.doctor.level=='V1'}}" style="width:100%;height:100%;" src="../../static/images/demo/V1.png"></image>
+                        <image wx:if="{{essay.doctor.level=='V2'}}" style="width:100%;height:100%;" src="../../static/images/demo/V2.png"></image>
+                        <image wx:if="{{essay.doctor.level=='V3'}}" style="width:100%;height:100%;" src="../../static/images/demo/V3.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="doctor-r">
+                <view class="flex" style="justify-content: space-between;align-items: flex-end;">
+                    <view>
+                        <text class="name" style="color: #122d64;">{{essay.doctor.realname?essay.doctor.realname:essay.doctor.nickname}}</text> 
+                        <text class="post" style="color: #596c92;">{{essay.doctor.job}}</text>
+                    </view>
+                    <view wx:if="{{Openid!=essay.openid}}">
+                        <view class="return" wx:if="{{essay.isfollow == 0}}" bindtap="attention">关注</view>
+                        <view class="return" style="background:#fff;" wx:if="{{essay.isfollow == 1}}">
+                            <image style="width:50rpx;height:50rpx;float: right;" src="../../static/images/demo/attention-true.png"  bindtap="attention"></image> 
+                        </view>
+                    
+                    </view>
+                
+                </view>
+                <view class="doctor-r-b">
+                    <text class="hospital" style="color: #596c92;">{{essay.doctor.hospital}}</text>
+                    <text class="office" style="color: #596c92;">{{essay.doctor.depar_name?essay.doctor.depar_name:essay.doctor.par_name}}</text>
+                </view>
+                <view class="flex nav-li">
+                    <view bindtap="char" data-openid="{{essay.doctor.openid}}" data-default_consult="{{essay.doctor.default_consult}}" data-highgrade_consult="{{essay.doctor.highgrade_consult}}" data-doctorid="{{essay.doctor.doctorid}}">图文咨询</view>
+                    <view bindtap="setOrder" data-doc_openid="{{essay.doctor.openid}}">当面咨询</view>
+                    <view>电话咨询</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+        <view class="concent" style="padding-bottom:140rpx;" wx:if="{{essay.money== 0 ||essay.paystatus == 1 || Openid == essay.openid}}">
+            <view class="flex redact-title">
+                <view class="redact-title-l">评论
+                    <text>{{listlength}}条</text>
+                </view>
+                <view bindtap="inputShow" data-ico="ico"  data-commenttype="1">
+                    <image class="redact-img" src="../../static/images/demo/compile.png"></image>
+                </view>
+            </view>
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="flex redact">
+                    <view class="redact-l">
+                        <view class="redact-l-img">
+                            <image style="width:100%;height:100%;border-radius:50%;" src="{{item.avatar}}"></image>
+                        </view>
+                    </view>
+                    <view class="redact-r">
+                    <!-- 评论 -->
+                        <view>
+                            <view class="redact-name">{{item.realname?item.realname:item.nickname}}</view>
+                            <view class="redact-time">{{item.createtime}}</view>
+                        </view>
+                        <view class="redact-c">
+                            <view>{{item.content}}</view> 
+                            <view style="margin-top:20rpx;padding: 20rpx; background: #f4f4f4;border-radius:20rpx;" wx:if="{{item.parent.length>0}}">
+                            <!-- 评论的评论 -->
+                                <block wx:for="{{item.parent}}" wx:for-index="sonIndex"  wx:for-item="sonItem" wx:key="uniquer">
+                                    <view class="redact-c-s" hidden="{{sonIndex>1 && !item.sonShow}}" data-sonitem="{{sonItem}}" catchtap="sonItem" >
+                                        <text>{{sonItem.realname?sonItem.realname:sonItem.nickname}}: </text>
+                                        <text style="margin-left:20rpx;">{{sonItem.content}}</text>
+                                    </view>
+
+                                        <!-- 评论的回复 -->
+                                        <block wx:for="{{sonItem.sons}}" wx:for-index="sonsindex"  wx:for-item="sonsItem" wx:key="uniquer">
+                                            <view class="redact-c-s" hidden="{{sonIndex>1 && !item.sonShow}}" style="margin-left:30rpx;" data-sonitem="{{sonItem}}" data-sonsitem="{{sonsItem}}"  catchtap="sonsItem" >
+                                                <text>{{sonsItem.realname?sonsItem.realname:sonsItem.nickname}} <text style="font-size:28rpx;color:#8896b1;">回复</text> {{sonsItem.reply_name?sonsItem.reply_name:sonsItem.replyname?sonsItem.replyname:sonsItem.replynickname}}:</text>
+                                                <text style="margin-left:20rpx;">{{sonsItem.content}}</text>
+                                            </view>
+                                                
+                                        </block>
+                                </block>
+                                <view class="all" bindtap="all" data-index="{{index}}" wx:if="{{!item.sonShow && item.parent.length>2}}">查看全部</view>
+                            </view>  
+                        </view>
+
+                        <view class="flex praise">
+                            <view bindtap="comClick" data-pid="{{item.id}}" data-index="{{index}}">
+                                <image class="praise-img" src="{{item.islike!=1?'../../static/images/demo/like2.png':'../../static/images/demo/like2-l.png'}}"></image> 
+                                <text style="{{item.islike!=1?'':'color:#02c6dc;'}}">{{item.commentslike_total}}</text>
+                            </view>
+                            <view bindtap="sonpraise" data-item="{{item}}" data-commenttype="2">
+                                <image class="praise-img" src="{{item.iscomments==0?'../../static/images/demo/comment2.png':'../../static/images/demo/comment2-l.png'}}"></image> 
+                                <text style="{{item.iscomments==0?'':'color:#02c6dc;'}}">{{item.comments_total}}</text>
+                            </view>
+                        </view> 
+                    </view>
+                </view>
+            </block>
+            <view class="reminder" style="margin: 50rpx auto;" wx:if="{{list.length == 0 && display}}">暂无评论</view>
+
+        </view>
+        <view class="flex comment" wx:if="{{essay.money== 0 ||essay.paystatus == 1 || Openid == essay.openid}}">
+            <view class="comment-l">
+                <input class="comment-input" axlength="-1" placeholder="{{placeholder}}" focus='{{focus?true:false}}' bindinput="bindinput" value="{{value}}"></input>
+            </view>
+            <view  class="comment-r">
+                <view class="comment-publish" bindtap="publish">发表</view>
+            </view>
+        </view> 
+    </view>
+</view>
+
+

@@ -1,0 +1,62 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <import src="/template/nav/nav.wxml"/>
+    <template is="navColor" data="{{...item}}"/> 
+    <button bindtap="uploadingViewScreen" wx:if="{{item.index == 0}}">上传视频</button>
+    <scroll-view scroll-y style="height:100%;padding-top:140rpx;{{item.index == 0?'padding-bottom:92rpx;':''}}">
+        <view wx:if="{{list.length == 0 && disply}}" class="reminder">暂无发布记录</view>
+        <view wx:if="{{item.index == 0}}" style="background:#fff;">
+            <!-- <view wx:if="{{list.length>0}}" class="playing">已上线</view> -->
+            
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="flex essay" style="{{(list.length-1) == index?'border-bottom:0;':''}}" bindtap="ViewScreenShow" data-id="{{item.id}}">
+                    <view class="essay-l">
+                        <view class="essay-l-img">
+                            <image style="width:100%;height:100%;" src="{{item.videoinfo.snapshotByTimeOffsetInfo.snapshotByTimeOffsetList[0].picInfoList[0].url}}" mode="aspectFill"></image>
+                            <view class="money" wx:if="{{item.money!=0}}">￥{{item.money}}</view> 
+                        </view>
+                    </view>
+                    <view class="essay-r">
+                        <view class="title3">{{item.videoname}}</view>
+                        <view class="flex time">
+                            <view style="color:#8896b1;font-size:26rpx;">发布 {{item.sendtime}} | 播放 {{item.playcount}}</view>
+                            <!-- <view>
+                                <image class="browse" src="../../../static/images/demo/browse.png"></image>
+                                <text>{{item.playcount}}</text>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <!-- <button bindtap="uploadingViewScreen">上传视屏</button> -->
+        </view>
+        
+        <view wx:if="{{item.index == 1}}" style="background:#fff;">
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="flex essay" style="{{(list.length-1) == index?'border-bottom:0;':''}};" bindtap="ViewScreenShow" data-id="{{item.id}}">
+                    <view class="essay-l">
+                        <view class="essay-l-img">
+                            <image style="width:100%;height:100%;" src="{{item.videoinfo.snapshotByTimeOffsetInfo.snapshotByTimeOffsetList[0].picInfoList[0].url}}"  mode="aspectFill"></image>
+                            <view class="money" wx:if="{{item.money!=0}}">￥{{item.money}}</view> 
+                        </view>
+                    </view>
+                    <view class="essay-r">
+                        <view class="title">{{item.videoname}}</view>
+                        <view class="title1" wx:if="{{item.status==2}}">您的视频暂未通过审核！</view>
+                        <view class="title1" wx:if="{{item.status==0}}">审核中~</view>
+                        <view class="title1" wx:if="{{item.status==1}}">恭喜您的视频已通过审核</view>
+                        <view class="flex time">
+                            <!-- <view style="color:#FF7877;line-height: 50rpx;">{{item.money==0?'免费':'￥'+item.money}}</view> -->
+                             <view style="color:#8896b1;line-height: 50rpx;font-size: 28rpx;">提交 {{item.createtime}}</view> 
+                            <!-- <view>
+                                <text style="color:#41C7D6;line-height: 50rpx;">查看</text>
+                                <image class="gl" src="../../../static/images/demo/gl-L.png"></image>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</view>

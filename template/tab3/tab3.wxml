@@ -1,0 +1,7 @@
+<template name='tab3'>
+  <view class='tabUl white clearfix'>
+    <view class="tabLi {{index == 0?'active':''}}" bindtap="tab"  data-id="0">{{tab3[0]}}</view>
+    <view class="tabLi {{index == 1?'active':''}}" bindtap="tab"  data-id="1">{{tab3[1]}}</view>
+    <view class="tabLi {{index == 2?'active':''}}" bindtap="tab"  data-id="2">{{tab3[2]}}</view>
+  </view>
+</template>

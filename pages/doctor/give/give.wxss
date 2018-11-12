@@ -1,0 +1,154 @@
+.top{
+    height: 300rpx;
+    background: #02c6dc;
+    padding-top: 30rpx;
+    text-align: center;
+    color: #fff;
+}
+
+.head{
+    width: 150rpx;
+    height: 150rpx;
+    border: 4rpx solid #fff;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.v{
+    width:  50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.name{
+    font-size: 36rpx;
+    font-weight: 600;
+    margin: 30rpx 0 10rpx 0;
+}
+
+.job{
+    font-size: 28rpx;
+}
+
+.ul{
+    background: #fff;
+    margin-bottom: 20rpx;
+    padding-bottom: 40rpx;
+}
+
+.thank{
+    text-align: center;
+    color: #02c6dc;
+    font-size: 36rpx;
+    font-weight: 600;
+    padding: 40rpx 0 10rpx 0;
+    letter-spacing:10rpx;     
+}
+
+.select{
+    font-size: 28rpx;
+    color: #8896b1;
+    text-align: center;
+}
+
+
+.ico{
+    width: 90rpx;
+    height: 90rpx;
+    margin: 10rpx auto 20rpx;
+}
+
+.title{
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    font-size: 32rpx;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.li-price{
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #8896b1;
+    margin: 10rpx;
+}
+
+.radio-group{
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 40rpx 40rpx 0 40rpx;
+}
+
+.radio{
+    width: 25%;
+    text-align: center;
+    font-size: 32rpx;
+    color: #122d64;
+    font-weight: 600;
+    margin-bottom: 40rpx;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+}
+
+radio{
+    zoom: 0.8;
+    position: absolute;
+    right: -10rpx;
+    bottom: -10rpx;
+}
+
+.ul-li{
+    width: 80%;
+    margin: 0 auto;
+    border: 2rpx solid #fff;
+    border-radius: 10rpx;
+}
+
+textarea{
+    width: 100%;
+    border: 2rpx solid #d8d8d8; 
+    border-radius: 10rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    color: #596c92;
+    font-size: 32rpx;
+}
+
+button{
+    width: 88%;
+    border-radius: 20rpx;
+    background: #02c6dc;
+    color: #fff;
+    margin-top: 40rpx;
+}
+
+.hint{
+    font-size: 24rpx;
+    color: #8896b1;
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.wall{
+    font-size: 36rpx;
+    font-weight: 600;
+    padding: 20rpx 40rpx;
+}
+
+.wall-li{
+    padding: 0 40rpx 20rpx 40rpx;
+    color: #8896b1;
+    font-size: 32rpx;
+}
+
+.wall-li-con{
+    line-height: 50rpx;
+}

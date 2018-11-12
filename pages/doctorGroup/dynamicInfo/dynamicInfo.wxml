@@ -1,0 +1,113 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+  <!-- 作者 -->
+  <view class='author white clearfix'>
+    <view class='author-l fl'>
+      <image style="border-radius: 50%;" src='{{data[0].res_doc.avatar}}' />
+      <image wx:if="{{data[0].res_doc.level!='V0'}}" class='author-level' src='../../../static/groupImages/{{data[0].res_doc.level}}.png' />
+    </view>
+    <view class='author-r fl'>
+      <view>
+        <text class='font32' style='color:#02c6dc;margin-right:25rpx'>{{data[0].res_doc.realname}}</text>
+        <text class='font28' style='color:#596c92'>{{data[0].res_doc.job}}</text>
+      </view>
+      <view class='font26' style='color:#8896b1;margin-top:15rpx'>
+        <text>{{data[0].res_doc.hospital}}</text>
+        <text style='margin-left:25rpx'>{{data[0].res_doc.partmentname}}</text>
+      </view>
+      <navigator hover-class="none" url="/pages/doctorGroup/dynamicList/dynamicList?udid={{did}}&did={{data[0].res_doc.doctorid}}">
+        <text class='font28' style='color:#8896b1'>查看更多动态 >></text>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- 动态详情 -->
+  <view class='dynamic white'>
+    <text class='font32' style='color:#122d64;'>{{data[0].title}}</text>
+    <view class='dynamicCont' style='margin-top:10rpx;'>
+      <text class='font28' style='color:#122d64'>{{data[0].content}}</text>
+      <view wx:for="{{data[0].images}}" wx:key="key" wx:for-item="item">
+        <image mode='center' data-urls='{{item}}' mode='aspectFill' bindtap='viewImage' src='{{item}}' />
+      </view>
+      <view wx:for="{{data[0].videos}}" wx:key="key" wx:for-item="item">
+        <video class='myVideo dynamicImg' src="{{item}}" controls />
+      </view>
+    </view>
+    <view class='dynamicBto'>
+      <text class='font24' style='color:#8896b1'>发布于 {{data[0].create_time}} 浏览 {{data[0].viewnum}}</text>
+    </view>
+    <view class='dynamicIco font28' style='color:#8896b1'>
+      <!-- data[0].is? 为0 即为未点赞或者收藏 -->
+      <view class='fr' bindtap="addlike" data-nid="{{data[0].id}}" data-key="0" data-did="{{did}}" style='margin-left:40rpx'>
+        <image wx:if='{{data[0].islike==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco.png' />
+        <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco_1.png' />
+        <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{data[0].likecount}}</text>
+      </view>
+      <view class='fr' style='margin-left:40rpx' bindtap="addstar" data-key="0" data-did="{{did}}" data-nid="{{data[0].id}}">
+        <image wx:if='{{data[0].istar==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco.png' />
+        <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco_1.png' />
+        <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{data[0].startcount}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 评论 -->
+  <view class='comments white'>
+    <view class='commentsTit clearfix'>
+      <view class='fl'>
+        <text class='font32' style='color:#02c6dc'>评论</text> \t
+        <text class='font24' style='color:#8896b1'>{{commiteCount}}条</text>
+      </view>
+      <image class='fr' bindtap='comment' data-toname='' data-haveto='0' src='../../../static/groupImages/write.png' />
+    </view>
+    <view wx:for="{{data[0].comment}}" wx:for-index="aaa" wx:key="key" wx:for-item="item">
+      <view wx:if="{{item.toid==0}}" class='dynamicList'>
+        <view bindtap='comment' data-toname='{{item.comment_doc.realname}}' data-haveto='{{item.id}}'>
+          <view class='dynamicListT clearfix'>
+            <image class='fl' src='{{item.comment_doc.avatar}}' />
+            <view class='fl' style="margin-left:20rpx">
+              <view class='font28' style='color:#02c6dc'>{{item.comment_doc.realname}}</view>
+              <view class='font18' style='color:#8896b1'>{{item.t}}</view>
+            </view>
+          </view>
+          <view class='dynamicListCont dynamicImg'>
+            <text class='font28'>{{item.content}}</text>
+            <view class='font28'>
+              <view wx:for="{{data[0].comment}}" wx:key="key2" wx:for-item="item2">
+                <view wx:if="{{item2.toid==item.id}}" class='dynamicList'>
+                  <view class='dynamicListT clearfix'>
+                    <image class='fl' src='{{item2.comment_doc.avatar}}' />
+                    <view class='fl' style="margin-left:20rpx">
+                      <view class='font28' style='color:#02c6dc'>{{item2.comment_doc.realname}}</view>
+                      <view class='font18' style='color:#8896b1'>{{item2.t}}</view>
+                    </view>
+                  </view>
+                  <view class='dynamicListCont dynamicImg'>
+                    <text class='font28'>{{item2.content}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 收藏与点赞 -->
+        <view class='dynamicListBto clearfix'>
+          <view class='fr' style='margin-left:40rpx' bindtap='addcommentlike' data-cid='{{item.id}}' data-index="{{aaa}}">
+            <image wx:if='{{item.islike==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco.png' />
+            <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco_1.png' />
+            <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.likenum}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 评论 -->
+<view wx:if="{{inputShow}}" class="flex comment">
+  <view class="comment-l">
+    <input class="comment-input" axlength="-1" focus='{{focus?true:false}}' placeholder="{{placeholder}}" bindinput="bindinput" value="{{value}}"></input>
+  </view>
+  <view class="comment-r">
+    <view wx:if='{{haveto==0}}' data-toid='{{haveto}}' class="comment-publish" data-nid='{{nid}}' data-did='{{did}}' bindtap="publish">发表</view>
+    <view wx:else data-toid='{{haveto}}' class="comment-publish" data-nid='{{nid}}' data-did='{{did}}' bindtap="publish">回复</view>
+  </view>
+</view>

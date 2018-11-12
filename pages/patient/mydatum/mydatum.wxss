@@ -1,0 +1,97 @@
+page{
+    padding-bottom: 95rpx;
+}
+
+.li{
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.li-top{
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 30rpx 30rpx;
+    border-bottom: 2rpx solid #d8d8d8;
+}
+
+.name{
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #122d64;
+    margin-right: 40rpx;
+}
+
+.age{
+    font-size: 30rpx;
+    color: #8896b1;
+    margin-right: 20rpx;
+}
+
+.phone{
+    color: #596c92;
+    font-size: 32rpx;
+}
+
+.intro{
+    padding: 30rpx 30rpx;
+    font-size: 32rpx;
+    line-height: 45rpx;
+    color: #596c92;
+    border-bottom: 2rpx solid #d8d8d8;
+}
+
+.title{
+    color: #122d64;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.content{
+    flex: 15;
+    font-size: 32rpx;
+    color: #8896b1;
+    margin-top: 20rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}
+
+.li-b{
+    justify-content: flex-end;
+    font-size: 34rpx;
+}
+
+.delete{
+    color: #ff7777;
+    margin: 30rpx 40rpx;
+    font-size: 32rpx;
+}
+
+.save{
+    color: #02c6dc;
+    margin: 30rpx 40rpx;
+    font-size: 32rpx;
+}
+
+.button{
+    width: 100%;
+    height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    background: #02c6dc;
+    color: #fff;
+    font-size: 34rpx;
+    border-radius: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+icon{
+    vertical-align: middle;
+    transform:rotate(45deg);
+}

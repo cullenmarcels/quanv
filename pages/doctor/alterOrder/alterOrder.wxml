@@ -1,0 +1,69 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <view class="flex title"  style="color:#122d64;">
+        <view class="title-data">日期</view>
+        <view class="title-time">时间</view>
+        <view class="title-num">人数</view>
+        <view class="title-money">费用</view>
+    </view>
+    <view class="li"  style="color: #596c92;">
+    <form bindsubmit="submit">
+        <view class="flex title">
+            <view class="title-data">
+                <picker style="width:100%;height:100%;" name="date" class="picker" mode="date" value="{{date}}" start="{{today}}" bindchange="bindDateChange">
+                    <view>
+                        {{date}}
+                    </view>
+                    <view>{{week}}</view>
+                </picker>
+            </view>
+            <view class="title-time height flex">
+            
+                <picker name="start_time" mode="time" value="{{start_time}}"  bindchange="bindTimeChange">
+                    <view class="picker1">
+                    {{start_time}}
+                    </view>
+                </picker>
+                ~ 
+                <picker name="end_time" mode="time" value="{{end_time}}" bindchange="bindTimeChangeEnd">
+                    <view class="picker1">
+                    {{end_time}}
+                    </view>
+                </picker>
+
+            </view>
+            <view class="title-num height">
+                <input name="people_nums" value="{{people_nums}}" maxlength="5" type="number" class="input"></input>
+            </view>
+            <view class="title-money height">
+                <input name="price" value="{{price}}" maxlength="5" type="number" class="input"></input>
+            </view>
+        </view>
+
+
+        <view class="flex add">
+            <view class="title-add">
+                地址：
+            </view>
+            <view class="title-text">
+                <textarea name="address" value="{{address}}" auto-height class="textarea" placeholder="请输入当面咨询详细地址信息，如医院、栋号、科室诊室等" placeholder-style="color:#8896b1;"  style="min-height: 100rpx;line-height: 50rpx;" ></textarea>
+            </view>
+            <image catchtap="add" style="width:40rpx;height:40rpx;margin-top:30rpx;" src="../../../static/images/demo/home-l.png"></image>
+        </view>
+        <view class="flex add">
+            <view class="title-add">
+                备注：
+            </view>
+            <view class="title-text">
+                <textarea name="remark" value="{{remark}}" auto-height class="textarea" placeholder="请输入您需要特别提醒患者的信息" placeholder-style="color:#8896b1;"   style="min-height: 50rpx;line-height: 50rpx;"></textarea>
+            </view>
+        </view>
+        <view class="flex state">
+            <button class="cancel" bindtap="abolish">取消</button>
+            <button class="confirm" form-type="submit">确定</button>
+        </view>
+    </form>
+    </view> 
+    <view class="infuse">注：点击对应选项可以进行操作</view>
+</view>

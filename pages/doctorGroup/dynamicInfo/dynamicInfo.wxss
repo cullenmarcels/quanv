@@ -1,0 +1,67 @@
+.author {
+  position: relative;
+  padding: 45rpx 40rpx;
+}
+.author-l {
+  position: relative;
+  width: 110rpx;
+  height: 110rpx;
+}
+.author-l> image{
+  width: 110rpx;
+  height: 110rpx;
+}
+.author-l .author-level {
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  bottom: 0;
+  right: 0;
+}
+.author-r {
+  position: relative;
+  margin-left: 40rpx
+}
+.follow{
+  position: absolute;
+  width: 100rpx;
+  height: 50rpx;
+  top: 85rpx;
+  right: 40rpx;
+}
+.dynamic {
+  position: relative;
+  margin-top: 20rpx;
+  padding: 45rpx 40rpx;
+}
+.dynamicIco {
+  position: absolute;
+  right: 40rpx;
+}
+.dynamicIco image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.comments {
+  margin-top: 20rpx;
+  padding: 40rpx;
+}
+.commentsTit image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-bottom: 35rpx;
+  padding-top: 15rpx;
+}
+.dynamicListT {
+  padding: 36rpx 0 40rpx 0;
+  border-top: 1px solid #d8d8d8
+}
+.dynamicListT image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.dynamicListCont {
+  padding: 0 0 10rpx 80rpx;
+  color: #596c92;
+}
+

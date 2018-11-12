@@ -1,0 +1,6 @@
+<view class='cont white'>
+    <view class='tit font56 white' style='text-align: center'>发布规则与责任声明</view>
+    <rich-text nodes='{{notes}}'></rich-text>
+</view>
+  <!-- 返回按钮 -->
+  <button class='subBto' bindtap='btoBack'>我已知晓</button>

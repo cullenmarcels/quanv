@@ -1,0 +1,49 @@
+
+<!-- 有  更多讲座列表 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <import src="/template/nav/nav.wxml"/>
+    <template is="nav3" data="{{...item}}"/> 
+
+    <scroll-view scroll-y style="height:100%;padding-top:120rpx;">
+        <view wx:if="{{item.index == 0||item.index==1}}">
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="li">
+                    <view class="flex li-top">
+                        <view class="flex flex-l">
+                            <image class="flex-l-img" src="{{item.avatar}}"></image>
+                            <view class="flex-l-name">{{item.realname?item.realname:item.nickname}}</view>
+                        </view>
+                        <view class="flex-r">
+                            {{item.start_time}}
+                        </view>
+                    </view>
+                    <view class="c-img">
+                        <image  catchtap="apply" data-id="{{item.id}}" style="width:100%;height:300rpx;" mode="aspectFill" src="{{item.cover_url}}"></image>
+                        <view class="flex li-b">
+                            <view>已报名 <text style="color: #FF7777;">{{item.peoplenum}}</text></view>
+                            <view class="apply" catchtap="apply" data-id="{{item.id}}">{{item.paystatus?'已报名':'马上报名'}}</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无开讲</view>
+        </view>
+
+        <view wx:if="{{item.index == 2}}">
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view style="background: #fff;"  bindtap="apply" data-id="{{item.id}}">
+                    <view class="time">{{item.start_time}}</view>
+                    <view class="img">
+                        <image style="width:100%;height:300rpx;" mode="aspectFill" src="{{item.cover_url}}"></image>
+                    </view>
+                </view>
+            </block>
+            <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无历史</view>
+        </view>
+        
+    </scroll-view>
+</view>
+

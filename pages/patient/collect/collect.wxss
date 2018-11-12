@@ -1,0 +1,45 @@
+@import "/template/nav/nav.wxss";
+
+.flex-l{
+    flex: 1;
+}
+
+.flex-l-img{
+    width: 150rpx;
+    height: 150rpx;
+    /* background: #02c6dc; */
+    position: relative;
+}
+
+.flex-r{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.essay{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30rpx;
+    margin-bottom: 20rpx;
+    background: #fff;
+}
+
+.title{
+    line-height: 45rpx;
+    font-size: 36rpx;
+    color: #122d64;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}
+
+.buytime{
+    font-size: 30rpx;
+    color: #8896b1;
+}

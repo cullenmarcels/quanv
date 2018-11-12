@@ -1,0 +1,26 @@
+
+<!-- 有   患者端 我的钱包历史账单列表 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="top">
+        <image class="bill" src="../../../static/images/demo/bill.png"></image>
+        <text>历史账单</text>
+    </view>
+
+    <view style="margin-top:20rpx;">
+
+        <block wx:for="{{list}}" wx:key="uniquer">
+            <view class="flex ul" style="background:#fff;">
+                <view>
+                    <text>{{item.optionname}}</text>
+                    <text style="color: #8896b1;font-size: 28rpx;margin-left:20rpx;">{{item.paytime}}</text>
+                </view>
+                <view>-{{item.price}}</view>
+            </view>
+        </block>
+        <view class="reminder" wx:if="{{list.length == 0 && display}}">暂无记录</view>
+    </view>
+</view>
+

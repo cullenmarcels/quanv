@@ -1,0 +1,66 @@
+
+<!-- 有   通知中心详情 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="title" wx:if="{{cen.goodstype == 1}}">
+        <image style="width:60rpx;height:60rpx;vertical-align: middle;margin-right:20rpx;" src="../../../static/images/demo/consult2-l.png"></image>
+        <text>图文咨询</text>
+    </view>
+    <view class="title" wx:if="{{cen.goodstype == 2}}">
+        <image style="width:60rpx;height:60rpx;vertical-align: middle;margin-right:20rpx;" src="../../../static/images/demo/viewScreen-L.png"></image>
+        <text>视频购买</text>
+    </view>
+    <view class="title" wx:if="{{cen.goodstype == 3}}">
+        <image style="width:60rpx;height:60rpx;vertical-align: middle;margin-right:20rpx;  border-radius: 50%;" src="{{cen.articles[0].avatar}}"></image>
+        <text>文章购买</text>
+    </view>
+    <view class="title" wx:if="{{cen.goodstype == 4}}">
+        <image style="width:60rpx;height:60rpx;vertical-align: middle;margin-right:20rpx;  border-radius: 50%;" src="{{cen.lectures[0].avatar}}"></image>
+        <text>讲座预约</text>
+    </view>
+    <view class="title" wx:if="{{cen.goodstype == 5}}">
+        <image style="width:60rpx;height:60rpx;vertical-align: middle;margin-right:20rpx;" src="../../../static/images/demo/time-l.png"></image>
+        <text>当面咨询</text>
+    </view>
+
+    <view class="money1">-{{cen.price}}元</view>
+    <view class="state">交易成功</view>
+    <view class="concent">
+        <view class="flex concent-li">
+            <view style="margin-right: 20rpx;">支付方式：</view>
+            <view>微信支付</view>
+        </view>
+        <view class="flex concent-li">
+            <view style="margin-right: 20rpx;">商品说明：</view>
+            <view>{{cen.optionname}}</view>
+        </view>
+        <view class="flex concent-li">
+            <view style="margin-right: 20rpx;">账单分类：  </view>
+            <view>健康医疗</view>
+        </view>
+        <view style="border-top:2rpx solid #d8d8d8;border-bottom:2rpx solid #d8d8d8;margin: 40rpx 0;padding: 40rpx 0;">
+            <view class="flex concent-li">
+                <view style="margin-right: 20rpx;">创建时间：</view>
+                <view>{{cen.paytime}}</view>
+            </view>
+            <view class="flex concent-li">
+                <view style="margin-right: 20rpx;">订单号：</view>
+                <view>{{cen.consult[0].ordernumber}}</view>
+            </view>
+            <view class="flex concent-li">
+                <view style="margin-right: 20rpx;">商户订单号：</view>
+                <view>{{cen.ordersn}}</view>
+            </view>
+        </view>
+        
+        <view class="flex concent-li" style="margin-top: 50rpx;">
+            <view style="margin-right: 20rpx;">客服电话：</view>
+            <view>{{phone.phone}}</view>
+        </view>
+    </view>
+</view>
+
+
+

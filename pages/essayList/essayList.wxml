@@ -1,0 +1,4 @@
+<loading hidden="{{show}}">正在加载...</loading>
+<view wx:if="{{show}}" style="padding:20rpx;text-align: justify;">
+    <rich-text nodes="{{nodes}}"></rich-text>
+</view>

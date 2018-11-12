@@ -1,0 +1,28 @@
+<!-- creat group -->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='content' style='position:relative;background-color:#fff'>
+    <view class='font32'>集团头像</view>
+    <view style='position:relative;text-align:center;padding: 35rpx 0;'>
+      <image name='groupPic' class='groupPic' bindtap='clickImage' src='{{groupPic}}'></image>
+    </view>
+    <view class='clearfix'>
+      <view class='font32 fl'>集团名称</view>
+      <input name='groupName' maxlength='15' class='groupName back font28 fl' placeholder="至少输入1个字，最多15字" auto-focus />
+    </view>
+    <view class='font32' style='margin-top: 25rpx;'>集团简介</view>
+    <textarea name='groupInfo' class='groupInfo back font28' placeholder='请填写集团相关简介...' maxlength="{{noteMaxLen}}" bindinput="bindWordLimit"></textarea>
+    <text class='noteNotice font22'>还能输入{{currentNoteLen|0}}/{{noteMaxLen}}个字</text>
+    <input hidden='true' name='imgurl' value="{{groupPic}}"></input>
+  </view>
+  <view class="btn-area">
+    <button class='font36' style='width:90%;margin-top:70rpx;text-align:center;color:#fefefe;background-color:#02c6dc' formType="submit">保存</button>
+  </view>
+  
+  
+</form>
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetbindchange">
+  <block wx:for="{{actionSheetItems}}" wx:key="unique">
+    <action-sheet-item bindtap="{{item.bindtap}}">{{item.txt}}</action-sheet-item>
+  </block>
+  <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>

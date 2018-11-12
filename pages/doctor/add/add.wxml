@@ -1,0 +1,37 @@
+
+<block wx:for="{{list}}" wx:key="uniquer">
+    <view class="flex li">
+        <view class="flex-l" catchtap="click" data-address="{{item.address}}">{{item.address}}</view>
+        <view class="flex-r" catchtap="setadd" data-id="{{item.id}}" data-setaddress="{{item.address}}">
+            <image style="width:50rpx;height:50rpx;" src="../../../static/images/demo/compile.png"></image>
+        </view>
+    </view>
+</block>
+
+<view style="font-size:30rpx;margin:400rpx auto;text-align:center;color:#8896b1;" wx:if="{{list.length==0}}">未添加地址</view>
+
+<view class="addition" catchtap="accretion">添加常用地址</view>
+<view class="mode" hidden="{{!mode}}" catchtap="hidmode">
+    <view class="mode-c" catchtap="removemode" wx:if="{{addcon==1}}">
+        <view class="mode-c-t">填写地址</view>
+        <view style="padding: 20rpx;">
+            <textarea bindinput="bindinput" value="{{address}}" placeholder="请输入详细地址" auto-height ></textarea>
+        </view>
+        <view class="mode-b">
+            <view style="padding: 0 20rpx;" catchtap="abolish">取消</view>
+            <view style="color:#02c6dc;padding: 0 20rpx;" catchtap="determine">确定</view>
+        </view>
+    </view>
+
+    <view class="mode-c" catchtap="removemode" wx:if="{{addcon==2}}">
+        <view class="mode-c-t">修改地址</view>
+        <view style="padding: 20rpx;">
+            <textarea bindinput="setbindinput" value="{{setaddress}}" placeholder="请输入详细地址" auto-height ></textarea>
+        </view>
+        <view class="mode-b">
+            <view style="padding: 0 20rpx;" catchtap="abolish">取消</view>
+            <view style="color:#02c6dc;padding: 0 20rpx;" catchtap="setdetermine">修改</view>
+        </view>
+    </view>
+</view>
+

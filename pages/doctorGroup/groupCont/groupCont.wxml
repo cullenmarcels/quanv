@@ -1,0 +1,29 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}" >
+  <view class='white font32'>
+    <view class='cont_top '>
+      <view style='color:#596c92'>集团头像</view>
+      <image src='{{groupInfo.icon}}' />
+    </view>
+    <view class='cont_middle'>
+      <view class='marginB15' style='color:#596c92'>集团名称
+        <text style='margin-left:40rpx;color:#122d64'>{{groupInfo.name}}</text>
+      </view>
+      <view class='marginB15' style='color:#596c92'>集团介绍</view>
+      <text class='font26' style='color:#122d64;'>{{groupInfo.summary}}</text>
+    </view>
+  </view>
+  <view class='groupMember white marginT20'>
+    <view class='clearfix'>
+      <text class='fl font32' style='color:#596c92'>集团成员</text>
+      <navigator hover-class="none" url="/pages/doctorGroup/groupMember/groupMember?gid={{gid}}&&udid={{udid}}" class="fr font26" style="color:#596c92">更多 ></navigator>
+    </view>
+    <view class='groupMemberIco clearfix'>
+      <image  wx:for='{{groupMember}}' wx:key='' src='{{item.docinfo.avatar}}' />
+    </view>
+  </view>
+  <view class='groupNotice white marginT20'>
+    <view class='font32' style='color:#596c92'>通知</view>
+    <text class='font26 ' style='color#8896b1'>{{groupNotice.notice}}</text>
+  </view>
+</view>

@@ -1,0 +1,68 @@
+.tit {
+  display: flex;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+.tit input {
+  flex: 9;
+  padding: 35rpx 40rpx;
+  color: #122d64;
+}
+.tit text {
+  flex: 1;
+  margin: auto auto;
+  color: #8896b1;
+}
+.cont {
+  display: inline-block;
+  width: 100%;
+  min-height: 300rpx;
+  padding: 30rpx 40rpx;
+  color: #596c92;
+  border-bottom: 1rpx solid #d8d8d8;
+  box-sizing:border-box;
+}
+.media {
+  padding: 60rpx 40rpx;
+}
+.media text {
+  display: inline-block;
+  margin-bottom: 30rpx;
+  color: #8896b1;
+}
+.photoUl image,.videoUl video {
+  float: left;
+  width: 190rpx;
+  height: 190rpx;
+  margin: 0 30rpx 30rpx 0;
+}
+.mediaChoose {
+  display: inline-block;
+  width: 190rpx;
+  height: 190rpx;
+}
+.agreement {
+  margin-top: 20rpx;
+  padding: 35rpx 40rpx;
+  
+}
+.agreement text{
+  color: #ff7777;
+}
+.agreement image{
+  width: 18rpx;
+  height: 30rpx;
+}
+.subBto {
+  width: 668rpx;
+  height: 88rpx;
+  margin-top: 70rpx;
+  color: #fff;
+  border: 1rpx solid #02c6dc;
+  border-radius: 10rpx;
+  background-color: #02c6dc
+}
+.subBto:hover{
+  color: #000;
+  background-color: #fff;
+}
+

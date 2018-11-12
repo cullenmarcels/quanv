@@ -1,0 +1,42 @@
+.radio{
+    display: block; 
+    padding: 40rpx 0;
+}
+
+.title{
+    font-size: 34rpx;
+    font-weight: 600;
+    line-height: 100rpx;
+    padding: 20rpx 40rpx 0 40rpx;
+    color: #122d64;
+    border-bottom: 2rpx solid #d8d8d8;
+}
+
+.money1{
+    color: #02c6dc;
+    font-size: 40rpx;
+    margin-left: 30rpx;
+    margin-right: 10rpx;
+    line-height: 45rpx;
+}
+
+.explain{
+    font-size: 30rpx;
+    color: #8896b1;
+    line-height: 45rpx;
+}
+
+.concent{
+    padding: 40rpx;
+}
+
+.view{
+    background: #fff;
+}
+
+button{
+    width: 80%;
+    background: #02c6dc;
+    color: #fff;
+    margin-top: 200rpx;
+}

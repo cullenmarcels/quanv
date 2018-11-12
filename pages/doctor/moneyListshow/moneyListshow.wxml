@@ -1,0 +1,40 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+
+<view  wx:if="{{show}}">
+    <view class="top">
+        <view>
+            <image wx:if="{{list.goodstype==1}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/consult2-l.png" ></image>
+            <image wx:if="{{list.goodstype==5}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/time-l.png"></image> 
+            <image wx:if="{{list.goodstype==4}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/chair2.png"></image>
+            <image wx:if="{{list.goodstype==2}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/viewScreen-L.png"></image> 
+            <image wx:if="{{list.goodstype==3}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/browse-l.png"></image> 
+            <text>{{list.optionname}}</text>
+        </view>
+        <view class="moneyNum">-{{list.price}}元</view>
+        <view class="status">交易成功</view>
+    </view>
+    <view>
+        <view class="flex con">
+            <view>支付方式</view>
+            <view>微信支付</view>
+        </view>
+        <view class="flex con">
+            <view>商品说明</view>
+            <view>{{list.optionname}}</view>
+        </view>
+        <view class="flex con">
+            <view>支付时间</view>
+            <view>{{list.paytime}}</view>
+        </view>
+        <view class="flex con">
+            <view>支付人</view>
+            <view>{{list.pay_name?list.pay_name:list.pay_nickname}}</view>
+        </view>
+        <view class="flex con">
+            <view>交易对象</view>
+            <view>{{list.trade_name?list.trade_name:list.trade_nickname}}</view>
+        </view>
+    </view>
+</view>
+

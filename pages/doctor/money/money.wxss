@@ -1,0 +1,44 @@
+.top{
+    width: 100%;
+    height: 400rpx;
+    background: #02c6dc;
+    padding: 120rpx 30rpx 0;
+    box-sizing: border-box;
+}
+
+.income{
+    font-size: 40rpx;
+    color: #fff;
+}
+
+.money1{
+    font-size: 90rpx;
+    color: #fff;
+    padding-top: 20rpx;
+}
+
+.bankCard{
+    background: #fff;
+    height: 100rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #eee;
+}
+
+.bankCard-img{
+    width: 50rpx;
+    height:50rpx;
+    vertical-align: middle;
+}
+
+.time{
+    line-height: 100rpx;
+    font-size: 36rpx;
+}
+
+.bankCard-text{
+    font-size: 32rpx;
+    line-height: 100rpx;
+    margin-left: 20rpx;
+}

@@ -1,0 +1,77 @@
+.fui-list-group{
+    background-color:#fff;
+    position:relative;
+}
+
+.fui-list{
+    position:relative;
+    display:-webkit-flex;
+    display:flex;
+    padding:30rpx;
+    transition-duration:.3s;
+    -webkit-align-items:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.fui-list-inner{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    box-sizing:border-box;
+    display:block;
+}
+
+.title{
+    position:relative;
+    font-size:34rpx;
+    color: #122d64;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    height:40rpx;
+    line-height:40rpx;
+}
+.text{
+    position:relative;
+    font-size:26rpx;
+    color:#666;
+}
+.fui-list-angle{
+    position:relative;
+    vertical-align:middle;
+    margin-right:20rpx;
+}
+
+.fui-label{
+    display:inline-block;
+    padding:4rpx 8rpx;
+    background:#d9d9d9;
+    color:#333;
+    margin:0 4rpx;
+    font-size:24rpx;
+}
+
+.fui-label.fui-label-success{background:#04ab02;color:#fff}
+.fui-label.fui-label-danger{background:#ef4f4f;color:#fff}
+.fui-label.fui-label-warning{background:#ff9326;color:#fff}
+.empty{color:#999}
+
+
+
+.fui-loading{
+    width:65%;
+    margin:1.5em auto;
+    line-height:1.6em;
+    font-size:14px;
+    text-align:center;
+    position:relative;
+}
+
+.fui-list-angle {
+  width: 200rpx;
+  text-align: right;
+  font-size: 28rpx;
+  color: #666;
+  margin-right: 4rpx;
+}

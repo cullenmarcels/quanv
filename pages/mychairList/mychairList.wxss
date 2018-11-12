@@ -1,0 +1,64 @@
+@import "/template/nav/nav.wxss";
+
+.li{
+    background: #fff;
+    padding: 30rpx 0; 
+    margin-top: 20rpx;
+    position: relative;
+}
+
+.li-top{
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+}
+
+.flex-l-img{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background: #02c6dc;
+}
+
+.flex-l-name{
+    font-size: 32rpx;
+    color: #02c6dc;
+    margin-left: 20rpx;
+    padding-top: 15rpx;
+}
+
+.flex-r{
+    font-size: 30rpx;
+    color: #8896b1;
+    padding-top: 15rpx;
+}
+
+.c-img{
+    margin-top: 60rpx;
+}
+
+.li-b{
+    padding: 30rpx 40rpx 0 40rpx; 
+    justify-content: space-between;
+    align-items: center;
+    color: #8896b1;
+    font-size: 36rpx;
+}
+
+.apply{
+    font-size:28rpx;
+    background: #02c6dc;
+    color: #fff;
+    padding: 20rpx 30rpx;
+    border-radius: 35rpx;
+}
+
+.time{
+    color: #8896b1;
+    font-size:32rpx;
+    padding: 20rpx 30rpx;
+}
+

@@ -1,0 +1,211 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{accredit}}" class="accredit1">未授权</view>
+<view wx:if="{{show && !accredit}}">
+    <view wx:if="{{role == 1}}" >
+        <view class="banner">
+            <!-- <image class="set" src="../../../static/images/demo/set.png"></image> -->
+             <!-- <image class="inform" src="../../../static/images/demo/inform-w.png"></image>  -->
+            <!-- <image class="gift" src="../../../static/images/demo/gift.png"></image> -->
+            <image src="../../../static/images/demo/banner.jpg" mode="widthFix" style="width:100%;"></image> 
+            <view class="banner-img">
+                <image style="width:100%;height:100%; border-radius: 50%;" src="{{member.avatar}}" bindtap="code"></image>
+            </view>
+            <view class="grade">
+                <view class="name">{{member.realname?member.realname:member.nickname}}</view>
+            </view>
+
+            <view class="flex progress">
+                <view class="grade1">
+                    <image class="grade1-img" src="../../../static/images/demo/dian4.png"></image>
+                </view>
+                <view class="percent">
+                    <view class="percent-view">
+                        <view class="slidingBlock" style="width:{{member.levelname == 'V1'||member.levelname == 'V2'||member.levelname == 'V2'?100:No1}}%;"></view>
+                    </view>
+                </view>
+                <view class="grade1" style="{{member.levelname == 'V1'||member.levelname == 'V2'||member.levelname == 'V3'?'color:#ffb72c;':''}}">
+                    <view>
+                        <image style="width:50rpx;height:50rpx;" src="../../../static/images/demo/V1.png"></image>
+                    </view>
+                </view>
+                <view class="percent">
+                    <view class="percent-view">
+                        <view class="slidingBlock" style="width:{{member.levelname == 'V2'||member.levelname == 'V2'?100:No2}}%;"></view>
+                    </view>
+                    <view style="text-align: center;font-size:28rpx;margin-top: 10rpx;"></view>
+                </view>
+                <view class="grade1" style="{{member.levelname == 'V2'||member.levelname == 'V3'?'color:#ffb72c;':''}}">
+                    <view><image style="width:50rpx;height:50rpx;" src="../../../static/images/demo/V2.png"></image></view>
+                </view>
+                <view class="percent">
+                    <view class="percent-view">
+                        <view class="slidingBlock" style="width:{{member.levelname == 'V3'?100:No3}}%;"></view>
+                    </view>
+                </view>
+                <view class="grade1" style="{{member.levelname == 'V3'?'color:#ffb72c;':''}}">
+                    <view><image style="width:50rpx;height:50rpx;" src="../../../static/images/demo/V3.png"></image></view>
+                </view>
+            </view>
+        </view>
+
+        <view class="concent">
+            <view class="flex column" bindtap="money">
+                <view class="column-name">我的钱包</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+             <view class="flex column" bindtap="code">
+                <view class="column-name">我的二维码</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+            <view class="flex column" bindtap="refer">
+                <view class="column-name">咨询设置</view>
+                <view>
+                    <image class="gl1" src="{{refer?'../../../static/images/demo/down.png':'../../../static/images/demo/gl.png'}}"></image>
+                </view>
+            </view>
+
+            <view class="column-show" wx:if="{{refer}}">
+                <view bindtap="referLi" data-state="0">图文咨询设置</view>
+                <view bindtap="referLi" data-state="1">当面咨询设置</view>
+                <view bindtap="referLi" data-state="2">电话咨询设置</view>
+            </view>
+
+            <view class="flex column" bindtap="personage">
+                <view class="column-name">完善个人资料</view>
+                <view>
+                    <image class="gl1" src="{{personage?'../../../static/images/demo/down.png':'../../../static/images/demo/gl.png'}}"></image>
+                </view>
+            </view>
+
+            <view class="column-show" wx:if="{{personage}}">
+                <view bindtap="IDcard">上传身份证正反面</view>
+                <view bindtap="practicingCertificate">上传执业医师证</view>
+                <view bindtap="certification">医生资格证</view>
+                <view bindtap="intro">编辑个人简介</view>
+            </view>
+
+            <view class="flex column" bindtap="lightning">
+                <view class="column-name">极速V答设置</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+            <view class="flex column" bindtap="lightning">
+                <view class="column-name">私人医生设置</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+            <view class="flex column" bindtap="lightning">
+                <view class="column-name">院后随访设置</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+            <view class="flex column">
+                <view class="column-name">反馈及投诉</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+                <button open-type="contact" class="btnn"></button>
+            </view>
+            <view class="flex column" bindtap="phone" data-phone="{{phone.phone}}">
+                <view class="column-name">客服电话</view>
+                <view class="phone"> 
+                    {{phone.phone}}
+                </view>
+            </view>
+            <view style="font-size:28rpx;color:#8896b1;text-align:center;padding:40rpx;line-height:45rpx;">客服时间：9:00~18:00，若未能及时接听，会尽快给您回电！</view>
+        </view>
+    </view>
+
+    <view wx:if="{{role == 0}}" style="padding-bottom:20rpx;">
+        <view  class="banner" style="background:#02c6dc;">
+            <view class="banner-img" style="top:80rpx;">
+                <image style="width:100%;height:100%; border-radius: 50%;" src="{{member.avatar}}"></image>
+            </view>
+            <view class="grade" style="bottom:-40rpx;">
+                <view class="name">{{member.nickname}}</view>
+            </view>
+        </view>
+        <view class="concent">
+            <view class="flex column"  bindtap="inform">
+                <view class="column-name">通知中心</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+                
+            </view>
+            <view class="flex column" bindtap="mychairList">
+                <view class="column-name">我报名的讲座</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+            <view class="flex column" style="border: 0;" bindtap="collect">
+                <view class="column-name">我的收藏</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+            
+        </view>
+        <view class="concent">
+            <view class="flex column" bindtap="mybuy">
+                <view class="column-name">我的购买</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+            <!-- <view class="flex column" style="border: 0;" bindtap="patientMoney">
+                <view class="column-name">我的收入</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>  -->
+             <view class="flex column" style="border: 0;" >
+                <view class="column-name">我的收入</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view> 
+        </view>
+        <view class="concent">
+            <!-- <view class="flex column" bindtap="lightning">
+                <view class="column-name">我的打赏</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view> -->
+            <view class="flex column" style="border: 0;"  bindtap="datum">
+                <view class="column-name">我的病情资料库</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+            </view>
+        </view>
+        
+        <view class="concent">
+            <view class="flex column">
+                <view class="column-name">反馈及投诉</view>
+                <view>
+                    <image class="gl1" src="../../../static/images/demo/gl.png"></image>
+                </view>
+                <button open-type="contact" class="btnn"></button>
+            </view>
+            
+            <view class="flex column" style="border: 0;margin-bottom:20rpx;" bindtap="phone" data-phone="{{phone.phone}}">
+                <view class="column-name">客服电话</view>
+                <view class="phone">{{phone.phone}}</view>
+            </view>
+            
+        </view>
+        <view style="font-size:28rpx;color:#8896b1;text-align:center;padding:40rpx;line-height:45rpx;">客服时间：9:00~18:00，若未能及时接听，会尽快给您回电！</view>
+        <button class="btn" bindtap="applyFor">{{identity.isaudit==1?'申请成为全V医生—审核中':identity.isaudit==3?'申请成为全V医生—驳回':'申请成为全V医生'}}</button>
+    </view>
+</view>
+

@@ -1,0 +1,66 @@
+    <!-- 作者 -->
+    <view class='author clearfix'>
+      <view class='author-l fl'>
+        <image style="border-radius: 50%;" src='{{mynotes.doc[0].avatar}}' />
+       <image wx:if="{{mynotes.doc[0].level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{mynotes.data.doc[0].level}}.png" />
+      </view>
+      <view class='author-r fl'>
+        <view><text class='font32' style='margin-right:25rpx'>{{mynotes.doc[0].realname}}</text><text class='font28' >{{mynotes.doc[0].job}}</text></view>
+        <view class='font26' style='margin-top:15rpx'><text >{{mynotes.doc[0].hospital}}</text><text style='margin-left:25rpx'>{{mynotes.doc[0].partmentname}}</text></view>
+      </view>
+    </view>
+
+    <!-- 动态列表 -->
+    <view class='dynamic white '>
+      <!-- 动态标题 -->
+      <view class='dynamicTit clearfix'>
+          <view class='fl' style='display:flex; padding:30rpx 0;'>
+            <text class='font32' style='margin-right:15rpx;color:#02c6dc' >动态</text>
+            <text class='font24' style='align-self: center;color:#8896b1' >{{mynotes.doc[0].notecount}}条</text>
+          </view>
+      </view>
+      <!-- 动态内容 -->
+      <view wx:for="{{mynotes.data}}" wx:key="key" wx:for-index="aaa" wx:for-item="item">
+          
+            <view class='dynamicList'>
+              <view class='dynamicListT clearfix'>
+                <image class='fl' style="border-radius: 50%;" src='{{item.avatar}}' />
+                <view class='fl' style="margin-left:20rpx">
+                  <view class='font28' style='color:#02c6dc'>{{item.realname}}</view>
+                  <view class='font18' style='color:#8896b1'>{{item.t}}</view>
+                </view>
+              </view>
+              <navigator hover-class="none" url="/pages/doctorGroup/dynamicInfo/dynamicInfo?did={{item.did}}&nid={{item.id}}">
+              <view class='dynamicListCont '>
+                <text class='font28'>{{item.content}}</text>
+                <view class='dynamicImg clearfix'>
+                  
+                    <image  wx:for="{{item.images}}" wx:key="key" wx:for-item="item"  data-urls='{{item}}' bindtap='viewImage' mode='scaleToFill' src='{{item}}' />
+                  
+                 
+                    <video wx:for="{{item.videos}}" wx:key="key" wx:for-item="item" class='myVideo dynamicImg' src="{{item}}" controls />
+                  
+                </view>
+              </view> 
+              </navigator>
+              <view class='dynamicListBto clearfix'>
+                <view class='fr' style='margin-left:40rpx'>
+                  <image style='width:32rpx;height:32rpx' src='../../../static/groupImages/sayIco.png' />
+                  <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.commentcount}}</text>
+                </view>
+               <view class='fr' bindtap="addlike" data-nid="{{item.id}}" data-key="{{aaa}}" data-did="{{udid}}" style='margin-left:40rpx'>
+              <image wx:if='{{item.islike==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco.png' />
+              <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco_1.png' />
+              <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.likecount}}</text>
+            </view>
+            <view class='fr' style='margin-left:40rpx' bindtap="addstar" data-key="{{aaa}}" data-did="{{udid}}" data-nid="{{item.id}}">
+              <image wx:if='{{item.istar==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco.png' />
+              <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco_1.png' />
+              <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.startcount}}</text>
+            </view>
+              </view>
+            </view>
+         
+        </view>
+    </view>
+          

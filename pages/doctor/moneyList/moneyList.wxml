@@ -1,0 +1,83 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <!-- <view class="top">
+        <image class="bill" src="../../../static/images/demo/bill.png"></image>
+        <text>历史账单</text>
+    </view>
+
+    <view style="margin-top:20rpx;">
+
+        <block wx:for="{{list}}" wx:key="uniquer">
+            <view class="flex ul" style="background:#fff;">
+                <view class="flex" style="align-items: flex-end;">
+                    <view>{{item.optionname}}</view>
+                    <view style="color: #8896b1;font-size: 28rpx;margin-left:20rpx;">{{item.paytime}}</view>
+                </view>
+                <view>{{item.price}}</view>
+            </view>
+        </block>
+        <view class="reminder" wx:if="{{list.length == 0 && display}}">暂无记录</view>
+    </view> -->
+    <view class="look">请选择起止时间查询明细</view>
+    <view class="flex date">
+        <view class="date-time">
+            <picker mode="date" value="{{startdate}}" end="{{presentdate}}" bindchange="startdate">
+                <view class="picker">
+                    {{startdate}}
+                </view>
+            </picker>
+        </view>
+        <view class="zhi">至</view>
+        <view class="date-time">
+            <picker mode="date" value="{{enddate}}" start="{{startdate}}" end="{{presentdate}}" bindchange="enddate">
+                <view class="picker">
+                    {{enddate}}
+                </view>
+            </picker>
+        </view>
+        <view class="show" bindtap="refer">查询</view>
+    </view>
+
+    <view style="margin-top:40rpx;">
+
+    <block  wx:for="{{list}}" wx:key="uniquer">
+         <view style="background:#fff;border-bottom:6rpx solid #f4f4f4;">
+            <view class="flex nav-title">
+                <view>
+                    <text class="nav-title-date">{{item.date}}</text>
+                    <text class="nav-title-statistics">总计：</text>
+                    <text class="nav-title-money">￥{{item.totalmoney}}</text>
+                </view>
+                <view bindtap="navShow" data-index="{{index}}">
+                    <image style="width: 30rpx;height:30rpx;padding-left:20rpx;" src="{{item.click?'../../../static/images/demo/down.png':'../../../static/images/demo/gl.png'}}"></image>
+                </view>
+            </view>
+
+            <view wx:if="{{item.click}}">
+                <block wx:for="{{item.list}}" wx:key="uniquer" wx:for-item="sonItem">
+                    <view class="flex nav-show">
+                        <view>
+                            <image style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/consult2-l.png" wx:if="{{sonItem.goodstype==1}}"></image>
+                            <image wx:if="{{sonItem.goodstype==5}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/time-l.png"></image> 
+                            <image wx:if="{{sonItem.goodstype==4}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/chair2.png"></image>
+                            <image wx:if="{{sonItem.goodstype==2}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/viewScreen-L.png"></image> 
+                            <image wx:if="{{sonItem.goodstype==3}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/essay2.png"></image> 
+                            <image wx:if="{{sonItem.goodstype==6}}" style="width: 50rpx;height:50rpx;vertical-align: middle;margin-right: 20rpx;" src="../../../static/images/demo/mind.png"></image> 
+                            <text>{{sonItem.optionname}}</text>
+                        </view>
+                        <view bindtap="moneyListshow" data-date="{{item.date}}" data-goodstype="{{sonItem.goodstype}}">
+                            <text>￥{{sonItem.totalprice}}</text>
+                            <image style="width: 30rpx;height:30rpx;margin-left: 20rpx;vertical-align: middle;" src="../../../static/images/demo/gl.png"></image>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    
+    </block>
+       
+        
+    
+    </view>
+</view>
+

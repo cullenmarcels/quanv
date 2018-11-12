@@ -1,0 +1,117 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+  <!-- 群主列表 -->
+  <view class='listTit'>
+    <text class='font26'>群主</text>
+  </view>
+  <view class='qunzhu white clearfix'>
+    <view class='listLi-l fl'>
+      <image src='{{groupLoad[0].docinfo.avatar}}' />
+      <image wx:if="{{groupLoad[0].docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{groupLoad[0].docinfo.level}}.png" />
+    </view>
+    <view class='listLi-r qunzhuName fl'>
+      <text class='font32' style='color:#122d64;margin-right:25rpx'>{{groupLoad[0].docinfo.realname}}</text>
+      <text class='font28' style='color:#79829c'>{{groupLoad[0].docinfo.job}}</text>
+    </view>
+  </view>
+  <!-- 管理员列表 -->
+  <view class='listTit'>
+    <text class='font26'>管理员</text>\t
+    <text class='font22'>({{groupManager.length}}/2)</text>
+  </view>
+  <view wx:if='{{(groupManager != null) || (groupManager.length != 0)}}' wx:for='{{groupManager}}' wx:key='' class='listLi white clearfix'>
+    <view class='listLi-l fl'>
+      <image src='{{item.docinfo.avatar}}' />
+      <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+    </view>
+    <view class='listLi-r fl'>
+      <view>
+        <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+        <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+      </view>
+      <view class='font28' style='color:#122d64;margin-top:15rpx'>
+        <text>{{item.docinfo.hospital}}</text>\t
+        <text>{{item.docinfo.department}}</text>
+      </view>
+      <view>
+        <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+        <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+      </view>
+    </view>
+    <image class="listLi-edit" data-did="{{item.did}}" bindtap="remove" src="../../../static/groupImages/removeCTRL.png" />
+  </view>
+  <view wx:if='{{groupManager == null || groupManager.length == 0 }}' class='listLi white'>
+    <text class='font28' style='color:#79829c'>暂无管理员哦</text>
+  </view>
+
+
+  <!-- 搜索 -->
+  <view class='listTit'>
+    <text class='font26'>搜索</text>
+  </view>
+  <view class="search-top white">
+    <view class="flex search">
+      <view class="search-l">
+        <view class="search-input flex">
+          <input class="input font26" placeholder="请输入医生姓名" value="{{value}}" bindconfirm="search" bindinput="bindinput"></input>
+          <icon bindtap="search" type="search" size="20" color="#8896B1"></icon>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 成员列表 -->
+  <view class='listTit'>
+    <text class='font26'>集团成员</text>\t
+    <text class='font22'>{{groupMember.length}} 人</text>
+  </view>
+  <view wx:if='{{groupMember.length != 0 && !searched}}' wx:for='{{groupMember}}' wx:key='' class='memberList'>
+    <view class='listLi white clearfix'>
+      <view class='listLi-l fl'>
+        <image src='{{item.docinfo.avatar}}' />
+        <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+      </view>
+      <view class='listLi-r fl'>
+        <view>
+          <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+          <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+        </view>
+        <view class='font28' style='color:#122d64;margin-top:15rpx'>
+          <text>{{item.docinfo.hospital}}</text>\t
+          <text>{{item.docinfo.department}}</text>
+        </view>
+        <view>
+          <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+          <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+        </view>
+      </view>
+      <image class="listLi-edit" bindtap="edit" data-did="{{item.did}}" src="../../../static/groupImages/editCTRL.png" />
+    </view>
+  </view>
+  <view wx:if='{{groupMember.length == 0 && !searched}}' class='listLi white'>
+    <text class='font28' style='color:#79829c'>没有小伙伴哦</text>
+  </view>
+  <!-- 搜索列表 -->
+  <view wx:if='{{searchList.length != 0 && searched}}' wx:for='{{searchList}}' wx:key='' class='memberList'>
+    <view class='listLi white clearfix'>
+      <view class='listLi-l fl'>
+        <image src='{{item.docinfo.avatar}}' />
+        <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+      </view>
+      <view class='listLi-r fl'>
+        <view>
+          <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+          <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+        </view>
+        <view class='font28' style='color:#122d64;margin-top:15rpx'>
+          <text>{{item.docinfo.hospital}}</text>\t
+          <text>{{item.docinfo.department}}</text>
+        </view>
+        <view>
+          <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+          <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+        </view>
+      </view>
+      <image class="listLi-edit" bindtap="edit" data-did="{{item.did}}" src="../../../static/groupImages/editCTRL.png" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,68 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+  <!-- 搜索
+  <view class="search-top white">
+    <view class="flex search">
+      <view class="search-l">
+        <view class="search-input flex">
+          <input class="input font26" placeholder="城市、医院、科室、医生" value="{{value}}" bindconfirm="bindconfirm"></input>
+          <icon bindtap="search" type="search" size="20" color="#8896B1"></icon>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 管理员列表 -->
+  <view class='listTit'>
+    <text class='font26'>管理员</text>\t
+    <text class='font22'>{{groupMember.length}}人</text>
+  </view>
+  <view class='memberList'>
+    <view wx:for='{{groupManager}}' wx:key='' class='listLi white clearfix'>
+      <view class='listLi-l fl'>
+        <image src='{{item.docinfo.avatar}}' />
+        <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+      </view>
+      <view class='listLi-r fl'>
+        <view>
+          <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+          <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+        </view>
+        <view class='font28' style='color:#122d64;margin-top:15rpx'>
+          <text>{{item.docinfo.hospital}}</text> \t
+          <text>{{item.docinfo.department}}</text>
+        </view>
+        <view>
+          <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+          <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 成员列表 -->
+  <view class='listTit'>
+    <text class='font26'>成员列表</text>\t
+    <text class='font22'>{{groupMember.length}}人</text>
+  </view>
+  <view class='memberList'>
+    <view wx:for='{{groupMember}}' data-did='{{item.did}}' bindtap='toDynamicWeb' wx:key='' class='listLi white clearfix'>
+      <view class='listLi-l fl'>
+        <image src='{{item.docinfo.avatar}}' />
+        <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+      </view>
+      <view class='listLi-r fl'>
+        <view>
+          <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+          <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+        </view>
+        <view class='font28' style='color:#122d64;margin-top:15rpx'>
+          <text>{{item.docinfo.hospital}}</text>\t
+          <text>{{item.docinfo.department}}</text>
+        </view>
+        <view>
+          <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+          <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

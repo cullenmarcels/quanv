@@ -1,0 +1,117 @@
+.name{
+    background: #fff;
+    padding: 30rpx 0;
+    /* margin-top: 20rpx; */
+    border-bottom: 2rpx solid #d8d8d8;
+}
+
+.name-l{
+    font-size: 36rpx;
+    color: #122d64;
+    flex: 1;
+    height: 60rpx;
+    line-height: 60rpx;
+    
+}
+
+.name-r{
+    font-size: 36rpx;
+    color: #122d64;
+    flex: 5;
+    height: 60rpx;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    /* background: #f4f4f4; */
+    font-size: 34rpx;
+    color: #122d64;
+}
+
+.name-age-l{
+    flex: 2;
+
+}
+
+.name-age-l-l{
+    flex: 1;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 36rpx;
+    color: #122d64;
+}
+
+.name-age-l-r{
+    flex: 3;
+    height: 60rpx;
+}
+
+.name-age-r{
+    flex: 1;
+}
+
+.radio-group{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.radio{
+    font-size: 36rpx; 
+    color: #122d64;
+    margin: 0 10rpx;
+    line-height: 60rpx;
+    vertical-align: middle;
+}
+
+radio{
+    zoom: 0.7;
+}
+
+.name-phone-l{
+    flex: 1;
+    font-size: 36rpx; 
+    color: #122d64;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.name-phone-r{
+    flex: 2.5;
+}
+
+.title{
+    padding: 30rpx 0;
+    background: #fff;
+    /* margin-top: 20rpx; */
+}
+
+.title view {
+    font-size: 36rpx;
+    color: #122d64;
+    line-height: 60rpx;
+}
+
+textarea{
+    background: #f4f4f4; 
+    width: 100%;
+    min-height: 300rpx;
+    margin-top: 20rpx;
+    margin-bottom: 40rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    color: #596c92;
+    font-size: 32rpx;
+}
+
+.btn{
+    background: #02c6dc;
+    color: #fff;
+    font-size: 36rpx;
+    width: 90%;
+    margin-top: 100rpx;
+    margin-bottom: 50rpx;
+}

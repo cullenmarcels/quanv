@@ -1,0 +1,66 @@
+
+<!-- 有   科普视频列表 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="search-top">
+        <view class="flex search">
+            <view class="search-l">
+                <view class="search-input flex">
+                    <input value="{{value}}" class="input" placeholder="关键词搜索" placeholder-style='color:#ffffff;' bindconfirm="bindconfirm" bindinput="bindinput"></input>
+                    <icon type="search" size="20" color="#ffffff" bindtap="input"></icon>
+                </view>
+            </view>
+            <!-- <view class="search-r" bindtap="all">
+                <text class="classify">{{classify}}</text>
+                <image class="gl" src="{{all?'../../static/images/demo/down-w.png':'../../static/images/demo/gl-w.png'}}"></image>
+            </view> -->
+        </view>
+         <view class="flex nav">
+            <view class="navli {{navActive == 1?'navActive':''}}" bindtap="nav" data-kind="1">热门</view>
+            <view class="navli {{navActive == 2?'navActive':''}}" bindtap="nav" data-kind="2">免费</view>
+            <view class="navli {{navActive == 3?'navActive':''}}" bindtap="nav" data-kind="3">全部</view>
+        </view>
+    </view>
+
+
+
+
+    <scroll-view  scroll-y style="height: 100%;padding-top: 225rpx;"> 
+
+        <!-- <view>
+            <swiper style="height:400rpx;" indicator-dots
+        autoplay interval="5000" circular duration="1000" style="height: 400rpx;">
+                <block wx:for="{{imgUrls}}" wx:key="uniquer">
+                    <swiper-item>
+                        <image mode="aspectFill" style="width:100%;height:100%;" src="{{item.videoinfo.basicInfo.coverUrl}}" bindtap="videoShow" data-id="{{item.id}}" bindload="imagesHeight" data-type="bannerheight" class="slide-image"/>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view> -->
+       
+        <view class="ul" style="{{list.length >0?' padding: 20rpx 0;':''}}">
+
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="flex li" styl bindtap="videoShow" data-id="{{item.id}}">
+                    <view class="flex-l">
+                        <view class="flex-l-img">
+                            <image mode="aspectFill" style="width:100%;height:100%;" src="{{item.videoinfo.snapshotByTimeOffsetInfo.snapshotByTimeOffsetList[0].picInfoList[0].url}}"></image>
+                            <view class="money" wx:if="{{item.money!=0}}">￥{{item.money}}</view> 
+                        </view>
+                    </view>
+                    <view class="flex-r">
+                        <view class="flex-r-title">{{item.videoname}}</view>
+                        <view class="flex-r-time">发布 {{item.sendtime}} | 播放 {{item.playcount}}</view>
+                    </view>
+                </view> 
+            </block>
+        </view>
+        <view class="reminder" wx:if="{{list.length == 0 && display}}">暂无该分类视频</view>
+
+    </scroll-view>
+</view>
+
+
+ 

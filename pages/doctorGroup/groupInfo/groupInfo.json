@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "集团详情",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ec-canvas": "../../../template/ec-canvas/ec-canvas"
+  }
+}

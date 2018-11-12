@@ -1,0 +1,212 @@
+
+<!-- 有  通知中心 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <block wx:for="{{list}}" wx:key="uniquer">
+            
+
+            <!-- 当面咨询 -->
+            <view class="flex inform" wx:if="{{item.goodstype == 5}}">
+                <view class="flex-l">
+                    <view class="inform-img">
+                        <image style="width:100%;height:100%;" src="../../../static/images/demo/time-l.png"></image>
+                    </view>
+                </view>
+                <view class="flex-rr">
+                    <view class="project-t">
+                        <text class="project">当面咨询</text>
+                        <text class="project-time">{{item.paytime}}</text>
+                    </view>
+                    <view class="project-show">
+                        你已经成功预约
+                        <text class="color">{{item.consult[0].realname?item.consult[0].realname:item.consult[0].nickname}}</text>   
+                        医生的当面咨询服务
+                    </view>
+                    <view class="project-show">咨询时间： {{item.consult[0].start_time}}</view>
+                    <view class="project-show">咨询地址： {{item.consult[0].address}}</view>
+                    <!-- <view class="project-show">备注： 请到咨询地址后直接联系张护士</view> -->
+                    <view class="project-show">
+                        预约号： 
+                        <text class="color">{{item.consult[0].ordernumber}}</text>
+                </view>
+                    <view class="project-show">本次消费： 
+                        <text class="color">{{item.price}}元</text>
+                    </view>
+                    <view class="project-show">客服电话： {{phone.phone}}</view>
+                    <view class="project-more" bindtap="show" data-cen="{{item}}">
+                        <text>查看更多信息</text>
+                        <image style="width:25rpx;height:25rpx; vertical-align: middle;margin-left:20rpx;" src="../../../static/images/demo/glgl2.png"></image>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 图文咨询 -->
+            <view class="flex inform" wx:if="{{item.goodstype == 1}}">
+                <view class="flex-l">
+                    <view class="inform-img">
+                        <image style="width:100%;height:100%;" src="../../../static/images/demo/consult2-l.png"></image>
+                    </view>
+                </view>
+                <view class="flex-rr">
+                    <view class="project-t">
+                        <text class="project">图文咨询</text>
+                        <text class="project-time">{{item.paytime}}</text>
+                    </view>
+                    <view class="project-show">
+                        你已经成功开通
+                        <text class="color">{{item.customer[0].realname?item.customer[0].realname:item.customer[0].nickname}}</text>   
+                        医生的图文咨询服务
+                    </view>
+                    <view class="project-show">
+                        服务类型：
+                        <text class="color" wx:if="{{item.customer[0].consult_type==1}}">{{item.customer[0].default_consult}}元咨询8条信息</text>
+                        <text class="color"  wx:if="{{item.customer[0].consult_type==2}}">{{item.customer[0].highgrade_consult}}元一周无限条信息</text>
+                </view>
+                    <view class="project-show">本次消费： 
+                        <text class="color">{{item.price}}元</text>
+                    </view>
+                    <view class="project-show">客服电话： {{phone.phone}}</view>
+                    <view class="project-more" bindtap="show" data-cen="{{item}}">
+                        <text>查看更多信息</text>
+                        <image style="width:25rpx;height:25rpx; vertical-align: middle;margin-left:20rpx;" src="../../../static/images/demo/glgl2.png"></image>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 讲座预约 -->
+            <view class="flex inform" wx:if="{{item.goodstype == 4}}">
+                <view class="flex-l">
+                    <view class="inform-img">
+                        <image style="width:100%;height:100%;border-radius: 50%;" src="{{item.lectures[0].avatar}}"></image>
+                    </view>
+                </view>
+                <view class="flex-rr">
+                    <view class="project-t">
+                        <text class="project">讲座预约</text>
+                        <text class="project-time">{{item.paytime}}</text>
+                    </view>
+                    <view class="project-show">
+                        你已经成功预约
+                        <text class="color">{{item.lectures[0].realname?item.lectures[0].realname:item.lectures[0].nickname}}</text>   
+                        医生的线下讲座
+                    </view>
+                    <view class="project-show">
+                        讲座主题：
+                        <text class="color">{{item.lectures[0].lecture_title}}</text>
+                </view>
+                <view class="project-show">讲座时间： {{item.lectures[0].start_time}}</view>
+                <view class="project-show">讲座地址： {{item.lectures[0].lecture_address}}</view>
+                <view class="project-show">预约号： 
+                        <text class="color">{{item.lectures[0].ordernumber}}</text>
+                    </view>
+                    <view class="project-show">本次消费： 
+                        <text class="color">{{item.price}}元</text>
+                    </view>
+                    <view class="project-show">客服电话： {{phone.phone}}</view>
+                    <view class="project-more" bindtap="show" data-cen="{{item}}">
+                        <text>查看更多信息</text>
+                        <image style="width:25rpx;height:25rpx; vertical-align: middle;margin-left:20rpx;" src="../../../static/images/demo/glgl2.png"></image>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 视频播放 -->
+            <view class="flex inform" wx:if="{{item.goodstype == 2}}">
+                <view class="flex-l">
+                    <view class="inform-img">
+                        <image style="width:100%;height:100%;border-radius: 50%;" src="../../../static/images/demo/viewScreen-L.png"></image>
+                    </view>
+                </view>
+                <view class="flex-rr">
+                    <view class="project-t">
+                        <text class="project">视频购买</text>
+                        <text class="project-time">{{item.paytime}}</text>
+                    </view>
+                    <view class="project-show">
+                        你已经成功购买
+                        <text class="color">{{item.videos[0].realname?item.videos[0].realname:item.videos[0].nickname}}</text>   
+                        医生的视频
+                    </view>
+                    <view class="project-show">
+                        视频名称：
+                        <text class="color">{{item.videos[0].videoname}}</text>
+                </view>
+                    <view class="project-show">本次消费： 
+                        <text class="color">{{item.price}}元</text>
+                    </view>
+                    <view class="project-show">客服电话： {{phone.phone}}</view>
+                    <view class="project-more" bindtap="show" data-cen="{{item}}">
+                        <text>查看更多信息</text>
+                        <image style="width:25rpx;height:25rpx; vertical-align: middle;margin-left:20rpx;" src="../../../static/images/demo/glgl2.png"></image>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 文章查阅 -->
+            <view class="flex inform" wx:if="{{item.goodstype == 3}}">
+                <view class="flex-l">
+                    <view class="inform-img">
+                        <image style="width:100%;height:100%;border-radius: 50%;" src="{{item.articles[0].avatar}}"></image>
+                    </view>
+                </view>
+                <view class="flex-rr">
+                    <view class="project-t">
+                        <text class="project">文章购买</text>
+                        <text class="project-time">{{item.paytime}}</text>
+                    </view>
+                    <view class="project-show">
+                        你已经成功购买
+                        <text class="color">{{item.articles[0].realname?item.articles[0].realname:item.articles[0].nickname}}</text>   
+                        医生的视频
+                    </view>
+                    <view class="project-show">
+                        视频名称：
+                        <text class="color">{{item.articles[0].article_title}}</text>
+                </view>
+                    <view class="project-show">本次消费： 
+                        <text class="color">{{item.price}}元</text>
+                    </view>
+                    <view class="project-show">客服电话： {{phone.phone}}</view>
+                    <view class="project-more" bindtap="show" data-cen="{{item}}">
+                        <text>查看更多信息</text>
+                        <image style="width:25rpx;height:25rpx; vertical-align: middle;margin-left:20rpx;" src="../../../static/images/demo/glgl2.png"></image>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 送心意 -->
+            <view class="flex inform" wx:if="{{item.goodstype == 6}}">
+                <view class="flex-l">
+                    <view class="inform-img">
+                        <image style="width:100%;height:100%;border-radius: 50%;" src="{{item.reward[0].icon}}"></image>
+                    </view>
+                </view>
+                <view class="flex-rr">
+                    <view class="project-t">
+                        <text class="project">送心意</text>
+                        <text class="project-time">{{item.paytime}}</text>
+                    </view>
+                    <view class="project-show">
+                        你已经成功为
+                        <text class="color">{{item.reward[0].realname?item.reward[0].realname:item.reward[0].nickname}}</text>   
+                        医生送上一份心意
+                    </view>
+                     <view class="project-show">
+                        心意：
+                        <text class="color">{{item.reward[0].title}}</text>
+                </view> 
+                    <view class="project-show">本次消费： 
+                        <text class="color">{{item.price}}元</text>
+                    </view>
+                    <view class="project-show">客服电话： {{phone.phone}}</view>
+                    <!-- <view class="project-more" bindtap="show" data-cen="{{item}}">
+                        <text>查看更多信息</text>
+                        <image style="width:25rpx;height:25rpx; vertical-align: middle;margin-left:20rpx;" src="../../../static/images/demo/glgl2.png"></image>
+                    </view> -->
+                </view>
+            </view>
+        </block>
+        <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无通知</view>
+</view>

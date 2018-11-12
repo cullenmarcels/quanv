@@ -1,0 +1,55 @@
+.li{
+    background: #fff;
+    padding: 40rpx;
+    font-size: 34rpx;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+
+.li text{
+    line-height: 52rpx;
+}
+
+.li-l{
+    flex: 1;
+}
+
+.li-r{
+    flex: 1.2;
+}
+
+.dian{
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
+    margin-right: 20rpx; 
+}   
+
+.input{
+    width: 80rpx;
+    background: #eee;
+    border-radius: 10rpx;
+    padding: 0 10rpx;
+    color: #FF7877;  
+    text-align: center;
+}
+
+.unit{
+    color: #41C7D6;
+    line-height: 52rpx;
+    /* margin: 0 20rpx; */
+}
+
+.button{
+    width: 90%;
+    background: #41C7D6;
+    color: #fff;
+    margin-top: 50rpx;
+}
+
+.explain{
+    padding: 0 100rpx;
+    margin-bottom: 20rpx;
+    color: #8896B1;
+    font-size: 28rpx;
+}

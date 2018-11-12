@@ -1,0 +1,93 @@
+/* 搜索框 */
+
+.flex {
+  display: flex;
+}
+
+.search-top {
+  width: 100%;
+}
+
+.search {
+  align-items: center;
+}
+
+.search-l {
+  flex: 3;
+  height: 56rpx;
+  padding: 25rpx 40rpx;
+}
+
+.search-input {
+  background: #f4f4f4;
+  width: 100%;
+  height: 100%;
+  border-radius: 28rpx;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.input {
+  width: 100%;
+  height: 56rpx;
+  margin-right: 20rpx;
+}
+
+.search-r {
+  flex: 1.5;
+  text-align: center;
+  color: #02c6dc;
+}
+
+.gl {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.listTit {
+  padding: 20rpx 40rpx;
+  color: #8896b1;
+}
+
+/* 列表样式 */
+
+.listLi {
+  position: relative;
+  padding: 40rpx;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+
+.listLi-l {
+  position: relative;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.listLi-l> image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%
+}
+
+.listLi-l .listLi-level {
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  bottom: 0;
+  right: 0;
+}
+
+.listLi-r {
+  position: relative;
+  margin-left: 40rpx;
+}
+
+.listLi-more {
+  position: absolute;
+  width: 17rpx;
+  height: 30rpx;
+  top: 105rpx;
+  right: 40rpx;
+}

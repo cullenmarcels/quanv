@@ -1,0 +1,236 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+
+  <view class='group white'>
+    <!-- 1 -->
+    <view class='groupInfo clearfix'>
+      <image class='fl' style="border-radius: 50%;" src='{{group.icon}}'></image>
+      <view class='groupInfoCont fl'>
+        <view class='font32' style='color:#02c6dc'>{{group.name}}</view>
+        <view class='font20' style='margin-top:5rpx;color:#8896b1'>创建于{{create_time}}</view>
+        <view class='font28' style='margin-top:15rpx;color:#8896b1'>已有成员：{{group.countnum}}人</view>
+        <!-- 测试 -->
+        <navigator wx:if="{{isdoctor == 1 && ismanager == 2 && isRelationship ==1 }}" hover-class="none" url="/pages/doctorGroup/manage/manage?ismanager={{ismanager}}&gid={{gid}}&did={{did}}" class="checkout font28" style="color:#8896b1">管理 ></navigator>
+        <navigator wx:if="{{isdoctor == 1 && ismanager == 1 && isRelationship == 1}}" hover-class="none" url="/pages/doctorGroup/manage/manage?ismanager={{ismanager}}&gid={{gid}}&did={{did}}" class="checkout font28" style="color:#8896b1">管理 ></navigator>
+        <navigator wx:if="{{isdoctor == 1 && ismanager == 0 && isRelationship == 1}}" hover-class="none" url="/pages/doctorGroup/groupCont/groupCont?gid={{gid}}&&udid={{did}}" class="checkout font28" style="color:#8896b1">查看 ></navigator>
+        <image wx:if='{{ isdoctor == 1 && isRelationship == 0 }}' src='' title='加入的图片' bindtap='jion' />
+      </view>
+    </view>
+    <!-- 2 -->
+    <view class='introduce clearfix'>
+      <view class='fl font26' style='margin-right:10rpx'>介绍: </view>
+      <view class='fl font26' style='width:600rpx;'>{{group.summary}}</view>
+    </view>
+  </view>
+  <!-- tab -->
+  <import src="/template/tab3/tab3.wxml" />
+  <template wx:if="{{isdoctor==1}}" is="tab3" data="{{...item}}" />
+  <view class='member font32 white' wx:if="{{isdoctor==0}}">成员</view>
+  <!-- content -->
+  <scroll-view scroll-y style="margin-top:20rpx">
+    <!-- 动态 -->
+    <view wx:if="{{item.index == 0&&isdoctor==1}}">
+      <view class='note white '>
+        <view class='cont'>
+          <view class='font32'>公告:</view>
+          <view class=' conts font28'>{{notice}}</view>
+        </view>
+      </view>
+      <!-- 动态列表 -->
+      <view class='dynamic white '>
+        <view class='dynamicTit clearfix'>
+          <view class='fl' style='display:flex; padding:30rpx 0;'>
+            <text class='font32' style='margin-right:15rpx;color:#02c6dc'>动态</text>
+            <text class='font24' style='align-self: center;color:#8896b1'>{{group.notecount}}条</text>
+          </view>
+          <navigator hover-class="none" class='fr' url="/pages/doctorGroup/createDynamic/createDynamic?did={{did}}&gid={{gid}}">
+            <image src='../../../static/groupImages/dynamicIco.png' />
+          </navigator>
+        </view>
+        <view wx:for="{{notes}}" wx:key="key" wx:key="key" wx:for-index="aaa" wx:for-item="item">
+          <view class='dynamicList'>
+            <view class='dynamicListT clearfix'>
+              <image style="border-radius: 50%;" class='fl' src='{{item.avatar}}' />
+              <view class='fl' style="margin-left:20rpx">
+                <view class='font28' style='color:#02c6dc'>{{item.realname}}</view>
+                <view class='font18' style='color:#8896b1'>{{item.t}}</view>
+              </view>
+            </view>
+            <view class='dynamicListCont ' data-did='{{item.did}}' data-id='{{item.id}}' bindtap='navigators'>
+              <text class='font28'>{{item.content}}</text>
+              <view class='dynamicImg clearfix'>
+                <image wx:for="{{item.images}}" wx:key="key" wx:for-item="item" data-urls='{{item}}' mode='scaleToFill' src='{{item}}' />
+                <video wx:for="{{item.videos}}" wx:key="key" wx:for-item="item" class='myVideo dynamicImg' src="{{item}}" controls="false" />
+              </view>
+            </view>
+            <view class='dynamicListBto clearfix'>
+              <view class='fr' style='margin-left:40rpx'>
+                <image style='width:32rpx;height:32rpx' src='../../../static/groupImages/sayIco.png' />
+                <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.commentcount}}</text>
+              </view>
+              <!-- item.is? 为0 即为未点赞或者收藏 -->
+              <view class='fr' bindtap="addlike1" data-nid="{{item.id}}" data-key="{{aaa}}" data-did="{{did}}" style='margin-left:40rpx'>
+                <image wx:if='{{item.islike==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco.png' />
+                <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco_1.png' />
+                <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.likecount}}</text>
+              </view>
+              <view class='fr' style='margin-left:40rpx' bindtap="addstar1" data-key="{{aaa}}" data-did="{{did}}" data-nid="{{item.id}}">
+                <image wx:if='{{item.istar==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco.png' />
+                <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco_1.png' />
+                <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.startcount}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{nohave}}" class='font28' style='text-align:center;padding:40rpx'>到底了~~~</view>
+      </view>
+    </view>
+    <!-- 成员 -->
+    <view wx:if="{{item.index == 1}}">
+      <!-- 地图 -->
+      <view class="container">
+        <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
+      </view>
+      <!-- 搜索 -->
+      <view class="search-top">
+        <view class="flex search">
+          <view class="search-l">
+            <view class="search-input flex">
+              <input class="input font26" placeholder="请输入医生姓名" value="{{value}}" bindconfirm="search" bindinput="bindinput"></input>
+              <icon bindtap="search" type="search" size="20" color="#8896B1"></icon>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 成员列表 -->
+      <view wx:if='{{ !searched && searchList.length == 0 }}' wx:for="{{members}}" wx:key="key" wx:for-item="item">
+       <navigator wx:if="{{isdoctor==1}}" hover-class="none" url="/pages/doctorGroup/dynamicList/dynamicList?udid={{did}}&did={{item.did}}">
+         
+          <view class='listLi white clearfix'>
+            <view class='listLi-l fl'>
+              <image style="border-radius: 50%;" src='{{item.docinfo.avatar}}' />
+              <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+            </view>
+            <view class='listLi-r fl'>
+              <view>
+                <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+                <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+              </view>
+              <view class='font28' style='color:#122d64;margin-top:15rpx'>
+                <text>{{item.docinfo.hospital}}</text> \t
+                <text>{{item.docinfo.department}}</text>
+              </view>
+              <view>
+                <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+                <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+              </view>
+            </view>
+            <image class='listLi-more' src='../../../static/groupImages/listLi-more.png' />
+          </view>
+        </navigator>
+        <view wx:if="{{isdoctor==0}}" bindtap='dochome'>
+          <view class='listLi white clearfix'>
+            <view class='listLi-l fl'>
+              <image style="border-radius: 50%;" src='{{item.docinfo.avatar}}' />
+              <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+            </view>
+            <view class='listLi-r fl'>
+              <view>
+                <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+                <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+              </view>
+              <view class='font28' style='color:#122d64;margin-top:15rpx'>
+                <text>{{item.docinfo.hospital}}</text> \t
+                <text>{{item.docinfo.department}}</text>
+              </view>
+              <view>
+                <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+                <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+              </view>
+            </view>
+            <image class='listLi-more' src='../../../static/groupImages/listLi-more.png' />
+          </view>
+        </view>
+      </view>
+      <!-- 搜索列表 -->
+      <navigator wx:if='{{ searched && searchList.length != 0 }}' hover-class="none" wx:for="{{searchList}}" wx:key="" url="/pages/doctorGroup/dynamicList/dynamicList?udid={{did}}&did={{item.did}}">
+        <view class='listLi white clearfix'>
+          <view class='listLi-l fl'>
+            <image style="border-radius: 50%;" src='{{item.docinfo.avatar}}' />
+            <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+          </view>
+          <view class='listLi-r fl'>
+            <view>
+              <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+              <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+            </view>
+            <view class='font28' style='color:#122d64;margin-top:15rpx'>
+              <text>{{item.docinfo.hospital}}</text> \t
+              <text>{{item.docinfo.department}}</text>
+            </view>
+            <view>
+              <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+              <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+            </view>
+          </view>
+          <image class='listLi-more' src='../../../static/groupImages/listLi-more.png' />
+        </view>
+      </navigator>
+      <!-- 未找到查询结果 -->
+      <view wx:if='{{ searched && searchList.length == 0 }}' class='memberList'>
+        <view class='font28 white' style='text-align:center;color:#79829c'>未找到相应结果</view>
+      </view>
+    </view>
+    <!-- 我的 -->
+    <view class='white' style='padding:0 40rpx;' wx:if="{{item.index == 2&&isdoctor==1}}">
+
+      <view class='dynamicTit clearfix'>
+        <view class='fl' style='display:flex; padding:30rpx 0;'>
+          <text class='font32' style='margin-right:15rpx;color:#02c6dc'>动态</text>
+          <text class='font24' style='align-self: center;color:#8896b1'>{{mynotes.mynotescount}}条</text>
+        </view>
+        <navigator hover-class="none" class='fr' url="/pages/doctorGroup/createDynamic/createDynamic?did={{did}}&gid={{gid}}">
+          <image src='../../../static/groupImages/dynamicIco.png' />
+        </navigator>
+      </view>
+      <view wx:for="{{mynotes.data}}" wx:key="key" wx:for-index="aaa" wx:for-item="item">
+        <view class='dynamicList'>
+          <view class='dynamicListT clearfix'>
+            <image style="border-radius: 50%;" class='fl' src='{{item.avatar}}' />
+            <view class='fl' style="margin-left:20rpx">
+              <view class='font28' style='color:#02c6dc'>{{item.realname}}</view>
+              <view class='font18' style='color:#8896b1'>{{item.t}}</view>
+            </view>
+          </view>
+          <navigator hover-class="none" url="/pages/doctorGroup/dynamicInfo/dynamicInfo?did={{item.did}}&nid={{item.id}}">
+            <view class='dynamicListCont '>
+              <text class='font28'>{{item.content}}</text>
+              <view class='dynamicImg clearfix'>
+                <image wx:for="{{item.images}}" wx:key="key" wx:for-item="item" mode='scaleToFill' data-urls='{{item}}' bindtap='viewImage' src='{{item}}' />
+                <video wx:for="{{item.videos}}" wx:key="key" wx:for-item="item" class='myVideo dynamicImg' src="{{item}}" controls />
+              </view>
+            </view>
+          </navigator>
+          <view class='dynamicListBto clearfix'>
+            <view class='fr' style='margin-left:40rpx'>
+              <image bindtap='comment' style='width:32rpx;height:32rpx' src='../../../static/groupImages/sayIco.png' />
+              <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.commentcount}}</text>
+            </view>
+            <!-- item.is? 为0 即为未点赞或者收藏 -->
+            <view class='fr' bindtap="addlike" data-nid="{{item.id}}" data-key="{{aaa}}" data-did="{{did}}" style='margin-left:40rpx'>
+              <image wx:if='{{item.islike==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco.png' />
+              <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/goodIco_1.png' />
+              <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.likecount}}</text>
+            </view>
+            <view class='fr' style='margin-left:40rpx' bindtap="addstar" data-key="{{aaa}}" data-did="{{did}}" data-nid="{{item.id}}">
+              <image wx:if='{{item.istar==0}}' style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco.png' />
+              <image wx:else style='width:32rpx;height:32rpx' src='../../../static/groupImages/collectIco_1.png' />
+              <text class='font24' style='margin-left:10rpx;color:#8896b1'>{{item.startcount}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{nohave2}}" class='font28' style='text-align:center;padding:40rpx'>到底了~~~</view>
+    </view>
+  </scroll-view>
+</view>

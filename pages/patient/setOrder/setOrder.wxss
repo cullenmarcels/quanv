@@ -1,0 +1,159 @@
+.top-title{
+    border-bottom: 2rpx solid #d8d8d8;
+}
+
+.top{
+    height: 120rpx;
+    background: #41C7D6;
+    color: #fff; 
+    padding: 0 40rpx;
+   
+}
+
+.form{
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+    vertical-align: middle;
+}
+
+.top text{
+    line-height: 120rpx;
+    font-size: 34rpx;
+}
+
+.title{
+    background: #fff;
+    text-align: center;
+    font-size: 34rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.title-data{
+    flex: 2;
+    padding: 30rpx 0;
+}
+
+.title-data view{
+    line-height: 50rpx;
+}
+
+.title-time{
+    flex: 2;
+    border-left: 2rpx solid #eee;
+    border-right: 2rpx solid #eee;
+    padding: 30rpx 0;
+    line-height:50rpx;
+}
+.title-num{
+    flex: 1;
+    border-right: 2rpx solid #eee;
+    padding: 30rpx 0;
+    line-height:50rpx;
+}
+.title-money{
+    flex: 1;
+    padding: 30rpx 0;
+    line-height:50rpx;
+}
+
+.height{
+     line-height: 100rpx;
+}
+
+
+.title-add{
+    flex:5;
+    border-right: 2rpx solid #eee;
+    padding: 30rpx 0;
+   
+}
+
+.li{
+    margin-bottom: 20rpx;
+    
+}
+
+
+.none{
+    color: #8896b1;
+    font-size: 40rpx;
+    text-align: center;
+    margin: 100rpx;
+}
+
+.doctor{
+    padding: 40rpx 30rpx;
+    margin-bottom: 20rpx;
+    background: #fff;
+}
+
+.doctor-l{
+    flex: 1;
+    
+}
+
+.doctor-img{
+    width: 120rpx;
+    height: 120rpx;
+    /* background: #41C7D6; */
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.v{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    position: absolute;
+    right: -10rpx;
+    bottom: -10rpx;
+}
+
+.doctor-r{
+    flex: 3;
+}
+
+.name{
+    font-size: 40rpx;
+    font-weight: 600;
+    color: #122d64;
+}
+
+.post{
+    font-size: 32rpx;
+    color: #122d64;
+    margin-left: 20rpx;
+}
+
+.hospital{
+    font-size: 32rpx;
+    color: #596c92;
+}
+
+.office{
+    font-size: 32rpx;
+    color: #596c92;
+    margin-left: 20rpx;
+}
+
+.return{
+    color: #fff;
+    background: #02c6dc;
+    font-size: 32rpx;
+    padding: 10rpx 20rpx;
+    border-radius: 30rpx;
+    
+}
+
+.doctor-r-b{
+    margin-top: 20rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    font-size: 32rpx;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}

@@ -1,0 +1,179 @@
+.flex{
+    display: flex;
+}
+
+page {
+  background: #f4f4f4;
+  color: #122d64;
+}
+
+.interlayer {
+  width: 100%;
+  height: 20rpx;
+  background: #eee;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.reminder {
+  font-size: 32rpx;
+  color: #8896b1;
+  text-align: center;
+  margin-top: 200rpx;
+  margin-bottom: 100rpx;
+}
+
+.a {
+  background: #8896b1;
+  color: #fff;
+}
+
+.money {
+  font-size: 28rpx;
+  color: #fff;
+  background: #f77;
+  line-height: 30rpx;
+  padding: 10rpx 20rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+}
+
+.accredit1 {
+  font-size: 32rpx;
+  text-align: center;
+  color: #596c92;
+  padding-top: 500rpx;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.font18 {
+  font-size: 18rpx;
+}
+
+.font20 {
+  font-size: 20rpx;
+}
+
+.font22 {
+  font-size: 22rpx;
+}
+
+.font24 {
+  font-size: 24rpx;
+}
+
+.font26 {
+  font-size: 26rpx;
+}
+
+.font28 {
+  font-size: 28rpx;
+}
+
+.font32 {
+  font-size: 32rpx;
+}
+
+.font36 {
+  font-size: 36rpx;
+}
+
+.font56 {
+  font-size: 56rpx;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.myVideo {
+  width: 100%;
+}
+
+.navigator:hover {
+  background-color: none;
+  border: none;
+  color: none;
+}
+
+.comment {
+  width: 100%;
+  height: 120rpx;
+  background: #fff;
+  z-index: 999;
+  position: fixed;
+  bottom: 0;
+  border-top: 2rpx solid #d8d8d8;
+}
+
+.comment-l {
+  flex: 4;
+  padding: 20rpx 30rpx;
+}
+
+.comment-input {
+  width: 100%;
+  height: 100%;
+  background: #f4f4f4;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  color: #122d64;
+}
+
+.comment-r {
+  flex: 1;
+  padding: 20rpx 30rpx 20rpx 0;
+}
+
+.comment-publish {
+  width: 100%;
+  height: 100%;
+  background: #02c6dc;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 36rpx;
+}

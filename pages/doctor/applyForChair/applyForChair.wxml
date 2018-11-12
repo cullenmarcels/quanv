@@ -1,0 +1,196 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view wx:if="{{style == 'a'}}">
+        <view class="explain">
+            <text style="color:#FF7877;">1.填写信息</text> -
+            <text>2.提交申请</text> -
+            <text>3.等待审核</text> -
+            <text>4.修改/发表</text>
+        </view>
+        <form bindsubmit="formSubmit">
+        <view class="flex item">
+            <view class="item-l">主题</view>
+            <view class="item-r">
+                <input name="lecture_title" placeholder="请输入" value="{{lecture_title}}" placeholder-style="color:#8896b1;"></input>
+            </view>
+        </view>
+        <view class="flex item">
+            <view class="item-l">主讲人</view>
+            <view class="item-r">
+                <input name="lecture_author" placeholder="请输入" value="{{lecture_author}}"  placeholder-style="color:#8896b1;"></input>
+            </view>
+        </view>
+        <view class="stipulate">
+            <view class="flex" style="align-items:flex-end;">
+                <view class="num">人数</view>
+                <view class="import">
+                    <input name="lecture_nums" maxlength="5" type="number" value="{{lecture_nums}}" style="color: #02c6dc;"></input>
+                </view>
+                <view class="unit">人</view>
+                <view class="cost">报名费用</view>
+                <view class="money1">￥</view>
+                <view class="import">
+                    <input name="lecture_cost" maxlength="5" type="number" value="{{lecture_cost}}" style="color: #02c6dc;"></input>
+                </view>
+                <view class="unit1">(每人次)</view>
+            </view>
+
+            <view class="flex time">
+                <view class="time-l">时间</view>
+                <view class="time-c">
+                    <picker name="data" class="picker" mode="date" value="{{date}}" bindchange="bindDateChange">
+                        <view class="picker-view">
+                            <view class="heng" style="width:100rpx;">{{year}}</view>
+                                年
+                            <view class="heng">{{month}}</view> 
+                                月
+                            <view class="heng">{{day}}</view>
+                                日
+                        </view>
+                    </picker>
+                </view>
+                <view class="time-r flex">
+                    <picker name="time" mode="time" value="{{time}}"  bindchange="bindTimeChange">
+                    <view class="picker1">
+                    {{time}}
+                    </view>
+                </picker>
+                    ~ 
+                    <picker name="timeEnd" mode="time" value="{{timeEnd}}"  bindchange="bindTimeChangeEnd">
+                        <view class="picker1">
+                        {{timeEnd}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="flex add">
+                <view class="add-l">地址</view>
+                <view class="add-r">
+                    <textarea name="lecture_address" value="{{lecture_address}}"  placeholder="请输入活动举办地址"  placeholder-style="color:#8896b1;"></textarea> 
+                </view>
+            </view>
+            <view class="flex add" style="margin-top: 40rpx;">
+                <view class="add-l">备注</view>
+                <view class="add-r">
+                    <textarea name="remark" value="{{remark}}"  placeholder="请输入此次活动需要的注意事项"  placeholder-style="color:#8896b1;"></textarea> 
+                </view>
+            </view>
+        </view>
+
+        <view class="intro">
+            <view class="intro-title">讲座简介</view>
+            <textarea name="lecture_introduction" maxlength="-1" placeholder="请填写讲座相关内容描述..."  placeholder-style="color:#8896b1;" value="{{lecture_introduction}}"></textarea> 
+        </view>
+        <view class="intro">
+            <view class="dashed1">
+                <view class="click" wx:if="{{frontImgs.length == 0}}" >
+                    <view class="pus" data-type="image" catchtap="upload">
+                        <image data-type="image" catchtap="upload" style="width:80%;height:80%;" src="../../../static/images/demo/cover.png"></image>
+                    </view>
+                    <view style="font-size:36rpx;">点击上传讲座封面图片</view>
+                </view>
+
+                <icon class="close"  wx:if="{{frontImgs.length>0}}"  type="cancel" size="30" color="#FF7877" data-type="image-remove" data-index="{{index}}" catchtap="upload"></icon>
+                <image data-index="{{index}}" wx:if="{{frontImgs.length>0}}" style="width:100%;height:300rpx;" mode="aspectFill" src="{{frontImgs[0]}}" data-type="image-preview" catchtap="upload"></image>
+            </view>
+        </view>
+        
+
+        <view class="infuse">注：提交申请后请等待审核，若审核不通过可再进行修改；审核通过后才可以发布，如有疑问请联系客服。</view>
+        <button formType="{{style == 'a'?'submit':''}}" class="{{style == 'a'?'':'a'}}">{{style == 'a'?'提交申请':'申请正在审核中...'}}</button>
+        </form>
+    </view>
+
+
+    <view  wx:if="{{style != 'a'}}">
+        <view class="tickling" wx:if="{{res.status == 1}}">
+            <view class="tickling-name">申请反馈</view>
+            <view class="tickling-c">{{res.checked}}</view>
+        </view>
+        <view class="explain">
+            <text>1.填写信息</text> -
+            <text>2.提交申请</text> -
+            <text style="{{res.status == 0?'color:#FF7877;':''}}">3.等待审核</text> -
+            <text style="{{res.status == 2||res.status == 1?'color:#FF7877;':''}}">4.修改/发表</text>
+        </view>
+        <form bindsubmit="formSubmit">
+        <view class="flex item">
+            <view class="item-l">主题</view>
+            <view class="item-r">
+                <view style="color:#02c6dc;">{{lecture_title}}</view>
+            </view>
+        </view>
+        <view class="flex item">
+            <view class="item-l">主讲人</view>
+            <view class="item-r">
+                <view style="color:#02c6dc;">{{lecture_author}}</view>
+            </view>
+        </view>
+        <view class="stipulate">
+            <view class="flex" style="align-items:center;">
+                <view class="num">人数</view>
+                <view class="import" style="text-align: center;border-bottom:2rpx solid #d8d8d8;color:#02c6dc;">
+                    {{lecture_nums}}
+                </view>
+                <view class="unit">人</view>
+                <view class="cost">报名费用</view>
+                <view class="money1">￥</view>
+                <view class="import" style="text-align: center;border-bottom:2rpx solid #d8d8d8;color:#02c6dc;">
+                    {{lecture_cost}}
+                </view>
+                <view class="unit1">(每人次)</view>
+            </view>
+
+            <view class="flex time">
+                <view class="time-l">时间</view>
+                <view class="time-c">
+                    <!-- <view style="line-height:80rpx;">{{date}}</view> -->
+                    <view class="picker-view">
+                        <view class="heng" style="width:100rpx;color:#02c6dc;">{{year}}</view>
+                            年
+                        <view class="heng" style="color:#02c6dc;">{{month}}</view> 
+                            月
+                        <view class="heng" style="color:#02c6dc;">{{day}}</view>
+                            日
+                    </view>
+                </view>
+
+                
+                <view class="time-r flex">
+                    <view style="color:#02c6dc;">{{time}}</view>
+                    ~ 
+                    <view style="color:#02c6dc;">{{timeEnd}}</view>
+                </view>
+            </view>
+            <view class="flex add">
+                <view class="add-l" style="padding: 20rpx 0;">地址</view>
+                <view class="add-r">
+                    <view style="background:#f4f4f4;border-radius:20rpx;padding:20rpx;">{{lecture_address}}</view>
+                </view>
+            </view>
+            <view class="flex add" style="margin-top:40rpx;">
+                <view class="add-l" style="padding: 20rpx 0;">备注</view>
+                <view class="add-r">
+                    <view style="background:#f4f4f4;border-radius:20rpx;padding:20rpx;">{{res.remark?res.remark:'无'}}</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="intro">
+            <view class="intro-title">讲座简介</view>
+             <view style="font-size: 32rpx;background:#f4f4f4;border-radius:20rpx;padding:20rpx;line-height:50rpx;">{{lecture_introduction}}</view> 
+        </view>
+        <view class="intro">
+            <view class="dashed1" style="border:0;">
+                <image data-index="{{index}}" style="width:100%;height:300rpx;" mode="aspectFill" src="{{frontImgs[0]}}" data-type="image-preview" catchtap="upload"></image>
+            </view>
+        </view>
+        
+
+        <view class="infuse">注：提交申请后请等待审核，若审核不通过可再进行修改；审核通过后才可以发布，如有疑问请联系客服。</view>
+        <button wx:if="{{res.status == 0}}" class="a">申请正在审核中...</button>
+        <button wx:if="{{res.status == 2}}" bindtap="issue">修改/发布</button>
+        <button wx:if="{{res.status == 1}}" bindtap="amend">修改</button>
+        </form>
+    </view>
+</view>

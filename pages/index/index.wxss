@@ -1,0 +1,400 @@
+.banner{
+    position: relative;
+}
+
+.accredit{
+    width:100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.accredit-view{
+    width: 400rpx;
+    height: 400rpx;
+    background: #fff;
+    border: 2rpx solid #eee;
+    border-radius: 10rpx;
+    position: relative;
+}
+
+.accredit-btn{
+    background: #02c6dc;
+    color: #fff;
+    width: 100%; 
+    font-size: 32rpx;
+    line-height: 80rpx;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.search{
+    width: 88%;
+    height: 70rpx;
+    background: #000;
+    opacity: 0.3;
+    position: absolute;
+    top: 30rpx;
+    left: 6%;
+    z-index: 999;
+    border-radius: 40rpx;
+    padding: 10rpx 40rpx;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 32rpx;
+    line-height: 50rpx; 
+}
+
+.search icon{
+    position: absolute;
+    right: 30rpx;
+    top: 20rpx;
+}
+
+.bannerName{
+    font-size: 60rpx; 
+    font-style: italic;
+    color: #fff;
+    position: absolute;
+    left: 10%;
+    bottom: 170rpx;
+    
+}
+
+.bannerFunction{
+    font-size: 46rpx;
+    color: #fff;
+    position: absolute;
+    left: 10%;
+    bottom: 90rpx;
+}
+
+.Responder{
+    height: 116rpx;
+    text-align: center;
+    /* padding: 30rpx 0; */
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.Responder image{
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
+}
+
+.Responder text{
+    color: #FF7877; 
+    font-size: 36rpx;
+    line-height: 116rpx;
+    margin: 0 10rpx;
+    vertical-align: middle;
+}
+
+.ul{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-bottom: 2rpx solid #ccc;
+    border-top: 2rpx solid #ccc;
+    background: #fff;
+}
+
+.li{
+    width: 25%; 
+    height: 210rpx;
+}
+
+.ul .text{
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.img{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background: #02c6dc ;
+    margin: 30rpx auto 20rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.img text{
+    color: red;
+    font-size:20rpx;
+    position: absolute;
+    top: 18rpx;
+    right: 18rpx;
+}
+
+/* .li image{
+    width: 60%;
+    height: 60%;
+    margin: 25%;
+} */
+.img-t{
+    width: 60%;
+    height: 60%;  
+    margin: 25%;
+}
+
+.img-img{
+    width: 60%;
+    height: 60%;
+    margin: 20%;
+}
+
+.advertising{
+    padding: 20rpx 0;
+    background: #eee;
+}
+
+.advertising-img{
+    width: 100%;
+    height: 300rpx;
+}
+
+.swiper{
+    width: 50%;
+    position: absolute;
+    top: 30rpx;
+    right: 30rpx;
+    font-size: 40rpx;
+    font-weight: 600;
+    color: #fff;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}
+
+.swiper-title{
+    font-size: 44rpx;
+    font-weight: 600;
+    color: #FF7777; 
+    line-height: 60rpx;
+}
+
+.swiper-lecture{
+    font-size: 36rpx;
+    font-weight: 600;
+    color:  #02c6dc;  
+    line-height: 50rpx;
+    margin-top: 20rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}
+
+.view{
+    padding: 0 30rpx;
+    background: #fff;
+    border-bottom: 2rpx solid #ddd;
+}
+
+.role-ul{
+    border-bottom: 2rpx solid #ddd;
+    padding:  30rpx 0;
+}
+
+.gl{
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}
+
+.flex-l{
+    flex: 1;
+}
+
+.flex-img{
+    /* background: #02c6dc ; */
+    border-radius: 50%;
+    width: 120rpx;
+    height: 120rpx;
+
+}
+
+.flex-c{
+    flex: 3.3;
+    font-size:  32rpx;
+    color: #8896B1;
+}
+
+.flex-r{
+    flex: 0.3;
+}
+
+.flex-c-n{
+    font-size: 36rpx;
+    color: #122d64;
+    line-height: 60rpx;
+    margin-top: 10rpx;
+}
+
+.recommend{
+    border-left: 10rpx solid #FF7877;
+    justify-content: space-between;
+    margin: 0 30rpx;
+}
+
+.recommend-title{
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #122d64;
+    margin-left: 20rpx;
+}
+
+.more{
+    font-size: 28rpx;
+    color: #8896B1;
+}
+
+.recommend-ul{
+    flex-wrap: wrap;
+    padding: 20rpx 5rpx;
+}
+
+.recommend-li{
+    width: 33%;
+    text-align: center;
+    font-size: 28rpx;
+    padding: 20rpx 5rpx;
+    box-sizing: border-box;
+    color: #8896B1;
+}
+
+.head{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    margin: 20rpx auto;
+}
+
+.doctor-name{
+    font-size: 34rpx;
+    color: #122d64;
+    margin: 10rpx 0;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.doctor-c{
+    color: #596c92;
+    margin-top: 6rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.video-li{
+    text-align: center;
+    font-size: 32rpx;
+    color: #8896B1;
+    /* display: inline-block;  */
+    margin: 0 auto;
+}
+
+.video{
+    margin: 0 auto;
+    width: 200rpx;
+    height: 200rpx;
+    position: relative;
+}
+
+.video-text{
+    color: #122d64;
+    margin-top: 20rpx;
+    padding: 0 2rpx;
+    overflow : hidden ;
+	text-overflow : ellipsis ;
+	white-space : nowrap ;
+}
+
+.essay{
+    padding: 20rpx 30rpx 0;
+}
+
+.essay-l{
+    flex: 1;
+}
+
+.essay-img{
+    width: 160rpx;
+    height: 120rpx;
+    position: relative;
+}
+
+.essay-r{
+    flex: 2.5;
+}
+
+.essay-title{
+    color: #122d64;
+    font-size: 32rpx;
+    line-height: 40rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.essay-name{
+    line-height: 40rpx;
+    color: #8896B1;
+    font-size: 28rpx;
+}
+
+.essay-num{
+    line-height: 40rpx;
+    color: #8896B1;
+    font-size: 28rpx;
+    text-align: right;
+}
+
+.swiper-b{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 30rpx;
+    color: #122d64;
+    font-size: 32rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.look{
+    position: absolute;
+    right: 40rpx;
+    bottom: 40rpx;
+    padding: 10rpx 40rpx;
+    background: #FF7777;
+    color: #fff;
+    font-size: 32rpx;
+    border-radius: 30rpx;
+}

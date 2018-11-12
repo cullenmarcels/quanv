@@ -1,0 +1,61 @@
+
+<!-- 有   编辑预约信息 -->
+
+
+<view style="padding-bottom:40rpx;">
+    <form bindsubmit="formSubmit">
+        <view style="background: #fff;padding: 0 40rpx;">
+            <view class="flex name">
+                <view class="name-l">姓名:</view>
+                <view class="name-r">
+                    <input name="name" value="{{name}}"></input>
+                </view>
+            </view>
+
+            <view class="flex name">
+                <view class="name-age-l flex">
+                    <view class="name-age-l-l">年龄:</view>
+                    <view class="name-age-l-r">
+                        <input name="age" value="{{age}}" type="number"></input>
+                    </view>
+                </view>
+                <view class="name-age-r">
+                <radio-group name="sex" class="radio-group" bindchange="radioChange">
+                        <label class="radio" wx:for="{{items}}" wx:key="uniquer">
+                            <radio value="{{item.value}}" color="#02c6dc"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+
+            <view class="flex name">
+                <view class="name-phone-l">联系电话:</view>
+                <view class="name-phone-r">
+                    <input name="mobile" value="{{mobile}}" type="number"></input>
+                </view>
+            </view>
+<!-- 
+            <view class="flex name">
+                <view class="name-phone-l">疾病:</view>
+                <view class="name-phone-r">
+                    <input name="title" value="{{title}}"></input>
+                </view>
+            </view> -->
+
+            <view class="flex name">
+                <view class="name-l">疾病:</view>
+                <view class="name-r">
+                    <input name="title" style="background:#f4f4f4;padding: 0 20rpx;box-sizing:border-box;" value="{{title}}"></input>
+                </view>
+            </view>
+
+            <view class="title">
+                <view>问题描述:</view>
+                <textarea name="remarks" placeholder-style="color:#8896b1;"  value="{{remarks}}" maxlength="-1" placeholder="请输入病情介绍"></textarea>
+            </view>
+        </view>
+        <view style="color:#FF7777;font-size:30rpx;padding:40rpx 40rpx 10rpx 40rpx;">*请慎重预约当面咨询，付费后概不退款！</view>
+        
+        <button class="btn" formType="submit">确认预约 ￥{{money}}</button>
+    </form>
+</view>

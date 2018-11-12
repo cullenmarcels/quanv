@@ -1,0 +1,58 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <view class="top">
+        <view class="income">总收入（元）</view>
+        <view class="money1">{{totalmoney.totalmoney}}
+            <!-- <text style="font-size:32rpx;">剩余可提现: {{credit2}} (元)</text> -->
+        </view>
+    </view>
+    <view class="flex bankCard">
+        <view>
+            <image class="bankCard-img" src="../../../static/images/demo/bankCard.png"></image>
+            <text class="bankCard-text" >我的银行卡</text>
+        </view>
+        <!-- <view bindtap="bankCard">
+            <text class="bankCard-text" style="color:#FF7877;font-size:28rpx; ">去提现</text>
+            <image class="bankCard-img" style="width:30rpx;height:30rpx;" src="../../../static/images/demo/gl2.png"></image>
+        </view> -->
+        <view bindtap="bankCard">
+            <text class="bankCard-text" style="color:#8896B1;font-size:28rpx; ">查看明细</text>
+            <image class="bankCard-img" style="width:30rpx;height:30rpx;" src="../../../static/images/demo/gl.png"></image>
+        </view>
+    </view>
+
+    <!-- <view class="flex bankCard" style="margin-top:20rpx;border-bottom:2rpx solid #eee;">
+        <view class="time">提现记录</view>
+        <view bindtap="totalmoney">
+            <text class="bankCard-text" style="color:#8896B1;font-size:28rpx; ">详细</text>
+            <image class="bankCard-img" style="width:30rpx;height:30rpx;" src="../../../static/images/demo/gl.png"></image>
+        </view>
+    </view> -->
+
+    <view class="flex bankCard" style="margin-top:20rpx;border-bottom:2rpx solid #eee;">
+        <view class="time">{{date}}</view>
+        <view bindtap="moneyList">
+            <text class="bankCard-text" style="color:#8896B1;font-size:28rpx; ">历史</text>
+            <image class="bankCard-img" style="width:30rpx;height:30rpx;" src="../../../static/images/demo/gl.png"></image>
+        </view>
+    </view>
+
+    <block wx:for="{{list}}" wx:key="uniquer">
+        <view class="flex bankCard">
+            <view>
+                <image wx:if="{{item.goodstype ==1}}" class="bankCard-img" src="../../../static/images/demo/consult2-l.png"></image>
+                <image wx:if="{{item.goodstype ==2}}" class="bankCard-img" src="../../../static/images/demo/viewScreen-L.png"></image>
+                <image wx:if="{{item.goodstype ==3}}" class="bankCard-img" src="../../../static/images/demo/essay2.png"></image>
+                <image wx:if="{{item.goodstype ==4}}" class="bankCard-img" src="../../../static/images/demo/chair2.png"></image>
+                <image wx:if="{{item.goodstype ==5}}" class="bankCard-img" src="../../../static/images/demo/time-l.png"></image>
+                <image wx:if="{{item.goodstype ==6}}" class="bankCard-img" src="../../../static/images/demo/mind.png"></image>
+                <text class="bankCard-text" >{{item.optionname}}</text>
+            </view>
+            <view>
+                <text class="bankCard-text" style="color:#8896B1;font-size:32rpx;">￥{{item.totalprice}}</text>
+            </view>
+        </view>
+    
+    </block>
+</view>

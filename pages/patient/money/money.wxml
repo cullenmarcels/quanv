@@ -1,0 +1,44 @@
+<!-- 有   患者端 我的钱包-->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="top">
+        <view class="income">总支出（元）</view>
+        <view class="money1">{{totalmoney.totalmoney}}</view>
+    </view>
+    <!-- <view class="flex bankCard">
+        <view>
+            <image class="bankCard-img" src="../../../static/images/demo/bankCard.png"></image>
+            <text class="bankCard-text" >我的银行卡</text>
+        </view>
+        <view bindtap="bankCard">
+            <text class="bankCard-text" style="color:#FF7877;font-size:28rpx; ">去查看</text>
+            <image class="bankCard-img" style="width:30rpx;height:30rpx;" src="../../../static/images/demo/gl2.png"></image>
+        </view>
+    </view> -->
+    <!-- <view class="flex bankCard" style="margin-top:20rpx;border-bottom:2rpx solid #eee;">
+        <view class="time">账单</view>
+        <view bindtap="moneyList">
+            <text class="bankCard-text" style="color:#8896B1;font-size:28rpx; ">历史</text>
+            <image class="bankCard-img" style="width:30rpx;height:30rpx;" src="../../../static/images/demo/gl.png"></image>
+        </view>
+    </view> -->
+
+    <block wx:for="{{list}}" wx:key="uniquer">
+        <view class="flex bankCard">
+            <view>
+                <image wx:if="{{item.goodstype ==1}}" class="bankCard-img" src="../../../static/images/demo/consult-l.png"></image>
+                <image wx:if="{{item.goodstype ==2}}" class="bankCard-img" src="../../../static/images/demo/viewScreen-L.png"></image>
+                <image wx:if="{{item.goodstype ==3}}" class="bankCard-img" src="../../../static/images/demo/browse-l.png"></image>
+                <image wx:if="{{item.goodstype ==4}}" class="bankCard-img" src="../../../static/images/demo/chair2.png"></image>
+                <image wx:if="{{item.goodstype ==5}}" class="bankCard-img" src="../../../static/images/demo/time-l.png"></image>
+                <text class="bankCard-text" >{{item.optionname}}</text>
+            </view>
+            <view>
+                <text class="bankCard-text" style="color:#8896B1;font-size:32rpx;">-￥{{item.totalprice}}</text>
+            </view>
+        </view>
+    
+    </block>
+</view>

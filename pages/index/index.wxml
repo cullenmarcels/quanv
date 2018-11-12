@@ -1,0 +1,239 @@
+<!-- 有 -->
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{accredit}}" class="accredit">
+  <view class="accredit-view">
+    <view style="font-size: 36rpx;font-weight:600;margin: 40rpx 0;text-align: center;">微信授权</view>
+    <view class="flex" style="padding: 0 40rpx;">
+      <view style="font-size:20rpx;color:#8896b1;margin-right:20rpx;line-height:50rpx;">●</view>
+      <view style="font-size:32rpx;color:#8896b1;">
+        <view style="line-height:50rpx;">获取你的公开信息</view>
+        <view style="line-height:50rpx;">（昵称、头像）</view>
+      </view>
+    </view>
+    <button open-type="getUserInfo" withCredentials='true' lang='zh_CN' bindgetuserinfo='bindgetuserinfo' class="accredit-btn">请先授权</button>
+  </view>
+</view>
+
+<view wx:if="{{show && !accredit}}">
+<!-- 医生端 -->
+  <view wx:if="{{role == 1}}">
+    <view class="banner">
+      <view class="search" bindtap="patient">
+        关键词搜索
+        <icon type="search" size="20"></icon>
+      </view>
+      <swiper autoplay interval="5000" duration="1000" indicator-dots="{{banner.length>1?true:false}}" circular indicator-active-color="#122d64" indicator-color="#8896b1" style="{{advsheight ? 'height:' + advsheight + 'px' : ''}}">
+        <block wx:for="{{banner}}" wx:key="uniquer">
+          <swiper-item>
+            <image style="width:100%;" mode="widthFix" src="{{item.thumb}}" bindload="imagesHeight" data-type="advsheight" bindtap='bannerShow' data-id="{{item.id}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="Responder" bindtap="lightning">
+      <image src="../../static/images/demo/lightning.png"></image>
+      <text>极速抢答</text>
+      <image src="../../static/images/demo/gl2.png"></image>
+    </view>
+    <view class="flex ul">
+      <view class="li">
+        <view class="img" bindtap="consult">
+          <text wx:if="{{dain1}}">●</text>
+          <image class="img-t" src="../../static/images/demo/consult-w.png"></image>
+        </view>
+        <view class="text">图文咨询</view>
+      </view>
+      <view class="li" bindtap="order">
+        <view class="img">
+          <text wx:if="{{dain2}}">●</text>
+          <image class="img-img" src="../../static/images/demo/time.png"></image>
+        </view>
+        <view class="text">当面咨询</view>
+      </view>
+      <view class="li" bindtap="doctor">
+        <view class="img" style="background:#8896b1;">
+          <image class="img-img" src="../../static/images/demo/phone-w.png"></image>
+        </view>
+        <view class="text" style="color:#8896b1;">电话咨询</view>
+      </view>
+      <view class="li" bindtap="doctor">
+        <view class="img" style="background:#8896b1;">
+          <image class="img-t" src="../../static/images/demo/v.png"></image>
+        </view>
+        <view class="text" style="color:#8896b1;">我的V答</view>
+      </view>
+      <view class="li" bindtap="doctor">
+        <view class="img" style="background:#8896b1;">
+          <image class="img-img" src="../../static/images/demo/doctor.png"></image>
+        </view>
+        <view class="text" style="color:#8896b1;">医生集团</view>
+      </view>
+      <view class="li" bindtap="chair">
+        <view class="img">
+          <image class="img-img" src="../../static/images/demo/chair.png"></image>
+        </view>
+        <view class="text">线下讲座</view>
+      </view>
+      <view class="li" bindtap="myViewScreen">
+        <view class="img">
+          <image class="img-img" src="../../static/images/demo/video.png"></image>
+        </view>
+        <view class="text">我的视频</view>
+      </view>
+      <view class="li" bindtap="myEssay">
+        <view class="img">
+          <image class="img-img" src="../../static/images/demo/essay.png"></image>
+        </view>
+        <view class="text">我的文章</view>
+      </view>
+    </view>
+    <view class="advertising">
+      <view class="advertising-img">
+        <swiper autoplay circular interval="5000" indicator-dots="{{doctors[1].data.length>1?true:false}}" duration="1000" indicator-active-color="#122d64" indicator-color="#8896b1" style="{{advs ? 'height:' + advs + 'px' : ''}}">
+          <block wx:for="{{doctors[1].data}}" wx:key="uniquer">
+            <swiper-item>
+              <image src="{{item.thumb}}" style="width:100%;" mode="widthFix" bindload="Height" data-type="advs" bindtap='bannerShow' data-id="{{item.id}}" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 患者端 -->
+  <view wx:if="{{role == 0}}">
+    <view class="banner">
+      <swiper autoplay interval="5000" duration="1000" circular indicator-active-color="#122d64" indicator-dots="{{banner.length>1?true:false}}" indicator-color="#8896b1" style="{{advsheight ? 'height:' + advsheight + 'px' : ''}}">
+        <block wx:for="{{banner}}" wx:key="uniquer">
+          <swiper-item>
+            <image style="width:100%;" mode="widthFix" src="{{item.thumb}}" bindload="imagesHeight" data-type="advsheight" catchtap='bannerShow' data-id="{{item.id}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="view">
+      <view class="flex role-ul" bindtap="patient">
+        <view class="flex-l">
+          <view class="flex-img">
+            <image style="width: 100%;height: 100%;" src="../../static/images/demo/seek.png"></image>
+          </view>
+        </view>
+        <view class="flex-c">
+          <view class="flex-c-n">找医生</view>
+          <view>图文咨询、当面咨询、电话咨询</view>
+        </view>
+        <view class="flex-r">
+          <image class="gl" style="margin: 40rpx auto;" src="../../static/images/demo/gl.png"></image>
+        </view>
+      </view>
+      <view class="flex role-ul" style="border:0;">
+        <view class="flex-l">
+          <view class="flex-img">
+            <image style="width: 100%;height: 100%;" src="../../static/images/demo/topspeed.png"></image>
+          </view>
+        </view>
+        <view class="flex-c">
+          <view class="flex-c-n">极速咨询</view>
+          <view>描述症状，全V医生快速解答</view>
+        </view>
+        <view class="flex-r">
+          <image class="gl" style="margin: 40rpx auto;" src="../../static/images/demo/gl.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="view" style="padding: 30rpx 0;margin-top:20rpx;">
+      <view class="flex recommend">
+        <view class="recommend-title">名医推荐</view>
+        <view bindtap="patient">
+          <text class="more">更多</text>
+          <image class="gl" src="../../static/images/demo/gl2.png"></image>
+        </view>
+      </view>
+      <view class="flex recommend-ul">
+        <block wx:for="{{patients.doctors.doctors}}" wx:key="uniquer">
+          <view class="recommend-li" bindtap="doctorhome" data-openid="{{item.openid}}">
+            <view class="head">
+              <image style="width:100%;height:100%;border-radius: 50%;" src="{{item.avatar}}"></image>
+            </view>
+            <view class="doctor-name">{{item.realname?item.realname:item.nickname}}</view>
+            <view class="doctor-c">{{item.depar_name?item.depar_name:item.par_name}}-{{item.job}}</view>
+            <view class="doctor-c">{{item.hospital}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="view" style="padding: 30rpx 0;margin-top:20rpx;" wx:if="{{patients.lectures.lectures.length>0}}">
+      <view class="flex recommend">
+        <view class="recommend-title">全V健康讲座</view>
+        <view bindtap="chairList">
+          <text class="more">更多</text>
+          <image class="gl" src="../../static/images/demo/gl2.png"></image>
+        </view>
+      </view>
+      <view class="advertising" style="background:#fff;padding:30rpx 30rpx 0; ">
+        <view class="advertising-img">
+          <swiper autoplay indicator-active-color="#8896B1" indicator-dots circular interval="5000" duration="1000">
+            <block wx:for="{{patients.lectures.lectures}}" wx:key="uniquer">
+              <swiper-item bindtap="look" data-id="{{item.id}}">
+                <image style="width:100%;height:100%;" mode="aspectFill" src="{{item.cover_url}}"></image>
+                <view class="swiper">{{item.lecture_title}}</view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+    </view>
+    <view class="view" style="padding: 30rpx 0;margin-top:20rpx;">
+      <view class="flex recommend">
+        <view class="recommend-title">精品视频</view>
+        <view bindtap="boutiqueVideo">
+          <text class="more">更多</text>
+          <image class="gl" src="../../static/images/demo/gl2.png"></image>
+        </view>
+      </view>
+      <view style="width:100%;height:320rpx;padding:40rpx 30rpx 20rpx;box-sizing: border-box;">
+        <swiper autoplay interval="5000" duration="1000" circular display-multiple-items="3">
+          <block wx:for="{{patients.videos.videos}}" wx:key="uniquer">
+            <swiper-item style="width:30%;">
+              <view class="video-li" bindtap="videoShow" data-id="{{item.id}}">
+                <view class="video">
+                  <image mode="aspectFill" style="width:100%;height:100%;" src="{{item.videoinfo.snapshotByTimeOffsetInfo.snapshotByTimeOffsetList[0].picInfoList[0].url}}"></image>
+                  <view class="money" wx:if="{{item.money!=0}}">￥{{item.money}}</view>
+                </view>
+                <view class="video-text">{{item.videoname}}</view>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+    <view class="view" style="padding: 30rpx 0;margin-top:20rpx;">
+      <view class="flex recommend">
+        <view class="recommend-title">精品文章</view>
+        <view bindtap="Articles">
+          <text class="more">更多</text>
+          <image class="gl" src="../../static/images/demo/gl2.png"></image>
+        </view>
+      </view>
+      <view style="padding: 20rpx 0;">
+        <block wx:for="{{patients.articles.articles}}" wx:key="uniquer">
+          <view class="flex essay" bindtap="essayShow" data-id="{{item.id}}">
+            <view class="essay-l">
+              <view class="essay-img">
+                <image mode="aspectFill" style="width:100%;height:100%;" src="{{item.cover_url}}"></image>
+                <view class="money" wx:if="{{item.money!=0}}">￥{{item.money}}</view>
+              </view>
+            </view>
+            <view class="essay-r">
+              <view class="essay-title">{{item.article_title}}</view>
+              <view class="essay-name">{{item.realname?item.realname:item.nickname}}</view>
+              <view class="essay-num">阅读 {{item.click_nums}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  
+  </view>
+</view>

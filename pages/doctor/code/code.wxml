@@ -1,0 +1,5 @@
+<loading hidden="{{show}}"></loading>
+
+<view class="view" wx:if="{{show}}">
+    <image src="{{file_url}}" mode="widthFix" bindtap="img" data-img="{{file_url}}"></image>
+</view>

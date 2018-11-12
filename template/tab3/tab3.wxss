@@ -1,0 +1,13 @@
+/* template/tab3/tab3.wxss */
+.tabUl .tabLi {
+  float: left;
+  width: 33%;
+  padding: 35rpx 0;
+  font-size: 32rpx;
+  color: #8896b1;
+  text-align: center
+}
+.tabUl .active {
+  color: #02c6dc;
+  border-bottom: 1rpx solid #02c6dc
+}

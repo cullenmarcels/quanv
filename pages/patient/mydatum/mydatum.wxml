@@ -1,0 +1,42 @@
+
+<!-- 有  我的病情资料库列表 -->
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view>
+        <block wx:for="{{list}}" wx:key="uniquer">
+            <view class="li">
+                <view class="flex li-top">
+                    <view>
+                        <text class="name">{{item.name}}</text>
+                        <text class="age">{{item.sex ==0?'女':'男'}}</text>
+                        <text class="age">{{item.age}}岁</text>
+                    </view>
+                    <view class="phone">{{item.mobile}}</view>
+                </view>
+                <view class="intro">
+                    <view class="title">{{item.title}}</view>
+                    <view class="flex" style="align-items: center;">
+                        <view class="content"> {{item.content}}</view>   
+                        <view style="flex:1;" bindtap="li" data-li="{{item}}" data-style="{{options.isdoctor?'1':style?'-1':0}}">
+                            <image style="width: 30rpx;height:30rpx;" src="../../../static/images/demo/gl.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="flex li-b" wx:if="{{!options.isdoctor}}">
+                    <view class="save" wx:if="{{style}}" bindtap="tolead" data-li="{{item}}">导入</view>
+                    <view class="save" bindtap="li" wx:if="{{!style}}" data-li="{{item}}">编辑</view>
+                    <view class="delete" bindtap="close" data-id="{{item.id}}">删除</view>
+                </view>
+            </view>
+        </block>
+        <view class="reminder" wx:if="{{list.length == 0 && display}}">暂无记录</view>
+
+    </view>
+
+    <button class="button" bindtap="add" wx:if="{{!options.isdoctor}}">
+        <icon type="cancel" size="25" color="#ffffff"></icon>
+        添加病情资料
+    </button>
+</view>
+

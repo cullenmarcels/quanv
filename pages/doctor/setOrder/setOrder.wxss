@@ -1,0 +1,97 @@
+.top-title{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    border-bottom: 2rpx solid #d8d8d8;
+}
+
+.top{
+    height: 120rpx;
+    background: #02c6dc;
+    color: #fff; 
+    padding: 0 40rpx;
+}
+
+.form{
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+    vertical-align: middle;
+}
+
+.top text{
+    line-height: 120rpx;
+    font-size: 34rpx;
+}
+
+.title{
+    background: #fff;
+    text-align: center;
+    font-size: 34rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.title-data{
+    flex: 2;
+    padding: 30rpx 0;
+}
+
+.title-data view{
+    line-height: 50rpx;
+}
+
+.title-time{
+    flex: 2;
+    border-left: 2rpx solid #eee;
+    border-right: 2rpx solid #eee;
+    padding: 30rpx 0;
+    line-height:50rpx;
+}
+.title-num{
+    flex: 1;
+    border-right: 2rpx solid #eee;
+    padding: 30rpx 0;
+    line-height:50rpx;
+}
+.title-money{
+    flex: 1;
+    padding: 30rpx 0;
+    line-height:50rpx;
+}
+
+.height{
+     line-height: 100rpx;
+}
+
+
+.title-add{
+    flex:4;
+    border-right: 2rpx solid #eee;
+    padding: 30rpx 0;
+   
+}
+
+.li{
+    margin-bottom: 20rpx;
+    
+}
+
+.append{
+    width: 100%;
+    background: #02c6dc;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 36rpx; 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.none{
+    color: #8896b1;
+    font-size: 40rpx;
+    text-align: center;
+    margin: 100rpx;
+}

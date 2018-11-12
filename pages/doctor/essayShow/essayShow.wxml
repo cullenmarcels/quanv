@@ -1,0 +1,52 @@
+<!-- 有 医生端的文章审核详情 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <view style="padding-bottom:100rpx;">
+        <view style="background: #fff;" wx:if="{{essay.status==1}}">
+            <view style="padding:30rpx 40rpx;color:#ff7777;font-size:36rpx;font-weight:600;">审核反馈</view>
+            <view style="padding:0 40rpx 20rpx; font-size:32rpx;color:#ff7777;line-height:45rpx;">{{essay.checked}}</view>
+        </view>
+        <view class="img">
+            <image style="width:100%;height:400rpx;" mode="aspectFill" src="{{essay.cover_url}}"></image>
+        </view>
+        <view class="state">状态：{{essay.status==0?"待审核":essay.status==2?'已通过':'未通过'}}</view>
+        <view class="concent">
+            <view class="concent-title">{{essay.article_title}}</view>
+            <view class="item">文章简介:</view>
+            <view class="itemShow">{{essay.article_introduction}}</view>
+             <view class="item">收费价格:</view>
+            <view class="itemShow" style="color: #FF7877;">{{essay.article_money>0?'￥ '+essay.article_money:'免费'}}</view>
+            <view class="item">搜索标签:</view>
+            <view class="itemShow">{{essay.tag?essay.tag:'无'}}</view>
+            <view class="time">提交时间： {{essay.createtime}} {{essay.time}}</view>
+            <view class="item">文章内容:</view>
+            <view style="padding: 20rpx 0;">
+                <rich-text nodes="{{essay.article_content}}"></rich-text>
+                 <!-- <block wx:for="{{article_content}}" wx:key="uniquer">
+                    <view class="essey-text" wx:if="{{item.state=='text'}}">{{item.text}}</view>
+
+                    <view class="lookImg" wx:if="{{item.state == 'img'}}">
+                        <view wx:if="{{item.click == '1'}}" bindtap="imgShow" data-imgShowIndex="{{index}}">
+                            <image style="width:30rpx;height:30rpx;vertical-align: middle;margin-right: 10rpx;" src="../../../static/images/demo/lookImg.png"></image>
+                            <text> {{click}}</text>
+                            <text style="font-size:26rpx;color:#FF7777;">（此图片可能引起不适）</text>
+                        </view>
+                        <image class="essey-img"  mode="widthFix" hidden='{{item.tactful == 1}}'  src="{{item.img}}"></image>
+
+                    </view>
+                </block>  -->
+            </view>
+           
+        </view>
+
+        <!-- <view class="infuse">注：提交申请后请等待审核，若审核不通过可再进行修改；审核通过后才可以发布，如有疑问请联系客服。</view> -->
+        <!-- <button wx:if="{{essay.status == 2}}" bindtap="submit">修改/确认发布</button>
+        <button class="a" wx:if="{{essay.status == 0}}">审核中...</button>
+        <button wx:if="{{essay.status == 1}}" bindtap="amend">修改</button> -->
+        <button class="btnn" bindtap="submit">确认发布</button>
+    </view>
+
+</view>

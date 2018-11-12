@@ -1,0 +1,62 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}" style="padding-bottom:50rpx;">
+    <view class="explain">
+        <text style="color:#FF7877;">1.上传视频</text> -
+        <text>2.提交视频</text> -
+        <text>3.等待审核</text> -
+        <text>4.修改/发表</text>
+    </view>
+
+    <view style="background: #fff;padding-top:20rpx;border-bottom:2rpx solid #d8d8d8;padding-bottom: 40rpx;">
+
+        <view class="video" wx:if="{{video}}">
+            <icon class="close" style="right:0;top:-60rpx;" wx:if="{{video}}"  type="cancel" size="30" color="#FF7877" bindtap="closeVideo"></icon>
+            <video src="{{video.url}}" objectFit="cover"   controls show-fullscreen-btn="true" style="width: 100%;" poster='{{video.coverUrl}}'></video> 
+        </view>
+
+         <view class="img-form" wx:if="{{!video}}">
+            <view class="dashed" bindtap="video">
+                <image style="width:100rpx;height:100rpx;" src="../../../static/images/demo/uploadAVideo.png"></image>
+            </view>
+            <vlew style="font-size: 32rpx;color:#8896B1;margin: 0 auto;">点击上传视频</vlew>
+        </view>
+    </view>
+    
+
+    <form bindsubmit="formSubmit">
+    <view class="title">
+        <view class="title-t">视频名称:</view>
+        <input name="videoname" class="input" placeholder="请填写视频名称" maxlength="20" placeholder-style='color: #8896b1;' value="{{videoname}}"></input>
+    </view>
+    <view class="title">
+        <view class="title-t">视频简介:</view>
+        <textarea name="content"  placeholder-style='color: #8896b1;' placeholder="请简要描述视频内容" maxlength="-1" auto-height value="{{content}}" ></textarea> 
+    </view>
+
+    <view class="title">
+        <view class="title-t">视频标签:</view>
+        <textarea name="tag"  placeholder-style='color: #8896b1;line-height: 50rpx;font-size:32rpx;' placeholder="标签有助于更准确的搜索到您的视频，点此添加标签（每个标签 之间请用逗号“，”隔开）" style="margin-bottom:0;" maxlength="-1" auto-height value="{{tag}}" ></textarea> 
+
+    </view>
+
+    <view class="flex charge">
+        <view>
+            <image class="explain-img" src="../../../static/images/demo/explain.png"></image>
+            <text style="line-height: 60rpx;">是否选择收费:</text>
+            <text class="select {{!charge?'charge-bc':''}}" bindtap="charge" data-chargeState="no">否</text>
+            <text class="select {{charge?'charge-bc':''}}" bindtap="charge" data-chargeState="yes">是</text>
+        </view>
+        <view class="flex" wx:if="{{charge}}">
+            <view style="line-height: 60rpx;color: #41C7D6;font-size:36rpx;">￥</view>
+            <input name="money" value="{{money}}" class="input-money" maxlength="5" type="number" style="color:#FF7777;"></input>
+        </view>
+    </view>
+
+    
+
+    <view class="infuse">注：提交视频后请等待审核，若审核不通过可再进行修改；审核通过后才可以发布，如有疑问请联系客服。</view>
+    <button formType="submit" wx:if="{{!id}}">提交</button>
+    <button formType="submit" wx:if="{{id}}">确定修改</button>
+    </form>
+</view>

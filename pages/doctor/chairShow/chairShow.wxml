@@ -1,0 +1,49 @@
+<!-- <view>
+    <view class="img">
+        <image mode="widthFix" style="width:100%;" src="{{concent.cover_url}}"></image>
+    </view>
+    <view class="concent">
+        <view class="title">{{concent.lecture_title}}</view>
+        <view class="intro">{{concent.lecture_introduction}}</view>
+
+        <view class="title" style="font-size: 34rpx;">主讲医生：</view>
+        <view class="flex doctor">
+            <view class="doctor-l">
+                <view class="doctor-l-img">
+                    <image style="width:100%;height:100%;border-radius: 50%;" src="{{concent.doctor.avatar}}"></image>
+                </view>
+            </view>
+            <view class="doctor-r">
+                <view>
+                    <text class="doctor-name">{{concent.doctor.realname?concent.doctor.realname:concent.doctor.nickname}}</text>
+                    <text class="doctor-post">{{concent.doctor.job}}</text>
+                </view>
+                <view>
+                    <text class="doctor-hospital">{{concent.doctor.hospital}}</text>
+                    <text class="doctor-office">{{concent.doctor.departname.name}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="title" style="font-size: 34rpx;">讲座时间：</view>
+        <view class="time">
+            <text>{{concent.data}}</text>
+            <text style="margin: 0 40rpx;">{{week}}</text>
+            <text>{{concent.time}} - {{concent.timeEnd}}</text>
+        </view>
+        <view class="title" style="font-size: 34rpx;">讲座地点：</view>
+         <view class="add">{{concent.lecture_address}}</view>
+        <view class="flex">
+            <view class="parameter1">
+                <text class="parameter-l">预报名人数:</text>
+                <text class="parameter-r">{{concent.lecture_nums}}</text>
+            </view>
+            <view class="parameter2">
+                <text class="parameter-l">预报费用:</text>
+                <text class="parameter-r">{{concent.lecture_cost}} (每人)</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="infuse">注：如有疑问或修改，请联系客服。</view> 
+</view> -->

@@ -1,0 +1,70 @@
+.author {
+  position: relative;
+  padding: 45rpx 40rpx;
+  color: #fff;
+  background-color: #02c6dc;
+}
+.author-l {
+  position: relative;
+  width: 110rpx;
+  height: 110rpx;
+}
+.author-l> image{
+  width: 110rpx;
+  height: 110rpx;
+}
+.author-l .author-level {
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  bottom: 0;
+  right: 0;
+}
+.author-r {
+  position: relative;
+  margin-left: 40rpx
+}
+.follow{
+  position: absolute;
+  width: 100rpx;
+  height: 50rpx;
+  top: 85rpx;
+  right: 40rpx;
+} 
+/* 列表 */
+.dynamic {
+  margin-top: 20rpx;
+  padding: 0 40rpx;
+}
+.dynamicTit image {
+  width: 170rpx;
+  height: 60rpx;
+  padding-top: 18rpx
+}
+.dynamicList {
+  padding-bottom: 40rpx;
+}
+.dynamicListT {
+  padding: 36rpx 0 40rpx 0;
+  border-top: 1px solid #d8d8d8
+}
+.dynamicListT image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.dynamicListCont {
+  padding: 0 0 10rpx 80rpx;
+  color: #596c92;
+}
+.dynamicImg {
+  margin-top: 30rpx;
+}
+.dynamicImg image{
+  float: left;
+  width: 190rpx;
+  height: 190rpx;
+  margin-bottom: 10rpx;
+}
+.dynamicImg image:nth-child(3n-1) {
+  margin: 0 10rpx;
+}

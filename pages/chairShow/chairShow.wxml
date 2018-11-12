@@ -1,0 +1,87 @@
+
+<!-- 有   患者端讲座预约详情 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="img">
+        <image mode="widthFix" style="width:100%;" src="{{concent.cover_url}}"></image>
+    </view>
+    <view class="concent">
+        <view class="concent-li" style="margin: 0;">
+            <view class="title">{{concent.lecture_title}}</view>
+            <view class="intro">{{concent.lecture_introduction}}</view>
+        </view>
+        <view class="concent-li">
+            <view class="title" style="font-size: 34rpx;border-left: 10rpx solid #02c6dc;padding-left: 20rpx;">主讲医生：</view>
+            <view class="flex doctor" >
+                <view wx:if="{{Openid != concent.openid}}">
+                    <view class="attention" wx:if="{{concent.isfollow == 0}}" bindtap="attention">关注</view>
+                
+                    <view class="attention" style="background:#fff;border:0;" wx:if="{{concent.isfollow == 1}}">
+                        <image bindtap="attention" style="width:50rpx;height:50rpx;" src="../../static/images/demo/attention-true.png"></image> 
+                    </view>
+                </view>
+                 
+                <view class="doctor-l">
+                    <view class="doctor-l-img" bindtap="doctor" data-openid="{{concent.doctor.openid}}">
+                        <image style="width:100%;height:100%;border-radius: 50%;" src="{{concent.doctor.avatar}}"></image>
+                        <view class="v" wx:if="{{concent.doctor.level!='V0'}}">
+                            <image wx:if="{{concent.doctor.level=='V1'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V1.png"></image>
+                            <image wx:if="{{concent.doctor.level=='V2'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V2.png"></image>
+                            <image wx:if="{{concent.doctor.level=='V3'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V3.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="doctor-r">
+                    <view>
+                        <text class="doctor-name">{{concent.doctor.realname?concent.doctor.realname:concent.doctor.nickname}}</text>
+                        <text class="doctor-post">{{concent.doctor.job}}</text>
+                    </view>
+                    <view>
+                        <text class="doctor-office" style="margin-right:20rpx;">{{concent.doctor.departname?concent.doctor.departname:concent.doctor.parentname}}</text>
+                        <text class="doctor-hospital">{{concent.doctor.hospital}}</text>
+                       
+                    </view>
+                </view>
+            </view>
+      
+
+            <view class="title" style="font-size: 34rpx;border-left: 10rpx solid #02c6dc;padding-left: 20rpx;margin:30rpx 0;">时间、地址：</view>
+            <view class="time">
+                <text>时间: {{concent.data}}</text>
+                <text style="margin: 0 20rpx;">{{week}}</text>
+                <text>{{concent.time}} - {{concent.timeEnd}}</text>
+            </view>
+
+            <view class="time">地址: {{concent.lecture_address}}</view>
+        
+     
+            <view class="title" style="font-size: 34rpx;border-left: 10rpx solid #02c6dc;padding-left: 20rpx;margin:30rpx 0;">报名费用：</view>
+            <view class="add">{{concent.lecture_cost}}元</view>
+            </view>
+
+            <view class="concent-li">
+               <view class="remark-title">备注:</view>
+               <view class="remark-c">{{concent.remark?concent.remark:'无'}}</view>
+            </view>
+
+            <view class="concent-li">
+                <view class="flex" >
+                    <view class="parameter1">
+                        <text class="parameter-l">预报名:</text>
+                        <text class="parameter-r" style="color:#02c6dc;">{{concent.lecture_nums}}</text>
+                    </view>
+                    <view class="parameter1">
+                        <text class="parameter-l">已报名:</text>
+                        <text class="parameter-r" style="color: #FF7777;">{{concent.peoplenum}}</text>
+                    </view>
+                </view>
+            </view>
+    </view>
+    <view class="apply"  wx:if="{{concent.paystatus==1 && concent.isend==1}}" style="background:#fff;color:#02c6dc;">待参加</view>
+    <!-- <view class="infuse"></view>  -->
+    
+    <view class="apply" wx:if="{{concent.paystatus==0 && concent.isend==1 &&Openid != concent.openid}}" bindtap="pay">报名参加</view>
+    <view class="apply" wx:if="{{concent.isend==0}}">已结束</view>
+</view>

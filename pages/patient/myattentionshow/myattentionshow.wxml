@@ -1,0 +1,29 @@
+<import src="/utils/wxParse/wxParse.wxml" />
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="goods-advs" style="width:{{advWidth}}px;height:{{advWidth}}px;">
+      <swiper autoplay circular class="index-adcs-sqiper" duration="500" indicatorDots interval="5000" style="width:{{advWidth}}px;height:{{advWidth}}px;">
+        <block  wx:for="{{goods.thumbs}}" wx:for-index="idx" wx:key="uniquer">
+          <swiper-item>
+            <image src="{{item}}" class="goodsadvimg"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <view style="background:#fff;padding: 40rpx 20rpx;">
+        <view style="font-size:34rpx;line-height:45rpx;">{{goods.title}}</view>
+        <view style="color: red;margin: 20rpx 0;">￥{{goods.presellprice}}</view>
+    </view>
+
+    <view class="wxParse">
+        <!-- 富文本解析 -->
+        <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}" />
+    </view>
+    <view class="nav">
+        <view style="flex:2;" bindtap="click" data-i="收藏">收藏</view>
+        <view style="flex:4;background:#f60;color:#fff;" bindtap="click" data-i="加入购物车">加入购物车</view>
+        <view style="flex:4;background:red;color: #fff;" bindtap="click" data-i="购买">立即购买</view>
+    </view>
+</view>

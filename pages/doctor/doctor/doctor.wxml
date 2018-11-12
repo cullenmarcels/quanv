@@ -1,0 +1,4 @@
+<view>
+    <import src="/template/nav/nav.wxml"/>
+    <template is="navColor4" data="{{...item}}"/> 
+</view>

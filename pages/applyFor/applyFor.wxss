@@ -1,0 +1,84 @@
+
+.flow{
+    background: #fff;
+    padding: 30rpx 40rpx;
+    margin-top: 30rpx;
+}
+
+.flow-c{
+    font-size: 44rpx;
+    font-weight: 600;
+    color: #02c6dc;
+    margin-bottom: 50rpx;
+}
+
+.flow-li{
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50rpx;
+}
+
+.flow-l{
+    flex: 1;
+}
+
+.flow-r{
+    flex: 7;
+    font-size: 34rpx;
+    font-weight: 600;
+}
+
+.nums{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background: #02c6dc;
+    color: #fff;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 38rpx;
+    font-weight: 600;
+   
+}
+
+.step{
+    font-size: 32rpx;
+    color: #122d64;
+    margin-top: 60rpx;
+    padding: 0 70rpx;
+    position: relative;
+}
+
+.shu{
+    width: 0;
+    height: 190rpx;
+    border-left: 2rpx solid #02c6dc;
+    position: absolute;
+    top: 25rpx;
+    left: 78rpx;
+}
+
+.step view{
+    line-height: 80rpx;
+}
+
+.flow-hint{
+    font-size: 28rpx;
+    color: #FF7777;
+    padding: 20rpx 40rpx;  
+}
+
+.flow-btn{
+    width: 50%;
+    background: #02c6dc;
+    color: #fff;
+    font-size: 34rpx;
+    margin: 50rpx auto 0;
+}
+
+.hint2{
+    margin: 30rpx auto;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    text-align: center;
+}

@@ -1,0 +1,64 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <import src="/template/nav/nav.wxml"/>
+    <template is="nav" data="{{...item}}"/> 
+
+    <scroll-view scroll-y style="height:100%;padding-top:120rpx;">
+        <view wx:if="{{item.index == 0}}" style="background:#fff;margin-top:20rpx;">
+            <block wx:for="{{list}}" wx:key="uniquer" > 
+                <view>
+                    <view class="flex list">
+                        <view class="list-l">
+                            <view class="list-l-img">
+                                <image style="width:100%;height:100%;border-radius:50%;" src="{{item.avatar}}"></image>
+                            </view>
+                        </view>
+                        <view class="list-c" bindtap="show" data-openid="{{item.openid}}" data-consult_logid="{{item.consult_logid}}">
+                            <view class="flex list-c-top">
+                                <view>
+                                    <text class="name">{{item.name}}</text>
+                                    <text class="sex">{{item.sex==0?'女':'男'}}</text>
+                                    <text class="age">{{item.age}}</text>
+                                </view>
+                                <view class="time">{{item.createtime}}</view>
+                            </view>
+                            <view class="flex list-c-top">
+                                <view class="headline">{{item.title}}</view>
+                                <image class="gl" src="../../../static/images/demo/gl.png"></image>
+                            </view>
+                            
+                        </view>
+                    </view>
+                </view>
+            </block> 
+        </view>
+        <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无记录</view>
+
+        <view wx:if="{{item.index == 1}}" style="margin-top:20rpx;">
+            <block wx:for="{{list}}" wx:key="uniquer" > 
+                <view style="background: #fff;">
+                    <view class="flex list">
+                        <view class="list-l">
+                            <view class="list-l-img">
+                                <image style="width:100%;height:100%;border-radius:50%;" src="{{item.avatar}}"></image>
+                            </view>
+                        </view>
+                        <view class="list-c"  bindtap="show" data-openid="{{item.openid}}" data-consult_logid="{{item.consult_logid}}">
+                            <view>
+                                <text class="name">{{item.name}}</text>
+                                <text class="sex">{{item.sex==0?'女':'男'}}</text>
+                                <text class="age">{{item.age}}</text>
+                            </view>
+                            <view class="headline">{{item.title}}</view>
+                            <view class="headline-time">完成时间 | {{item.confirmDate}} | {{item.confirmTime}}</view>
+                        </view>
+                        <view class="list-rr" bindtap="show">
+                            <image class="gl2" src="../../../static/images/demo/gl.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</view>

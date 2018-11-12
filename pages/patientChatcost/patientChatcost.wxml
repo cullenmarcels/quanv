@@ -1,0 +1,23 @@
+
+<!-- 有     图文咨询选择 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="view">
+        <view class="title">咨询选择:</view>
+        <view class="concent">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <label class="radio" style="{{index==0?'border-bottom:2rpx solid #d8d8d8;':''}}" wx:for="{{items}}" wx:key="uniquer">
+                    <radio value="{{index}}" color="#02c6dc" style="zoom:80%;vertical-align: middle;"/>
+                    <text class="money1">{{item.value}}￥</text>
+                    <text class="explain">({{item.explain}})</text>
+                </label>
+            </radio-group>
+        </view>
+    </view>
+
+
+    <button bindtap="issue">确认</button>
+</view>
+

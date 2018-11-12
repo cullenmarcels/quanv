@@ -1,0 +1,41 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+  <view class='top'>
+    <image src='{{groupIco}}' />
+    <view>{{groupName}}</view>
+  </view>
+  <view class='cont white marginB20'>
+    <navigator hover-class='none' url='/pages/doctorGroup/editGroup/editGroup?did={{did}}&&gid={{gid}}&&ismanager={{ismanager}}' class='cont_p clearfix'>
+      <text class='fl'>编辑资料</text>
+      <text class='fr'>></text>
+    </navigator>
+    <navigator hover-class='none' url='/pages/doctorGroup/editGroupMsg/editGroupMsg?did={{did}}&&gid={{gid}}&&ismanager={{ismanager}}' class='cont_p clearfix'>
+      <text class='fl'>通知</text>
+      <text class='fr'>></text>
+    </navigator>
+  </view>
+  <view class='cont white marginB20'>
+    <navigator wx:if='{{ismanager==1}}' hover-class='none' url='/pages/doctorGroup/managerControl/managerControl?did={{did}}&&gid={{gid}}' class='cont_p clearfix'>
+      <text class='fl'>管理员</text>
+      <text class='fr'>></text>
+    </navigator>
+    <navigator hover-class='none' url='/pages/doctorGroup/addGroupMember/addGroupMember?did={{did}}&&gid={{gid}}&&ismanager={{ismanager}}' class='cont_p clearfix'>
+      <text class='fl'>添加成员</text>
+      <text class='fr'>></text>
+    </navigator>
+    <navigator hover-class='none' url='/pages/doctorGroup/memberControl/memberControl?did={{did}}&&gid={{gid}}' class='cont_p clearfix'>
+      <text class='fl'>成员管理</text>
+      <text class='fr'>></text>
+    </navigator>
+  </view>
+  <view class='cont white marginB20'>
+    <navigator wx:if='{{ismanager==1}}' hover-class='none' url='/pages/doctorGroup/moveGroupControl/moveGroupControl?gid={{gid}}&&did={{did}}' class='cont_p clearfix'>
+      <text class='fl'>转让集团</text>
+      <text class='fr'>></text>
+    </navigator>
+    <navigator wx:if='{{ismanager==1}}' hover-class='none' url='/pages/doctorGroup/dissolution/dissolution?gid={{gid}}&did={{did}}' class='cont_p clearfix'>
+      <text class='fl'>解散集团</text>
+      <text class='fr'>></text>
+    </navigator>
+  </view>
+</view>

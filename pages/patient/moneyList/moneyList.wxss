@@ -1,0 +1,20 @@
+.top{
+    background: #fff;
+    padding: 30rpx 40rpx;
+    font-size: 38rpx;
+    color: #122d64;
+}
+.bill{
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+    vertical-align: middle;
+   
+}
+.ul{
+    justify-content: space-between;
+    padding: 30rpx 40rpx;
+    align-items: center;
+    border-bottom: 2rpx solid #d8d8d8;
+    font-size: 32rpx;
+}

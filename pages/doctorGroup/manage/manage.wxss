@@ -1,0 +1,22 @@
+.marginB20{
+  margin-bottom: 20rpx;
+}
+.top{
+  padding: 70rpx 0;
+  text-align: center;
+}
+.top image{
+  width: 170rpx;
+  height: 170rpx;
+  margin-bottom: 45rpx;
+  border-radius: 50%;
+}
+.cont_p{
+  padding: 35rpx 40rpx;
+  font-size: 32rpx;
+  color: #122d64
+}
+.cont_p{
+  border-bottom: 1rpx solid #d8d8d8;
+}
+

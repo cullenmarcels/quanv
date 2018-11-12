@@ -1,0 +1,45 @@
+<!-- 有  上传生份证 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <view class="card" style="height:{{frontImgs.length>0?'auto':''}};">
+        <view class="dashed">
+            <view class="click" wx:if="{{frontImgs.length == 0}}" >
+                <view class="pus" data-type="image" catchtap="upload">
+                    <view class="plus" data-type="image" catchtap="upload"></view>
+                </view>
+                <view style="font-size:36rpx;">点击上传身份证正面</view>
+            </view>
+
+            <icon class="close" wx:if="{{frontImgs.length>0}}"  type="cancel" size="30" color="#FF7877" data-type="image-remove" data-index="{{index}}" catchtap="upload"></icon>
+
+            <image data-index="{{index}}" wx:if="{{frontImgs.length>0}}" style="width:100%;height:100%;" mode="aspectFill" src="{{frontImgs[0]}}" data-type="image-preview" catchtap="upload"></image>
+        </view>
+        
+        <view class="dashed"> 
+            <view class="click" wx:if="{{againstImgs.length==0}}">
+                <view class="pus" data-type="image" catchtap="againstupload">
+                    <view class="plus" data-type="image" catchtap="againstupload"></view>
+                </view>
+                <view style="font-size:36rpx;">点击上传身份证反面</view>
+            </view>
+
+            <icon class="close" wx:if="{{againstImgs.length>0}}"  type="cancel" size="30" color="#FF7877" data-type="image-remove" data-index="{{againstImgsIndex}}" catchtap="againstupload"></icon>
+
+
+            <image data-index="{{againstImgsIndex}}" wx:if="{{againstImgs.length>0}}" style="width:100%;height:100%;" mode="aspectFill" src="{{againstImgs[0]}}" data-type="image-preview" catchtap="againstupload"></image>
+        </view>
+    </view>
+
+    <view class="explain">
+        <image class="explain-img" src="../../../static/images/demo/explain.png"></image>
+        <text>请将身份证及手机摆横拍摄</text>
+    </view>
+    <view class="explain1">
+        请确保您的身份证在有效期内
+    </view>
+    
+    <button bindtap="submit">确定</button>
+</view>

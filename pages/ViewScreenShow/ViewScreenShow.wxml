@@ -1,0 +1,162 @@
+<!-- 患者端视频播放详情 -->
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show && !accredit}}">
+    <view>
+        <view>
+            <view class="view">
+                <video id="myVideo" custom-cache="{{false}}" src="{{video2.url}}" objectFit="cover"   controls show-fullscreen-btn="true" style="width: 100%;" poster='{{video2.coverUrl}}' show-center-play-btn="{{play}}"></video> 
+                <cover-view class="controls" wx:if="{{video.money!=0 && video.paystatus == 0 && openid != video.openid_wa}}">￥ {{video.money}} 购买观看</cover-view>
+                <cover-image bindtap="bindplay" wx:if="{{!play2}}" class="coverimg" src="../../static/images/demo/play.png" />
+            </view>
+
+             <view class="doctor">
+                <view class="doctorintro">医生介绍</view>
+                <view class="flex" wx:if="{{essay.money != 0}}">
+                    <view class="doctor-l">
+                        <view class="doctor-img" bindtap="doctor" data-openid="{{video.openid}}">
+                            <image style="width:100%;height:100%;border-radius:50%;" src="{{video.avatar}}"></image>
+                            <view class="vv" wx:if="{{video.level !='V0'}}">
+                                <image wx:if="{{video.level=='V1'}}" style="width:100%;height:100%;" src="../../static/images/demo/V1.png"></image>
+                                <image wx:if="{{video.level=='V2'}}" style="width:100%;height:100%;" src="../../static/images/demo/V2.png"></image>
+                                <image wx:if="{{video.level=='V3'}}" style="width:100%;height:100%;" src="../../static/images/demo/V3.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="doctor-r">
+
+                        <view class="flex" style="justify-content: space-between;align-items: flex-end;">
+                            <view>
+                                <text class="name">{{video.realname?video.realname:video.nickname}}</text> 
+                                <text class="post">{{video.job}}</text>
+                            </view>
+                            <view wx:if="{{video.openid_wa!=openid}}">
+                                <view class="return" wx:if="{{video.isfollow == 0}}" bindtap="attention">关注</view>
+                                <view class="return" style="background: #fff;" wx:if="{{video.isfollow == 1}}" bindtap="attention">
+                                    <image style="width:50rpx;height:50rpx;" src="../../static/images/demo/attention-true.png"></image>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="doctor-r-b">
+                            <text class="hospital">{{video.hospital}}</text>
+                            <text class="office">{{video.department}}</text>
+                        </view>
+                        <view class="flex consult">
+                            <view bindtap="char" data-gzh_openid="{{video.openid}}" data-default_consult="{{video.default_consult}}" data-highgrade_consult="{{video.highgrade_consult}}" data-doctorid='{{video.doctorid}}'>图文咨询</view>
+                            <view bindtap="setOrder" data-doc_openid="{{video.openid}}">当面咨询</view>
+                            <view>电话咨询</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            
+            <view class="concent" style="margin-top: 0;">
+                 <view class="concent-title" style="margin-bottom:20rpx;">{{video.videoname}}</view>
+
+                 <view class="itemShow intro" >{{video.content}}</view>
+
+                 <view class="flex show">
+                    <view>
+                        <text>发布 {{video.sendtime}}</text>
+                        <text style="margin: 0 10rpx;">|</text>
+                        <text>播放 {{video.playcount}}</text>
+                    </view>
+                    <view bindtap="give">
+                        <text style="vertical-align: middle;margin-right:10rpx;">打赏</text>
+                        <image style="width: 50rpx;height:50rpx;vertical-align: middle;" src="../../static/images/demo/give-a-reward.png"></image>
+                    </view>
+                </view>
+                <view id="ico" class="flex handle">
+                    <view bindtap="click">
+                        <image class="img"   src="{{video.islike==0?'../../static/images/demo/like2.png':'../../static/images/demo/like2-l.png'}}"></image>
+                        <text style="{{video.islike!=0?'color:#02c6dc;':''}}">{{video.like_total>9999?'9999+':video.like_total}}</text>
+                    </view>
+                    <view bindtap="collect">
+                        <image class="img"  src="{{video.iscollection==0?'../../static/images/demo/collect.png':'../../static/images/demo/collect-l.png'}}"></image>
+                        <text style="{{video.iscollection!=0?'color:#02c6dc;':''}}">{{video.collection_total>9999?'9999+':video.collection_total}}</text>
+                    </view>
+                    <view bindtap="inputShow" data-ico="ico"  data-commenttype="1">
+                        <image class="img" src="{{video.iscomments==0?'../../static/images/demo/comment2.png':'../../static/images/demo/comment2-l.png'}}"></image>
+                        <text style="{{video.iscomments!=0?'color:#02c6dc;':''}}">{{video.comments_total>9999?'9999+':video.comments_total}}</text>
+                    </view>
+                    <view>
+                        <button open-type="share" style="width:100%;height:100%;position: absolute;top:0;left:0; opacity: 0; z-index: 1;"></button>
+                        <image class="img" src="{{video.turn_nums>0?'../../static/images/demo/transmit-l.png':'../../static/images/demo/transmit.png'}}"></image>
+                        <text style="{{video.turn_nums>0?'color:#02c6dc;':''}}">{{video.turn_nums>9999?'9999+':video.turn_nums}}</text>
+                    </view>
+                </view>
+            </view>
+            
+            
+            <view class="concent" style="padding-bottom: 160rpx;">
+                <view class="flex redact-title">
+                    <view class="redact-title-l">评论
+                        <text>{{listlength}}条</text>
+                    </view>
+                    <view bindtap="inputShow" data-ico="ico"  data-commenttype="1">
+                        <image class="redact-img" src="../../static/images/demo/compile.png"></image>
+                    </view>
+                </view>
+                <block wx:for="{{list}}" wx:key="uniquer">
+                    <view class="flex redact">
+                        <view class="redact-l">
+                            <view class="redact-l-img">
+                                <image style="width:100%;height:100%;border-radius:50%;" src="{{item.avatar}}"></image>
+                            </view>
+                        </view>
+                        <view class="redact-r">
+                        <!-- 评论 -->
+                            <view>
+                                <view class="redact-name">{{item.realname?item.realname:item.nickname}}</view>
+                                <view class="redact-time">{{item.createtime}}</view>
+                            </view>
+                            <view class="redact-c">
+                                <view>{{item.content}}</view> 
+                                <view style="margin-top:20rpx;padding: 20rpx; background: #f4f4f4;border-radius:20rpx;" wx:if="{{item.parent.length>0}}">
+                                <!-- 评论的评论 -->
+                                    <block wx:for="{{item.parent}}" wx:for-index="sonIndex"  wx:for-item="sonItem" wx:key="uniquer">
+                                        <view class="redact-c-s" hidden="{{sonIndex>1 && !item.sonShow}}" data-sonitem="{{sonItem}}" catchtap="sonItem" >
+                                            <text>{{sonItem.realname?sonItem.realname:sonItem.nickname}}: </text>
+                                            <text style="margin-left:20rpx;">{{sonItem.content}}</text>
+                                        </view>
+
+                                            <!-- 评论的回复 -->
+                                            <block wx:for="{{sonItem.sons}}" wx:for-index="sonsindex"  wx:for-item="sonsItem" wx:key="uniquer">
+                                                <view class="redact-c-s" hidden="{{sonIndex>1 && !item.sonShow}}" style="margin-left:30rpx;" data-sonitem="{{sonItem}}" data-sonsitem="{{sonsItem}}"  catchtap="sonsItem" >
+                                                    <text>{{sonsItem.realname?sonsItem.realname:sonsItem.nickname}} <text style="font-size:28rpx;color:#8896b1;">回复</text> {{sonsItem.reply_name?sonsItem.reply_name:sonsItem.replyname?sonsItem.replyname:sonsItem.replynickname}}:</text>
+                                                    <text style="margin-left:20rpx;">{{sonsItem.content}}</text>
+                                                </view>
+                                                    
+                                            </block>
+                                    </block>
+                                    <view class="all" bindtap="all" data-index="{{index}}" wx:if="{{!item.sonShow && item.parent.length>2}}">查看全部</view>
+                                </view>  
+                            </view>
+
+                            <view class="flex praise">
+                                <view bindtap="comClick" data-pid="{{item.id}}" data-index="{{index}}">
+                                    <image class="praise-img" src="{{item.islike!=1?'../../static/images/demo/like2.png':'../../static/images/demo/like2-l.png'}}"></image> 
+                                    <text style="{{item.islike!=1?'':'color:#02c6dc;'}}">{{item.commentslike_total}}</text>
+                                </view>
+                                <view bindtap="sonpraise" data-item="{{item}}" data-commenttype="2">
+                                    <image class="praise-img" src="{{item.iscomments==0?'../../static/images/demo/comment2.png':'../../static/images/demo/comment2-l.png'}}"></image> 
+                                    <text style="{{item.iscomments==0?'':'color:#02c6dc;'}}">{{item.comments_total}}</text>
+                                </view>
+                            </view> 
+                        </view>
+                    </view>
+                </block>
+                <view class="reminder" style="margin: 50rpx auto;" wx:if="{{list.length == 0 && display}}">暂无评论</view>
+            </view>
+        </view>
+    </view>
+    <view class="flex comment">
+        <view class="comment-l">
+            <input class="comment-input" axlength="-1" focus='{{focus?true:false}}' placeholder="{{placeholder}}" bindinput="bindinput" value="{{value}}"></input>
+        </view>
+        <view  class="comment-r">
+            <view class="comment-publish" bindtap="publish">发表</view>
+        </view>
+    </view> 
+</view>
+
+

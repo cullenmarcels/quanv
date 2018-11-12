@@ -1,0 +1,41 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+  <!-- 转让须知 -->
+  <view class='moveWarning white'>
+    <view class='cont'>
+      <view class='font30' style='margin-bottom:20rpx;color:#ff7777'>转让须知:</view>
+      <view class='font26' style='line-height: 48rpx; color:#056c92; text-indent: 2em'>全V集团转让只能转给本集团管理员。未指定管理员的集团，必须先完成管理员指定。且集团转让后，操作无法撤销。</view>
+    </view>
+  </view>
+  <!-- 管理员列表 -->
+  <view class='listTit'>
+    <text class='font26'>管理员</text>\t
+    <text class='font22'>{{groupManager.length}}人</text>
+  </view>
+  <view wx:if='{{(groupManager != null)||(groupManager.length != 0)}}' wx:for='{{groupManager}}' wx:key='' class='memberList'>
+    <view class='listLi white clearfix'>
+      <view class='listLi-l fl'>
+        <image src='{{item.docinfo.avatar}}' />
+        <image wx:if="{{item.docinfo.level != 'V0'}}" class="listLi-level" src="../../../static/groupImages/{{item.docinfo.level}}.png" />
+      </view>
+      <view class='listLi-r fl'>
+        <view>
+          <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.docinfo.realname}}</text>
+          <text class='font28' style='color:#79829c'>{{item.docinfo.job}}</text>
+        </view>
+        <view class='font28' style='color:#122d64;margin-top:15rpx'>
+          <text>{{item.docinfo.hospital}}</text>\t
+          <text>{{item.docinfo.department}}</text>
+        </view>
+        <view>
+          <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+          <text class='font22' style='color:#122d64'>{{item.docinfo.province}}省{{item.docinfo.city}}市{{item.docinfo.area}}区</text>
+        </view>
+      </view>
+      <image class="listLi-moveTo" data-did='{{item.did}}' bindtap="giveTo" src="../../../static/groupImages/giveTo.png" />
+    </view>
+  </view>
+  <view wx:if='{{(groupManager == null)||(groupManager.length == 0)}}' class='listLi white'>
+  <text class='font28' style='color:#79829c'>暂无管理员，无法完成集团转让，请先添加管理员后再进行转让操作。</text>
+  </view>
+</view>

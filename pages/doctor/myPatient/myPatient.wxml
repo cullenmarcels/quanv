@@ -1,0 +1,90 @@
+
+    <!-- 有   患者端我的关注  医生端我的患者交流群-->
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{accredit}}" class="accredit1">未授权</view>
+
+
+<view wx:if="{{show && !accredit}}">
+    <view wx:if="{{role == 1}}">
+        <!-- <view>
+            <view class="search">
+                <view class="flex search-from">
+                    <icon type="search" size="20"></icon>
+                    <input placeholder="搜索"></input>
+                </view>
+            </view>
+        </view>
+        <view class="flex name">
+            <view>我的患者群</view>
+            <view style="color:#8896B1;">编辑</view>
+        </view>
+        <view style="background: #fff;">
+            <block wx:for="{{concent}}" wx:key="uniquer">
+                <view class="flex ul">
+                    <view class="flex-l">
+                        <view class="headPortrait"></view>
+                    </view>
+                    <view class="flex-r">
+                        <view class="flex name-time">
+                            <view>{{item.name}}
+                                <text style="color:#8896B1;">({{item.num}})</text>
+                            </view>
+                            <view style="color:#8896B1;font-size: 26rpx;line-height: 50rpx;">{{item.time}}</view>
+                        </view>
+                        <view class="li-con">{{item.con}}</view>
+                    </view>
+                </view>
+            </block>
+        </view> -->
+
+        <view style="color: #8896b1;font-size: 36rpx;text-align:center;margin: 100rpx auto;">近期更新</view>
+    </view>
+
+    <view wx:if="{{role == 0}}">
+        <loading hidden="{{show}}">正在加载</loading>
+        <view wx:if="{{show}}">
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="flex li" catchtap="doctor" data-openid="{{item.openid}}">
+                    <view class="flex-l">
+                        <view class="flex-l-img">
+                            <image style="width:100%;height:100%;border-radius: 50%;" src="{{item.avatar}}"></image>
+                            <view class="v" wx:if="{{item.level!='V0'}}">
+                                <image wx:if="{{item.level=='V1'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V1.png"></image>
+                                <image wx:if="{{item.level=='V2'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V2.png"></image>
+                                <image wx:if="{{item.level=='V3'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V3.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="flex-r">
+                        <view class="flex" style="align-items: center;">
+                            <view class="center-l">
+                                <view>
+                                    <text class="center-l-name">{{item.realname?item.realname:item.nickname}}</text>
+                                    <text class="center-l-job">{{item.job}}</text>
+                                </view>
+                                <view class="center-l-c">
+                                    <text style="margin-right:20rpx;">{{item.hospital}}</text>
+                                    <text>{{item.depar_name?item.depar_name:item.par_name}}</text>
+                                </view>
+                            </view>
+                            <view  class="center-r">
+                                <image style="width:40rpx;height:40rpx;" src="../../../static/images/demo/gl-L.png"></image>
+                            </view>
+                        </view>
+                        <view class="flex ul-li">
+                            <view class="li-li" catchtap="char" data-diaglogid="{{item.diaglogid}}" data-isoverdue="{{item.isoverdue}}" data-gzh_openid="{{item.gzh_openid}}" data-default_consult="{{item.default_consult}}" data-highgrade_consult="{{item.highgrade_consult}}" data-doctorid="{{item.doctorid}}">图文咨询</view>
+                            <view class="li-li" catchtap="setOrder" data-doc_openid="{{item.openid}}">当面咨询</view>
+                            <view class="li-li" catchtap="phone">电话咨询</view>
+                        </view>
+                        
+                    </view>
+                </view>
+            </block>
+            <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无记录</view>
+        </view>
+
+
+    </view>
+</view>
+

@@ -1,0 +1,205 @@
+<!-- 有  患者端医生主页-->
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show && !accredit}}">
+
+  <view class="top">
+    <view class="flex">
+      <view class="top-l">
+        <view class="top-l-img" bindtap="intro" data-openid="{{patient.openid}}">
+          <image style="width:100%;height:100%;border-radius: 50%;" src="{{patient.avatar}}"></image>
+          <view class="v" wx:if="{{patient.level!='V0'}}">
+            <image wx:if="{{patient.level=='V1'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V1.png"></image>
+            <image wx:if="{{patient.level=='V2'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V2.png"></image>
+            <image wx:if="{{patient.level=='V3'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V3.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="top-c" bindtap="intro" data-openid="{{patient.openid}}" style="padding-right:{{patient.openid == openid2?'0':''}};">
+        <view>
+          <text style="font-size:40rpx;font-weight:600;margin-right:30rpx;">{{patient.realname?patient.realname:patient.nickname}}</text>
+          <text>{{patient.job}}</text>
+          <image bindtap="intro" data-openid="{{patient.openid}}" style="width:35rpx;height:35rpx; vertical-align: middle;" src="../../../static/images/demo/gl-w.png"></image>
+        </view>
+        <view>
+          <view style="margin: 20rpx 0;">{{patient.department}}</view>
+          <view>{{patient.hospital}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="top-r" wx:if="{{patient.openid != openid2}}">
+      <view class="attention">
+        <image wx:if="{{patient.isfollow == 0}}" style="width:100%;height:100%;" src="../../../static/images/demo/attention.png" bindtap="attention"></image>
+        <image wx:if="{{patient.isfollow == 1}}" bindtap="attention" style="width:50rpx;height:50rpx;float: right;margin-right: 20rpx;" src="../../../static/images/demo/attention-true.png"></image>
+      </view>
+      <view class="give" bindtap="give">
+        <image style="width: 40rpx;height:40rpx; vertical-align: middle;margin-right:10rpx;" src="../../../static/images/demo/give-a-reward.png"></image>
+        <text>送心意</text>
+      </view>
+    </view>
+    <view class="flex quantity">
+      <view class="quantity-l">专业排名 {{patient.ranking>500?'500+':patient.ranking}}</view>
+      <view class="font-size:24rpx;">|</view>
+      <view class="quantity-c">粉丝数量 {{patient.followNum}}</view>
+      <view class="font-size:24rpx;">|</view>
+      <view class="quantity-r">24h回复率 {{patient.reply_rate}}%</view>
+    </view>
+  </view>
+  <view class="flex">
+    <view class="nav-li" bindtap="nav" data-id="0">
+      <view class="{{id == 0?'active':''}}">医生主页</view>
+    </view>
+    <view class="nav-li" bindtap="nav" data-id="1">
+      <view class="{{id == 1?'active':''}}">患者交流群</view>
+    </view>
+    <view class="nav-li" bindtap="nav" data-id="2">
+      <view class="{{id == 2?'active':''}}">患者评论</view>
+    </view>
+  </view>
+
+  <!-- 医生主页 -->
+  <view wx:if="{{id==0}}">
+    <view class="flex ul">
+      <view class="li" bindtap="char" data-gzh_openid="{{patient.gzh_openid}}" data-default_consult="{{patient.default_consult}}" data-highgrade_consult="{{patient.highgrade_consult}}" data-diaglogid="{{patient.diaglogid}}" data-doctorid="{{patient.doctorid}}"
+        data-isoverdue="{{patient.isoverdue}}" data-pat_gzhopenid="{{patient.pat_gzhopenid}}">
+        <view class="img">
+          <image class="img-t" src="../../../static/images/demo/image-text.png"></image>
+        </view>
+        <view class="text">图文咨询</view>
+      </view>
+      <view class="li" bindtap="setOrder" data-doc_openid="{{doc_openid}}">
+        <view class="img">
+          <image class="img-t" src="../../../static/images/demo/face-to-face.png"></image>
+        </view>
+        <view class="text">当面咨询</view>
+      </view>
+      <view class="li">
+        <view class="img">
+          <image class="img-t" src="../../../static/images/demo/phone1.png"></image>
+        </view>
+        <view class="text" style="color:#8896b1;">电话咨询</view>
+      </view>
+      <view class="li" bindtap="goDocGroup" data-doc_openid="{{doc_openid}}" data-user_openid="{{openid}}">
+        <view class="img">
+          <image class="img-t" src="../../../static/images/demo/group.png"></image>
+        </view>
+        <view class="text">医生集团</view>
+      </view>
+    </view>
+
+    <view class="V" wx:if="{{patient.lectures.length!=0}}">
+      <view class="flex column">
+        <view class="column-name">讲座通知</view>
+        <view class="more" bindtap="chairList">更多
+          <image class="gl" src="../../../static/images/demo/gl2.png"></image>
+        </view>
+      </view>
+
+      <view class="advertising-img">
+        <swiper autoplay circular indicator-dots indicator-active-color="#596c92" interval="5000" duration="1000">
+          <block wx:for="{{patient.lectures}}" wx:key="uniquer">
+            <swiper-item>
+              <image src="{{item.cover_url}}" style="width:100%;height:100%;" mode="aspectFill" />
+              <view class="swiper">{{item.lecture_title}}</view>
+              <view class="man">主讲人: {{item.lecture_author}}</view>
+              <view class="look" bindtap="look" data-id="{{item.id}}">去报名</view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+
+
+    <view class="V">
+      <view class="flex column">
+        <view class="column-name">科普视频</view>
+        <view class="more" bindtap="videoList" wx:if="{{patient.videos.length!=0}}">更多
+          <image class="gl" src="../../../static/images/demo/gl2.png"></image>
+        </view>
+      </view>
+
+      <block wx:for="{{patient.videos}}" wx:key="uniquer">
+        <view class="flex video" bindtap="videoShow" data-id="{{item.id}}">
+          <view class="video-l">
+            <view class="video-l-img">
+              <image mode="aspectFill" style="width:100%;height:100%;" src="{{item.videoinfo.snapshotByTimeOffsetInfo.snapshotByTimeOffsetList[0].picInfoList[0].url}}"></image>
+              <view class="money" wx:if="{{item.money!=0}}">￥{{item.money}}</view>
+            </view>
+          </view>
+          <view class="video-r">
+            <view class="video-r-c">{{item.videoname}}</view>
+            <view class="video-r-n">{{item.content}}</view>
+            <view class="browse-num">
+              <image class="browse" src="../../../static/images/demo/browse-l.png"></image>
+              {{item.playcount}}
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="reminder" wx:if="{{patient.videos.length==0}}" style="margin:100rpx auto;">该医生暂未发布视频</view>
+    </view>
+
+
+
+    <view class="V">
+      <view class="flex column">
+        <view class="column-name">科普文章</view>
+        <view class="more" bindtap="essayList" wx:if="{{patient.articles.length!=0}}">更多
+          <image class="gl" src="../../../static/images/demo/gl2.png"></image>
+        </view>
+      </view>
+
+      <block wx:for="{{patient.articles}}" wx:key="uniquer">
+        <view class="flex essay" bindtap="essayShow" data-id="{{item.id}}">
+          <view class="essay-l">
+            <view class="essay-img">
+              <image mode="aspectFill" style="width:100%;height:100%;" src="{{item.cover_url}}"></image>
+              <view class="money" wx:if="{{item.money!=0}}">￥{{item.money}}</view>
+            </view>
+          </view>
+          <view class="essay-r">
+            <view class="video-r-c">{{item.article_title}}</view>
+            <view class="browse-num" style="  color:#8896B1;margin-top: 10rpx;">阅读 {{item.click_nums}} </view>
+          </view>
+        </view>
+      </block>
+      <view class="reminder" wx:if="{{patient.articles.length==0}}" style="margin:100rpx auto;">该医生暂未发布文章</view>
+    </view>
+  </view>
+  <view wx:if="{{id==1}}" style="margin-top: 20rpx;">
+    <view style="font-size:40rpx;color: #8896b1;text-align:center;margin:100rpx auto;">近期更新</view>
+  </view>
+  <view wx:if="{{id==2}}" style="margin-top: 20rpx;">
+    <view class="evaluate">
+      <view class="flex evaluate-top">
+        <view class="evaluate-l">
+          全部评价
+          <text style="color:#8896b1;font-weight: 500;font-size:28rpx;">({{comListnav.total_nums}})</text>
+        </view>
+        <view class="evaluate-r">
+          <text bindtap="com" style="{{commentIndex==1?'color:#02c6dc;':''}}" data-type="1">好评 {{comListnav.good_praise}}</text>
+          <text style="margin:0 20rpx;{{commentIndex==2?'color:#02c6dc;':''}}" bindtap="com" data-type="2">中评 {{comListnav.medium_praise}}</text>
+          <text bindtap="com" style="{{commentIndex==3?'color:#02c6dc;':''}}" data-type="3">差评 {{comListnav.bad_praise}}</text>
+        </view>
+      </view>
+
+      <block wx:for="{{comList}}" wx:key="uniquer">
+        <view class="flex redact">
+          <view class="redact-l">
+            <view class="redact-l-img">
+              <image style="width:100%;height:100%;border-radius:50%;" src="{{item.avatar}}"></image>
+            </view>
+          </view>
+          <view class="redact-r">
+            <view>
+              <view class="redact-name">{{item.nickname}}</view>
+              <view class="redact-time">{{item.time}}</view>
+            </view>
+            <view class="redact-c">{{item.content}}</view>
+          </view>
+        </view>
+      </block>
+
+    </view>
+    <view class="reminder" style="margin-bottom:40rpx;" wx:if="{{comList.length == 0 && display}}">暂无评论</view>
+  </view>
+</view>

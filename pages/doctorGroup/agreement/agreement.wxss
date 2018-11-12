@@ -1,0 +1,20 @@
+.cont {
+  padding: 40rpx 0;
+}
+.notes{
+  padding: 40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  text-indent: 2em;
+  color: #596c92;
+  background-color: #fff;
+}
+.subBto {
+  width: 668rpx;
+  height: 88rpx;
+  margin-top: 70rpx;
+  color: #fff;
+  border: 1rpx solid #02c6dc;
+  border-radius: 10rpx;
+  background-color: #02c6dc
+}

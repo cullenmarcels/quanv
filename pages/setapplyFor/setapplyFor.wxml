@@ -1,0 +1,116 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+
+<view wx:if="{{show}}" style="padding-bottom: 40rpx;">
+
+    <view style="padding: 40rpx;color: #ff7777;" wx:if="{{reject}}">
+        <view style="font-size: 34rpx;">申请反馈：</view>
+        <view style="font-size: 30rpx; line-height:45rpx;margin-top:20rpx;">{{reject}}</view>
+    </view>
+    <form bindsubmit="formSubmit">
+     <view class="flex row" style="padding: 30rpx 40rpx;">
+        <view class="flex-l">头像</view>
+        <view class="flex-r" style="display:flex;">
+            <view class="head">
+                <image style="width:100%;height:100%;border-radius:50%;" src="{{avatar}}"></image>
+            </view>
+            <view style="margin-left:40rpx;flex:1;">
+                <view style="color:#8896b1;line-height:92rpx;font-size:30rpx;text-align:center;">建议上传正方形头像</view>
+                <button class="clickhead" catchtap="clickhead" data-type="image" >上传头像</button>
+            </view>
+        </view>
+    </view> 
+    <view class="flex row">
+        <view class="flex-l">姓名</view>
+        <view class="flex-r">
+            <input name="realname" value="{{realname}}" class="input" placeholder="请输入真实姓名，认证后不可更改"></input>
+        </view>
+    </view>
+    <view class="flex row" style="border-bottom:0;">
+        <view class="flex-l">电话</view>
+        <view class="flex-r">
+            <input name="mobile" value="{{mobile}}" type="number" class="input" placeholder="请填写有效联系电话"></input>
+        </view>
+    </view>
+    <view class="title">基本资料</view>
+    <view class="flex row">
+        <view class="flex-l">医院</view>
+        <view class="flex-r">
+            <input name="hospital" value="{{hospital}}" class="input" placeholder="请填写您当前任职的医院"></input>
+        </view>
+    </view>
+    <view class="flex row">
+        <view class="flex-l">科室</view>
+        <view class="flex-r">
+            <picker name="departid" bindchange="bindPickerChange" value="{{array[index2].id}}" range="{{array}}" range-key="name">
+                <view class="picker" style="text-align:right;">
+                <text style="color:{{array[index2].name=='请选择您所在的科室'?'#777;':''}}">{{array[index2].name}}</text>
+                <image class="gl" style="margin-left: 20rpx;" src="../../static/images/demo/gl.png"></image>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="flex row" style="border-bottom:0;">
+        <view class="flex-l">职称</view>
+        <view class="flex-r">
+            <input name="job" value="{{job}}" class="input" placeholder="请填写您当前的职称"></input>
+        </view>
+    </view>
+    <view class="title">认证资料</view>
+    <view class="flex uploading" bindtap="ID" style="{{ID?'border-bottom:0;':''}}">
+        <view>上传身份证</view>
+        <image class="gl" src="../../static/images/demo/gl.png" style="{{!ID?'':' transform: rotate(90deg);'}}"></image>
+    </view>
+    <view class="card" hidden="{{!ID}}">
+        <view class="card-view">
+            <image style="width:150rpx;height:150rpx;margin:20rpx auto;" src="../../static/images/demo/cover.png" data-type="image" catchtap="justupload" wx:if="{{justIDimgs.length==0}}"></image>
+            <view style="margin-bottom:40rpx;" wx:if="{{justIDimgs.length==0}}">上传身份证正面</view>
+            <image style="width:100%;height:300rpx;" wx:if="{{justIDimgs.length>0}}" mode="aspectFill" src="{{justIDimgs[0]}}" data-index="{{index}}" data-type="image-preview" catchtap="justupload"></image>
+            <icon wx:if="{{justIDimgs.length>0}}" type="cancel" data-index="{{index}}" data-type="image-remove" catchtap="justupload" color="#FF7777" size="30" class="icon"></icon>
+        </view>
+
+        <view class="card-view">
+            <image style="width:150rpx;height:150rpx;margin:20rpx auto;" src="../../static/images/demo/cover.png"  data-type="image" catchtap="backupload" wx:if="{{backIDimgs.length==0}}"></image>
+            <view style="margin-bottom:40rpx;" wx:if="{{backIDimgs.length==0}}">上传身份证反面</view>
+            <image style="width:100%;height:300rpx;" wx:if="{{backIDimgs.length>0}}" mode="aspectFill" src="{{backIDimgs[0]}}" data-index="{{index}}" data-type="image-preview" catchtap="backupload"></image>
+            <icon wx:if="{{backIDimgs.length>0}}" type="cancel" data-index="{{index}}" data-type="image-remove" catchtap="backupload" color="#FF7777" size="30" class="icon"></icon>
+        </view>
+    </view>
+
+
+
+    <view class="flex uploading" bindtap="certification" style="{{certification?'border-bottom:0;':''}}">
+        <view>上传医生资格证</view>
+        <image class="gl" src="../../static/images/demo/gl.png" style="{{!certification?'':'transform:rotate(90deg);'}}"></image>
+    </view>
+    <view class="card" hidden="{{!certification}}">
+        <view class="card-view">
+            <image style="width:150rpx;height:150rpx;margin:20rpx auto;" src="../../static/images/demo/cover.png" data-type="image" catchtap="certificationupload" wx:if="{{certificationimgs.length==0}}"></image>
+            <view style="margin-bottom:40rpx;" wx:if="{{certificationimgs.length==0}}">上传医生资格证</view>
+             <image style="width:100%;height:300rpx;" wx:if="{{certificationimgs.length>0}}" mode="aspectFill" src="{{certificationimgs[0]}}" data-index="{{index}}" data-type="image-preview" catchtap="certificationupload"></image>
+            <icon wx:if="{{certificationimgs.length>0}}" type="cancel" data-index="{{index}}" data-type="image-remove" catchtap="certificationupload" color="#FF7777" size="30" class="icon"></icon>
+
+        </view>
+    </view>
+
+
+
+
+    <view class="flex uploading" style="border-bottom:0;" bindtap="doctorCertificate">
+        <view>上传执业医生证</view>
+        <image class="gl" src="../../static/images/demo/gl.png" style="{{!doctorCertificate?'':' transform: rotate(90deg);'}}"></image>
+    </view>
+    <view class="card" hidden="{{!doctorCertificate}}">
+        <view class="card-view">
+             <image style="width:150rpx;height:150rpx;margin:20rpx auto;" src="../../static/images/demo/cover.png" data-type="image" catchtap="doctorCertificateupload" wx:if="{{doctorCertificateimgs.length==0}}"></image>
+            <view style="margin-bottom:40rpx;" wx:if="{{doctorCertificateimgs.length==0}}">上传执业医生证</view>
+
+            <image style="width:100%;height:300rpx;" wx:if="{{doctorCertificateimgs.length>0}}" mode="aspectFill" src="{{doctorCertificateimgs[0]}}" data-index="{{index}}" data-type="image-preview" catchtap="doctorCertificateupload"></image>
+            <icon wx:if="{{doctorCertificateimgs.length>0}}" type="cancel" data-index="{{index}}" data-type="image-remove" catchtap="doctorCertificateupload" color="#FF7777" size="30" class="icon"></icon>
+        </view>
+    </view>
+
+    <view class="infuse">注：我们会在三个工作日内对您提交的材料进行审核，通过审核后您将成为全V医生！</view>
+    <button wx:if="{{isaudit == 0 || isaudit == 3}}" class="p-btn" formType="submit">提交</button>
+    </form>
+</view>

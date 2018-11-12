@@ -1,0 +1,36 @@
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <import src="/template/nav/nav.wxml"/>
+    <template is="nav" data="{{...item}}"/> 
+
+    <scroll-view scroll-y style="height:100%;padding-top:120rpx;">
+        <view>
+            <view wx:if="{{list.length == 0 && display}}" class="reminder">暂无记录</view>
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view style="margin-top:20rpx;background:#fff;">
+                    <view class="flex time">
+                        <view class="time1">{{item.date}}</view>
+                        <view class="time2">{{item.week}}</view>
+                        <view class="time3">{{item.start_time}} ~ {{item.end_time}}</view>
+                        <view class="time4">￥{{item.price}}</view>
+                    </view>
+                    <view class="hospital">地址：{{item.address}}</view>
+                    <view class="hospital">备注：{{item.remark?item.remark:'无'}}</view>
+                    <view class="flex examine">
+                        <view class="examine-show" wx:if="{{item.people_nums!=0}}">预约情况：   
+                            <text style="color:#41C7D6;">{{item.consult_nums}}</text> /{{item.people_nums}}
+                        </view>
+                        <view class="examine-show"  wx:if="{{item.people_nums==0}}">预约情况：   
+                            <text style="color:#41C7D6;">已满</text> 
+                        </view>
+                        <view class="look" bindtap="look" data-id="{{item.id}}">
+                            <text>查看</text>
+                            <image class="gl" src="../../../static/images/demo/gl-L.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</view>

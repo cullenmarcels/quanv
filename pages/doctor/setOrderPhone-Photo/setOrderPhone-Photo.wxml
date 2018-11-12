@@ -1,0 +1,73 @@
+<!-- 有 咨询设置 -->
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+  <view wx:if="{{state == 0}}" style="padding-top: 30rpx;">
+    <form bindsubmit="formSubmit">
+      <view class="flex li">
+        <view class="li-l">
+          <image class="dian" src="../../../static/images/demo/dian2.png"></image>
+          <text>普通咨询</text>
+        </view>
+        <view class="flex">
+          <input name="default_consult" value="{{default_consult}}" maxlength="4" class="input"></input>
+          <view class="unit">￥</view>
+        </view>
+      </view>
+      <view class="explain">您最多可回复咨询者6条消息</view>
+
+      <view class="flex li">
+        <view class="li-l">
+          <image class="dian" src="../../../static/images/demo/dian2.png"></image>
+          <text>高级咨询</text>
+        </view>
+        <view class="flex">
+          <input name="highgrade_consult" value="{{highgrade_consult}}" maxlength="4" class="input"></input>
+          <view class="unit">￥</view>
+        </view>
+      </view>
+      <view class="explain">您在一周内可回复咨询者不限条</view>
+      <button class="button" formType="submit">确认</button>
+    </form>
+  </view>
+  <view wx:if="{{state == 2}}" style="margin-top: 50rpx;">
+    <view style="color: #8896b1;font-size: 34rpx;text-align:center;">近期更新</view>
+    <!-- <view class="flex li">
+            <view class="li-l">
+                <image class="dian" src="../../../static/images/demo/dian2.png"></image>
+                <text>普通电话咨询</text>
+            </view>
+            <view class="li-r flex" style="justify-content:space-between;">
+                <input type="number" maxlength="4" class="input"></input>
+                <view class="unit">分钟</view>
+                <input type="number" maxlength="4"  class="input"></input>
+                <view class="unit">￥</view>
+            </view>
+        </view>
+        <view class="flex li">
+            <view class="li-l">
+                <image class="dian" src="../../../static/images/demo/dian2.png"></image>
+                <text>中级电话咨询</text>
+            </view>
+            <view class="li-r flex" style="justify-content:space-between;">
+                <input type="number" maxlength="4" class="input"></input>
+                <view class="unit">分钟</view>
+                <input type="number" maxlength="4"  class="input"></input>
+                <view class="unit">￥</view>
+            </view>
+        </view>
+        <view class="flex li">
+            <view class="li-l">
+                <image class="dian" src="../../../static/images/demo/dian2.png"></image>
+                <text>高级电话咨询</text>
+            </view>
+            <view class="li-r flex" style="justify-content:space-between;">
+                <input type="number" maxlength="4" class="input"></input>
+                <view class="unit">分钟</view>
+                <input type="number" maxlength="4"  class="input"></input>
+                <view class="unit">￥</view>
+            </view>
+        </view>
+        <button class="button" bindtap="lightning">确认</button> -->
+  </view>
+</view>

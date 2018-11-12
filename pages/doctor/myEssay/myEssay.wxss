@@ -1,0 +1,82 @@
+@import "/template/nav/nav.wxss";
+
+
+.essay{
+    padding: 30rpx 0;
+    border-bottom: 2rpx solid #d8d8d8;
+}
+
+.essay-l{
+    flex: 1;
+}
+
+.essay-l-img{
+    width: 140rpx;
+    height: 140rpx;
+    /* background: #FF7877; */
+    position: relative;
+}
+
+.essay-r{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.browse{
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
+    margin-right: 20rpx;
+}
+
+.title{
+    font-size: 34rpx;
+    /* font-weight: 600; */
+    color: #122d64;
+    line-height: 50rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}
+
+.title1{
+    font-size: 28rpx;
+    /* font-weight: 600; */
+    color:#ff7777;
+    line-height: 50rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.time{
+    font-size: 28rpx;
+    justify-content: space-between;
+    color: #8896b1;
+}
+
+button{
+    background: #02c6dc;
+    color: #fff;
+    width: 100%;
+    border-radius: 0;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+}
+
+.gl{
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+    margin-left: 10rpx;
+}

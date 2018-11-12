@@ -1,0 +1,17 @@
+<!-- 解散须知 -->
+<view class='dissolutionWarning white'>
+  <view class='cont'>
+    <view class='font30' style='margin-bottom:20rpx;color:#ff7777'>解散须知:</view>
+    <view class='font26' style='line-height: 48rpx; color:#056c92; text-indent: 2em'>全V集团解散须由创建者拨打客服电话提出申请理由，经平台审核后在三个工作日内对集团进行解散处理。</view>
+  </view>
+</view>
+<form  bindsubmit="formSubmit" bindreset="formReset">
+  <view class='content'style='position:relative;background-color:#fff'>
+    <view class='font32' style='margin-top: 25rpx;'>申请理由</view>
+    <textarea name='reason' class='groupInfo back font28' placeholder='请填写解散理由...' maxlength="{{noteMaxLen}}" bindinput="bindWordLimit" ></textarea>
+    <text class='noteNotice font22'>还能输入{{currentNoteLen|0}}/{{noteMaxLen}}个字</text>
+  </view>
+   <view class="btn-area">
+  <button class='font36' style='width:90%;margin-top:70rpx;text-align:center;color:#fefefe;background-color:#02c6dc' formType="submit">{{submit}}</button>
+  </view>
+</form>

@@ -1,0 +1,75 @@
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="top">
+        <view class="top-title">
+            <text style="color:#FFB72C;font-size: 32rpx;">●</text>
+            <text style="color:#122d64;margin:0 20rpx;">{{bank?bank:'什么银行'}}</text>
+            <text style="color:#fff;">尾号{{card?card:'****'}}</text>
+        </view>
+        <view class="flex" style="padding: 40rpx 0;border-bottom: 2rpx solid #d8d8d8;">
+            <view class="top-l">
+                <view class="circle"></view>
+            </view>
+            <view class="top-r">
+                <view class="addup">累计到账</view>
+                <view class="nums">{{totalprice}}</view>
+            </view>
+        </view>
+        <view class="top-b">
+           <!-- <text>解除绑定</text> -->
+            <text bindtap="bound">{{bankcard?'解绑银行卡':'绑定银行卡'}}</text>
+            <image bindtap="bound" style="width:30rpx;height:30rpx; vertical-align: middle;" src="../../../static/images/demo/gl.png"></image>
+        </view>
+    </view>
+
+     <view wx:if="{{modeShow}}" class="mode" catchtouchmove="preventTouchMove">
+        <form bindsubmit="formSubmit">
+            <view class="mode-view">
+                <view>
+                    <view class="mode-title">持卡人</view>
+                    <view class="mode-input">
+                        <input name="username" value="{{username}}" placeholder="请输入持卡人姓名"></input>
+                    </view>
+                </view>
+                <view>
+                    <view class="mode-title">所属银行</view>
+                    <view class="mode-input">
+                        <input name="bankname" value="{{bankname}}" placeholder="请输入该卡所属银行名称"></input>
+                    </view>
+                </view>
+                <view>
+                    <view class="mode-title">卡号</view>
+                    <view class="mode-input">
+                        <input name="bankcard" value="{{bankcard}}" placeholder="请输入银行卡卡号"></input>
+                    </view>
+                </view>
+                <view class="mode-b">
+                    <view class="flex mode-b-row">
+                        <view>
+                             <button bindtap="cancel">取消</button>
+                        </view>
+                        <view >
+                            <button formType="submit" data-type="{{bankcard?'1':'0'}}">{{bankcard?'解绑':'确定'}}</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </form>
+    </view> 
+
+     <view class="bottom">
+        <view class="title">结算明细</view>
+        <view style="padding:0 30rpx; background: #fff;" >
+            <block wx:for="{{list}}" wx:key='uniquer'>
+                <view class="bottom-li">
+                    <view class="data">{{item.tradedate}}</view>
+                    <view class="bottom-c">结算金额： {{item.billprice}}</view>
+                    <view class="bottom-c">交易时间： {{item.tradetime}}</view>
+                </view>
+            </block>
+            
+        </view>
+        <view class="reminder" wx:if="{{list.length==0}}">暂无记录</view>
+    </view> 
+</view>

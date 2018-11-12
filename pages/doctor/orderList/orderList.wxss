@@ -1,0 +1,95 @@
+@import "/template/nav/nav.wxss";
+
+
+.list{
+    /* height: 180rpx; */
+    border-bottom: 2rpx solid #ddd;
+}
+
+.list-l{
+    flex: 1.3;
+}
+
+.list-l-img{
+    width: 120rpx;
+    height:120rpx;
+    /* background: #41C7D6 ; */
+    border-radius: 50%;
+    margin: 30rpx 0 30rpx 30rpx;
+}
+
+.list-c{
+    flex: 3.5;
+    padding: 40rpx 0;
+}
+
+.name{
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #122d64;
+}
+
+.age{
+    font-size: 32rpx;
+    color: #8896B1;
+}
+
+.sex{
+    margin: 0 20rpx;
+    font-size: 32rpx;
+    color: #8896B1;
+}
+
+.headline{
+    flex: 6;
+    font-size: 32rpx;
+    color: #8896B1;
+    margin-top: 10rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+
+.list-r{
+    flex: 1;
+    text-align: right;
+}
+.list-rr{
+    flex: 0.5;
+    text-align: right;
+}
+
+.list-c-top{
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.time{
+    font-size: 28rpx;
+    color:#8896B1;
+    line-height: 50rpx;
+    margin-right: 30rpx;
+}
+
+.gl{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 30rpx;
+}
+
+.gl2{
+    width: 30rpx;
+    height: 30rpx;
+    margin-top: 100rpx;
+    margin-right: 30rpx;
+}
+
+.headline-time{
+
+    font-size: 26rpx;
+    color: #8896B1;
+    margin-top: 20rpx;
+}

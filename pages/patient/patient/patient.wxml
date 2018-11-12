@@ -1,0 +1,90 @@
+
+<!-- 有   找医生 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+    <view class="search-top">
+        <view class="flex search">
+            <view class="search-l">
+                <view class="search-input flex">
+                    <input class="input" placeholder="关键词搜索" value="{{value}}" bindconfirm="bindconfirm" bindinput="bindinput"></input>
+                    <icon bindtap="search" type="search" size="20" color="#8896B1"></icon>
+                </view>
+            </view>
+            <view class="search-r" bindtap="all">
+                <text style="vertical-align: middle;">{{className}}</text>
+                <image class="gl" src="{{all?'../../../static/images/demo/down-L.png':'../../../static/images/demo/gl-L.png'}}"></image>
+            </view>
+        </view>
+    </view>
+    <scroll-view scroll-x style="white-space: nowrap;width:100%;background:#fff;border-bottom:2rpx solid #ddd; box-sizing: border-box;  position: fixed;top:120rpx;  z-index: 99;">
+        <block wx:for="{{scroll}}" wx:key="uniquer">
+            <view class="photo" bindtap="photoLi" data-name="{{item.name}}" data-id="{{item.id}}">
+                <view class="{{photoLiid == item.id?'active1':''}}" style="padding: 30rpx 0;">{{item.name}}</view>
+            </view>
+        </block>
+    </scroll-view>
+
+    <view class="mode" catchtouchmove="preventTouchMove" wx:if="{{all}}"></view>   
+        
+    <view wx:if="{{all}}" class="office-scroll">
+        <view class="office-scroll-top">
+            <view class="programa">热门搜索</view>
+            <view class="flex office-ul">
+                <block wx:for="{{hotkeyword}}" wx:key="uniquer">
+                    <view bindtap="illness" data-content="{{item.content}}">{{item.content}}</view>
+                </block>
+            </view>
+            <view class="programa" style="background:#f4f4f4;">科室搜索</view>
+        </view>
+        <view class="office-scroll-bottom">
+            <scroll-view scroll-y style="height:100%;flex:1;background:#f4f4f4">
+                <block wx:for="{{get_category}}" wx:key="uniquer">
+                    <view class="office" style="{{get_categoryId == item.id?'color:#02c6dc;background:#fff;':''}}" bindtap="li" data-item="{{item}}">{{item.name}}</view> 
+                </block>
+            </scroll-view>
+            <scroll-view scroll-y style="height:100%;flex:2.5;background:#fff;">
+                <block wx:for="{{son_get_category}}" wx:key="uniquer">
+                    <view class="office" style=" text-align: left;padding-left: 30rpx;"  bindtap="show" data-name="{{item.name}}" data-id="{{item.id}}">{{item.name}}</view> 
+                </block>
+            </scroll-view>
+        </view>
+    </view> 
+
+
+    <scroll-view scroll-y style="height:100%;padding-top:240rpx;">
+        <view>
+            <block wx:for="{{list}}" wx:key="uniquer">
+                <view class="flex doctor" bindtap="doctor" data-openid="{{item.openid}}" wx:if="{{openid2 != item.openid}}">
+                    <view class="doctor-l">
+                        <view class="doctor-l-img">
+                            <image style="width:100%;height:100%;border-radius: 50%;" src="{{item.avatar}}"></image>
+                            <view class="v" wx:if="{{item.level!='V0'}}">
+                                <!-- <image wx:if="{{patient.level=='V0'}}" style="width:36rpx;height:36rpx;margin-top:7rpx;" src="../../../static/images/new/v3.png"></image> -->
+                                <image wx:if="{{item.level=='V1'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V1.png"></image>
+                                <image wx:if="{{item.level=='V2'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V2.png"></image>
+                                <image wx:if="{{item.level=='V3'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V3.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="doctor-r">
+                        <view>
+                            <text style="font-size:36rpx;font-weight:600;color:#122d64;margin-right:30rpx;">{{item.realname?item.realname:item.nickname}}</text>
+                            <text>{{item.job}}</text>
+                        </view>
+                        <view style="margin: 10rpx 0 20rpx;">
+                            <text style="margin-right: 30rpx;">{{item.department}}</text>
+                            <text>{{item.hospital}}</text>
+                        </view>
+                        <!-- <view>擅长：
+                            {{item.field?item.field:'无'}}
+                    </view> -->
+                    </view>
+                </view>
+            </block>
+            <view class="reminder" wx:if="{{list.length == 0 && disply}}">暂无该类型医生</view>
+        </view>
+    </scroll-view> 
+</view>
+

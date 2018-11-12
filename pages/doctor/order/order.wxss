@@ -1,0 +1,57 @@
+@import "/template/nav/nav.wxss";
+
+.time{
+    justify-content: space-between;
+    font-size: 32rpx;
+    border-top: 2rpx solid #ddd;
+    border-bottom: 2rpx solid #ddd;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+.time1{
+    flex:3;
+    border-right: 2rpx solid #ddd;
+}
+.time2{
+    flex:1.5;
+}
+.time3{
+    flex:3;
+    border-right: 2rpx solid #ddd;
+    border-left: 2rpx solid #ddd;
+}
+.time4{
+    flex:1.5;
+}
+
+.hospital{
+    line-height: 60rpx;
+    font-size: 32rpx;
+    border-bottom: 2rpx solid #ddd;
+    padding: 20rpx 20rpx 20rpx 30rpx;
+}
+
+.examine{
+    height: 100rpx;
+    border-bottom: 2rpx solid #ddd;
+    justify-content: space-between;
+    padding-left: 30rpx;
+    padding-right: 20rpx;
+    font-size: 32rpx;
+}
+
+.examine-show{
+    line-height: 100rpx;
+}
+
+.look text{
+     line-height: 100rpx;
+     color:#41C7D6;
+}
+
+.gl{
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}

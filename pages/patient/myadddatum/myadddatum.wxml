@@ -1,0 +1,111 @@
+
+<!-- 有  编辑病情资料 -->
+
+
+<view style="padding-bottom:40rpx;">
+    <form bindsubmit="formSubmit">
+        <view class="view" style="padding-bottom:0;">
+            <view class="flex">
+                <view class="name-l title">姓名:</view>
+                <view class="name-r">
+                    <input name="name" value="{{name}}"></input>
+                </view>
+            </view>
+            <view class="flex" style="border-top: 2rpx solid #d8d8d8;border-bottom: 2rpx solid #d8d8d8;">
+                <view class="name-l flex">
+                    <view class="name-l title">年龄:</view>
+                    <view class="name-l-r">
+                        <input name="age" value="{{age}}"></input>
+                    </view>
+                </view>
+                <view class="name-l" style="text-align: center;">
+                    <radio-group name="sex" class="radio-group" bindchange="radioChange">
+                        <label class="radio" wx:for="{{items}}" wx:key="uniquer">
+                            <radio value="{{item.name}}" color="#02c6dc" checked="{{item.checked}}"/>{{item.value}}
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+            <view class="flex" style="padding:20rpx 0;">
+                <view class="name-l title">联系电话:</view>
+                <view class="name-r-r">
+                    <input name="mobile" value="{{mobile}}"></input>
+                </view>
+            </view>
+        </view>
+
+
+
+
+
+
+        <view class="view">
+            <view class="flex" style="padding-bottom:20rpx;">
+                <view class="name-l title">疾病:</view>
+                <view class="name-r">
+                    <input name="title" style="background:#f4f4f4;" value="{{title}}"></input>
+                </view>
+            </view>
+            <!-- <view class="flex" style="padding: 20rpx 0;border-top: 2rpx solid #d8d8d8;border-bottom: 2rpx solid #d8d8d8;">
+                <view class="name-l title">疾病:</view>
+                <view class="name-r">
+                    <picker name="diagtype" bindchange="bindPickerChange" value="{{array[index].id}}" range="{{array}}" range-key="diagname">
+                        <view class="picker">
+                            <text>{{array[index].diagname}}</text>
+                            <image src="../../../static/images/demo/down-L.png"></image>
+                        </view>
+                    </picker>
+                </view>
+            </view> -->
+
+            <!-- <view class="flex" style="padding:20rpx 0;">
+                <view class="name-l title">发病时间:</view>
+                <view style="flex:2.5;">
+                    <input name="diag_day" value="{{diag_day}}"></input>
+                </view>
+                <view style="flex:0.5;color: #02c6dc; text-align: center;font-size: 36rpx;line-height: 80rpx;">天</view>
+            </view> -->
+
+            <!-- <view class="flex" style="padding:20rpx 0;border-bottom: 2rpx solid #d8d8d8;border-top: 2rpx solid #d8d8d8;">
+                <view style="flex:2;font-size: 36rpx;line-height: 80rpx;color: #122d64;">是否看过医生:</view>
+                <view style="flex:2.5;">
+                    <radio-group name="diag_doctor" class="radio-group" bindchange="lookradio">
+                        <label class="radio" wx:for="{{look}}" wx:key="uniquer">
+                            <radio style="display: none;" value="{{item.state}}" color="#02c6dc" checked="{{item.checked}}"/>        <text class="{{item.checked?'radio2':'radio3'}}">{{item.text}}</text>
+                        </label>
+                    </radio-group>
+                </view>
+            </view> -->
+
+            <view style="padding: 20rpx 0;border-bottom: 2rpx solid #d8d8d8;">
+                <view class="describe">问题描述</view>
+                <textarea name="content" value="{{content}}" placeholder="请详细描述您的症状、疾病、身体状况。" placeholder-style="color:#8896b1;" maxlength="-1" auto-height></textarea>
+                <view class="picture">
+                    <block wx:for="{{imgs}}" wx:key="uniquer">
+                        <view class="uploading" style="padding:0;border: 2rpx solid #8896b1;" data-type="image" catchtap="upload">
+                            <image mode="aspectFill" src="{{item}}" data-index="{{index}}" data-type="image-preview" catchtap="upload"></image>
+                            <icon type="cancel" data-index="{{index}}" wx:if="{{!style}}" data-type="image-remove" catchtap="upload" color="#FF7777" size="30" class="icon"></icon>
+                        </view>
+                    </block>
+
+
+                    <view class="uploading" data-type="image" catchtap="upload" wx:if="{{imgs.length<9 && !style}}">  
+                        <image src="../../../static/images/demo/cover.png" data-type="image" catchtap="upload"></image>
+                    </view>
+
+                    
+                    <view class="uploading-explain" wx:if="{{imgs.length == 0}}">
+                        <view>上传明显症状相关的图片</view>
+                        <view>最多可选9张</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+
+
+        <view class="explain">温馨提示： 如多次出现身体不适，请尽快到医院就医</view>
+
+        <button class="button" formType="submit" wx:if="{{!style}}">确定</button>
+        </form>
+</view>

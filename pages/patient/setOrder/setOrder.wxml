@@ -1,0 +1,86 @@
+
+<!-- 有  患者端 预约当面咨询 -->
+
+
+
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}">
+    <view class="flex doctor">
+        <view class="doctor-l">
+            <view class="doctor-img">
+                <image style="width:100%;height:100%;border-radius:50%;" src="{{consent.avatar}}"></image>
+                <view class="v" wx:if="{{consent.level!='V0'}}">
+                    <!-- <image wx:if="{{patient.level=='V0'}}" style="width:36rpx;height:36rpx;margin-top:7rpx;" src="../../../static/images/new/v3.png"></image> -->
+                    <image wx:if="{{consent.level=='V1'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V1.png"></image>
+                    <image wx:if="{{consent.level=='V2'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V2.png"></image>
+                    <image wx:if="{{consent.level=='V3'}}" style="width:100%;height:100%;" src="../../../static/images/demo/V3.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="doctor-r">
+            <view class="flex" style="justify-content: space-between;align-items: flex-end;">
+                <view>
+                     <text class="name">{{consent.realname?consent.realname:consent.nickname}}</text> 
+                    <text class="post">{{consent.job}}</text>
+                </view>
+                <view class="return" bindtap="returnHome">返回首页</view>
+            </view>
+            <view class="doctor-r-b">
+                <text class="hospital">{{consent.hospital}}</text>
+                <text class="office">{{consent.department}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="top-title">
+        <view class="top">
+            <image class="form" src="../../../static/images/demo/form.png"></image>
+            <text>预约安排表</text>
+        </view>
+        <view class="flex title" style="color:#122d64;">
+            <view class="title-data">日期</view>
+            <view class="title-time">时间</view>
+            <view class="title-num">人数</view>
+            <view class="title-money">费用</view>
+        </view>
+    </view>
+
+    <view style="color:#596c92;">
+        <view class="none" wx:if="{{consent.consult.length == 0}}">暂无安排</view>
+        <block wx:for="{{consent.consult}}" wx:key="uniquer">
+            <view class="li">
+                <view class="flex title">
+                    <view class="title-data">
+                        <view>{{item.date}}</view>
+                        <view>{{item.week}}</view>
+                    </view>
+                    <view class="title-time">{{item.start_time}}~{{item.end_time}}</view>
+                    <view class="title-num">
+                        <text style="color:#41C7D6;">{{item.consult_nums}}</text>/{{item.people_nums}}
+                    </view>
+                    <view class="title-money ">{{item.price}}</view>
+                </view>
+                <view class="flex title">
+                    <view class="flex title-add">
+                        <view style="flex:1;line-height:40rpx;">地址:</view>
+                        <view style="flex:4;line-height:40rpx;text-align:left;">{{item.address}}</view>
+                    </view>
+                </view>
+                <view class="flex title">
+                    <view class="flex title-add">
+                        <view style="flex:1;line-height:40rpx;">备注:</view>
+                        <view style="flex:3;line-height:40rpx;text-align:left;">{{item.remark}}</view>
+                    </view>
+                    <!-- <view class="title-num" style="color:#FF7877;" bindtap="delete" data-id="{{item.id}}">删除</view> -->
+                    <view  class="title-money" wx:if="{{item.consult_nums < item.people_nums}}"  style="color:#41C7D6;">
+                        <view wx:if="{{item.isconsult==0}}" bindtap="alterOrder" data-money="{{item.price}}" data-id="{{item.id}}">预约</view>
+                        <view wx:if="{{item.isconsult!=0}}" bindtap="alterOrder2">已预约</view>
+                    </view>
+                    
+                    
+                    <view class="title-money" wx:if="{{item.consult_nums >= item.people_nums}}" style="color:#FF7777;">已满</view>
+                </view>
+            </view> 
+        </block>
+    </view>
+</view>

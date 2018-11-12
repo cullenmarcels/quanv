@@ -1,0 +1,9 @@
+<form bindsubmit="formSubmit">
+<view class='creatMsg'>
+  <input name='title' class='marginT20 font28 white' value='{{title}}' minlength='4' maxlength='30' placeholder='标题(必填),4-30字...' focus='true' />
+  <textarea name='content' value='{{content}}' class='marginT20 font28 white' placeholder='正文（必填）,15-300字...' maxlength='300' minlength='15'></textarea>
+</view>
+<view class="btn-area">
+  <button class='font36' style='width:90%;margin-top:70rpx;text-align:center;color:#fefefe;background-color:#02c6dc' formType="submit">保存</button>
+</view>
+</form>

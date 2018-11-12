@@ -1,0 +1,8 @@
+.marginT20{
+  margin-top: 20rpx;
+}
+.creatMsg input,.creatMsg textarea{
+  width: 670rpx;
+  padding: 20rpx 40rpx;
+  color: #8896b1
+}

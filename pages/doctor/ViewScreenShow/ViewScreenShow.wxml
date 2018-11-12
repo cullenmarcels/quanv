@@ -1,0 +1,37 @@
+
+<!-- 有  医生端的视频审核 -->
+
+
+<loading hidden="{{show}}">正在加载</loading>
+
+<view wx:if="{{show}}" style="padding-bottom:40rpx;">
+    <view>
+        <view>
+            <view wx:if="{{video.status==2}}" style="padding: 30rpx 40rpx;background:#fff;">
+                <view style="color: #ff7777;font-size: 36rpx;font-weight:600;">审核反馈</view>
+                <view style="font-size: 32rpx;color:#ff7777;line-height:50rpx;margin-top: 20rpx;">{{video.checked}}</view>
+            </view>
+            <view class="view">
+                <view class="video">
+                    <video src="{{video2.url}}" objectFit="cover"   controls show-fullscreen-btn="true" style="width: 100%;" poster="{{video2.coverUrl}}"></video> 
+                </view>
+            </view>
+            <view class="state">状态：{{video.status==0?"待审核":video.status==1?'审核通过':'不通过'}}</view>
+            <view class="concent">
+                <view class="concent-title">{{video.videoname}}</view>
+                <view class="money1">观看费用： {{video.money==0?'免费':'￥'+video.money}}</view>
+                <view class="item">视频简介:</view>
+                <view class="itemShow">{{video.content}}</view>
+                <view class="item">搜索标签:</view>
+                <view class="itemShow">{{video.tag?video.tag:'无'}}</view>
+                <view class="time">提交时间： {{video.createtime}}</view>
+            </view>
+
+            <view class="infuse">注：提交申请后请等待审核，若审核不通过可再进行修改；审核通过后才可以发布，如有疑问请联系客服。</view>
+            <button wx:if="{{video.status == 0}}" class="a">审核中...</button>
+            <button wx:if="{{video.status == 1}}" bindtap="submit">修改/发布</button>
+            <button wx:if="{{video.status == 2}}" bindtap="alter">修改</button>
+        </view>
+    </view> 
+    
+</view>

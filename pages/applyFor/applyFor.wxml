@@ -1,0 +1,52 @@
+<view style="padding-bottom:50rpx;">
+    <view class="flow">
+        <view class="flow-c">申请成为全V医生流程：</view>
+        <view class="flex flow-li">
+            <view class="flow-l">
+                <view class="nums">1</view>
+            </view>
+            <view class="flow-r">
+                <view>填写完成的全V医生申请表</view>
+            </view>
+        </view>
+        <view class="flex flow-li">
+            <view class="flow-l">
+                <view class="nums">2</view>
+            </view>
+            <view class="flow-r">
+                <view>上传相关个人资料</view>
+            </view>
+        </view>
+
+        <view class="step">
+            <view>
+                <image style="width: 20rpx;height:20rpx; vertical-align: middle;margin-right: 20rpx;" src="../../static/images/demo/dian2.png"></image>
+                <text>1. 本人医师资格证书</text>
+            </view>
+            <view>
+                <image style="width: 20rpx;height:20rpx; vertical-align: middle;margin-right: 20rpx;" src="../../static/images/demo/dian2.png"></image>
+                <text>2. 本人医师执业证书</text>
+            </view>
+            <view>
+                <image style="width: 20rpx;height:20rpx; vertical-align: middle;margin-right: 20rpx;" src="../../static/images/demo/dian2.png"></image>
+                <text>3. 本人身份证正反面</text>
+        </view>
+        <view class="shu"></view>
+        </view>
+
+
+        <view class="flex flow-li">
+            <view class="flow-l">
+                <view class="nums">3</view>
+            </view>
+            <view class="flow-r">
+                <view style="margin-top:50rpx;">审核未通过修改补充资料/通过审核成为全V 医生</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="flow-hint">*我们将会在三个工作日内完成审核流程</view>
+
+    <button class="flow-btn" bindtap="setapplyFor">开始申请</button>
+    <view class="hint2" bindtap="hint2">《全V健康在线服务条款》</view>
+</view>

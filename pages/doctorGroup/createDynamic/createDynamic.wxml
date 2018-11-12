@@ -1,0 +1,31 @@
+<!-- 表单 -->
+<form bindsubmit="formSubmit" style='display:block'>
+  <view class='tit white'>
+    <input class='font32' name='title' bindinput='bindWordLimit' maxlength='{{noteMaxLen}}' placeholder='请输入动态标题...' focus='true' />
+    <text class='font24'>{{currentNoteLen|0}}</text>
+  </view>
+  <textarea class=' white cont font32' name='content' placeholder='请输入动态内容...' show-confirm-bar ></textarea> 
+  <view class='media white'>
+    <view wx:if='{{images.length}} != 0 ' class='photoUl clearfix' >
+      <image mode='aspectFit' wx:for='{{images}}' wx:key='' bindtap='removeImage' data-id='{{index}}' src='{{images[index]}}' />    
+    </view>
+    <view class='videoUl clearfix'>
+      <video objectFit='cover' wx:for='{{videos}}' wx:key='' data-id='{{index}}' src='{{videos[index]}}' bindtap='removeVideo' ></video>
+    </view> 
+    <image bindtap='clickImage' class='mediaChoose' src='../../../static/groupImages/chooseMedia.png' />
+  </view>
+
+  <!-- 协议 -->
+<view class='agreement white clearfix' bindtap='goToAgreement'><text class='fl font28'>发布规则及责任声明</text><image class='fr' src='../../../static/groupImages/moreImg.png' /></view>
+
+  <!-- 发布按钮 -->
+  <button class='subBto' form-type='submit'>发布</button>
+</form>
+
+<!-- 底部选择框 -->
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetbindchange" >
+  <block wx:for="{{actionSheetItems}}" wx:key="unique">
+      <action-sheet-item bindtap="{{item.bindtap}}">{{item.txt}}</action-sheet-item>
+  </block>
+  <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>

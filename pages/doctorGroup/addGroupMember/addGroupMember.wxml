@@ -1,0 +1,42 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view wx:if="{{show}}">
+  <!-- 搜索 -->
+  <view class="search-top white">
+    <view class="flex search">
+      <view class="search-l">
+        <view class="search-input flex">
+          <input class="input font26" placeholder="城市、医院、科室、医生" value="{{value}}" bindconfirm="bindconfirm" bindinput="bindinput"></input>
+          <icon bindtap="search" type="search" size="20" color="#8896B1"></icon>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='listTit'>
+    <text class='font26'>搜索结果</text>
+  </view>
+  <view class='memberList'>
+    <!-- 推荐列表 -->
+    <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}" class='listLi white clearfix'>
+      <view class='listLi-l fl'>
+        <image src='{{item.avatar}}' />
+        <image wx:if='{{item.level!=0}}' class='listLi-level' src='../../../static/groupImages/V{{item.level}}.png' />
+      </view>
+      <view class='listLi-r fl'>
+        <view>
+          <text class='font32' style='color:#122d64;margin-right:25rpx'>{{item.realname}}</text>
+          <text class='font28' style='color:#79829c'>{{item.job}}</text>
+        </view>
+        <view class='font28' style='color:#122d64;margin-top:15rpx'>
+          <text>{{item.hostpital}}</text>
+          <text>{{item.name}}</text>
+        </view>
+        <view>
+          <image style='width:16rpx;height:21rpx;margin-right:5rpx' src='../../../static/groupImages/location.png' />
+          <text class='font22' style='color:#122d64'>{{item.province}}{{item.city}}{{item.area}}</text>
+        </view>
+      </view>
+      <image bindtap='addmember' data-did='{{item.id}}' class='listLi-add' src='../../../static/groupImages/add.png' />
+    </view>
+  </view>
+  <view wx:if="{{nohave}}" class='font28' style='text-align:center;padding:40rpx'>到底了~~~</view>
+</view>

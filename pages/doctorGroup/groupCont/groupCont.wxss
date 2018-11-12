@@ -1,0 +1,34 @@
+.marginB15 {
+  margin-bottom: 15rpx;
+}
+.marginT20{
+  margin-top: 20rpx;
+}
+.cont_top{
+  padding: 25rpx 40rpx;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+.cont_top image{
+  width: 123rpx;
+  height: 123rpx;
+  margin-top: 30rpx;
+  border-radius: 50%;
+}
+.cont_middle {
+  padding: 25rpx 40rpx 90rpx 40rpx;
+}
+.groupMember {
+  padding: 30rpx 40rpx;
+}
+.groupMemberIco{
+  margin-top: 30rpx;
+}
+.groupMemberIco image{
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  margin-right: 23rpx;
+}
+.groupNotice{
+  padding: 30rpx 40rpx 80rpx 40rpx;
+}
